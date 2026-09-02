@@ -1,0 +1,14 @@
+# OS junk
+.DS_Store
+.thumbnail
+
+# Network capture files - contain live session/auth data from the Wise checkout flow, never commit
+uploads/*.har
+
+# Unused staging uploads not referenced by any page
+uploads/Depositphotos_12497883_L.jpg
+uploads/draw-*.png
+uploads/Screenshot*.png
+
+# Dev-only reference screenshots (not needed to run the site)
+screenshots/
