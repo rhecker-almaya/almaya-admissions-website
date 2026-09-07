@@ -1,6 +1,10 @@
 :root{
 --forest-900:#17392F;
 --forest-800:#1E4A3B;
+/* Header green (#2D5C49). Defined as a triple because the profile-page headers
+   need it with alpha — edit this one line to change every header on the site. */
+--forest-700-rgb:45,92,73;
+--forest-700:rgb(var(--forest-700-rgb));
 --forest-050:#EAF0EC;
 --ivory:#F7F3EA;
 --ivory-100:#FBF9F4;
@@ -19,6 +23,10 @@
 --bg-page:var(--ivory);
 --bg-dark:var(--forest-900);
 --bg-dark-alt:var(--forest-800);
+--bg-header:var(--forest-700);
+/* Profile pages layer the same green over a backdrop-blur, so it needs alpha.
+   The lower stop (#234B3C) is a one-off shade, not a ramp step. */
+--bg-header-gradient:linear-gradient(180deg,rgba(var(--forest-700-rgb),0.96),rgba(35,75,60,0.94));
 --bg-surface:var(--white);
 --bg-muted:var(--sand-100);
 --bg-band:var(--sage-100);

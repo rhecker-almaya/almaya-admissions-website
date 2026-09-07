@@ -78,8 +78,9 @@ copper tint, which doesn't exist yet — `--copper` only has darker variants (`-
 - Set the 5 active links to it: `Why Almaya:57`, `How It Works:78`, `Tutors:72`, `About Us:75`, `Institutions:109`
 - Better: one shared `.nav-links a[aria-current="page"]` rule in `site-mobile.css` and mark the links — kills the hand-maintained-per-page problem permanently
 
-Also worth fixing while you're here: the header background `#2D5C49` is **hardcoded in 9 pages and
-matches no token** (`--forest-800` is `#1E4A3B`).
+~~Also worth fixing while you're here: the header background `#2D5C49` is **hardcoded in 9 pages and
+matches no token**~~ — **done, see A3.0 below.** The contrast ground is now `--bg-header`
+(still `#2D5C49`, unchanged); define `--copper-300` against that token rather than the raw hex.
 
 ### A4. Mobile header CTA wraps to two lines · 5 min
 
@@ -203,7 +204,8 @@ site-wide. Edit `tokens/colors.css:12-14` and it propagates everywhere.
 
 - Replace `--copper` `#B85C3D` with something less playful — a deeper brick, burgundy, or a warm bronze
 - **Add a light tint** for use on dark grounds (this is what A3 and the badges are missing)
-- Clean up the stray hexes: `#2D5C49` (header, 9 pages), and 16 in `Why Almaya.dc.html`
+- Clean up the stray hexes: ~~`#2D5C49` (header)~~ done in A3.0 — the header is now one
+  edit (`--forest-700-rgb`); and 16 in `Why Almaya.dc.html`
   (`#173b2c`, `#8C2F1F`, `#96492f`, `#C9C2B6`, `#e8dcc8`, `#FBEDEB`)
 - Note `Tutors.dc.html:224-229` uses `var(--copper-600, #96492f)` — the fallback disagrees with
   the actual token value `#A14E32`
@@ -422,6 +424,52 @@ reporter's machine. In a clean browser the first fix already worked.
 **General lesson for this repo:** the helmet assets are unversioned, so any change needing two
 files to land together is a latent bug. Prefer a selector that degrades to the old markup, or
 add cache-busting.
+
+### A3.0 — Header background tokenized ✅ *(uncommitted)*
+
+Sub-item of A3 only. **The active-link contrast fix — the actual A3 — is still open**, as is
+`--copper-300`.
+
+The audit said 9 pages; it's **18**, in two forms. A1/A2 deleted two of the 9, and the 11 profile
+pages carry the same green as a translucent gradient (`rgba(45,92,73,.96)` *is* `#2D5C49`), which a
+hex grep doesn't catch.
+
+| Header | Pages | Now reads |
+|---|---|---|
+| flat | 7 | `background:var(--bg-header,#2D5C49)` |
+| gradient over `backdrop-filter` | 11 | `background:var(--bg-header-gradient,linear-gradient(…))` |
+
+`tokens/colors.css` gains `--forest-700-rgb` (the triple, not a hex — the profile headers need
+alpha), `--forest-700:rgb(var(--forest-700-rgb))`, `--bg-header`, and `--bg-header-gradient`.
+**One line — `--forest-700-rgb` — now drives all 18 headers**, flat and gradient together. Deriving
+the hex *from* the triple is what keeps them from drifting apart in B3; two independent literals
+would have let a palette swap change the 7 flat headers and silently leave the 11 gradients behind.
+
+Every value is unchanged — this is a pure indirection, no visual diff. The gradient's lower stop
+(`#234B3C`) stayed a literal: it's within 5/255 of `--forest-800` but not equal, and snapping it
+would have been an (invisible) unrequested color change.
+
+Per the A2.1 lesson, **every call site carries a literal fallback**. A stale `colors.css` against
+fresh HTML would otherwise make `background` invalid at computed-value time and render the sticky
+header *transparent* — a worse failure than the bug A2.1 fixed. Measured, not assumed (below).
+
+**Verified in a real browser** (headless Chromium over `python3 -m http.server`, computed styles
+read via CDP), 10 pages covering both header forms *and* both ways this repo loads the design
+system — `<link>` (16 pages) and `ds-base.js` → `styles.css` → `@import` (`index`, `Institutions`):
+
+| Scenario | Result |
+|---|---|
+| Fresh both | `rgb(45,92,73)` / correct gradient on all 10 — identical to pre-change |
+| **Stale `colors.css`, fresh HTML** | identical again; tokens undefined, literal fallback took over |
+| One-line palette change | all 18 headers moved together, flat and gradient |
+
+Confirms in passing that the DC/React runtime re-serializes these inline styles *with* a space
+(`background: var(--bg-header,#2D5C49);`) and handles nested-paren values fine. No `[style*="…"]`
+selector in `site-mobile.css` keys off any header background, and `.header-compact`
+(`Institutions.dc.html:58`) only touches padding — so nothing depended on the old substrings.
+
+Left alone: `booking-modal.js:43` hardcodes `rgba(23,57,47,0.72)`, which is `--forest-900`. Same
+class of stray, out of scope here.
 
 ### Open cleanup
 
