@@ -64,6 +64,14 @@ img, iframe, video { max-width: 100%; }
   /* ---- booking pop-up ---- */
   [style*="z-index: 2000"] { padding: 10px !important; }
   [style*="max-width: 920px"] { height: 92vh !important; }
+  /* The generic `button { min-height: 44px }` above overrides the button's
+     inline height:34px but not its width, leaving the close control 34w x 44h.
+     Matched via `.am-booking` (the overlay) as well as the button's own class:
+     the overlay class predates this rule, so the selector still bites if a
+     browser is holding a cached copy of booking-modal.js. Neither asset is
+     cache-busted, and a rule that needs both files fresh reproduces the exact
+     bug it fixes. */
+  .am-booking button, .am-booking-close { width: 44px !important; height: 44px !important; }
 
   /* ---- marquees ---- */
   .marquee-track { gap: 26px !important; }

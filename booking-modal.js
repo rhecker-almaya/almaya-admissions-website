@@ -61,10 +61,15 @@
 
     closeBtn = document.createElement('button');
     closeBtn.type = 'button';
+    // class is the hook site-mobile.css uses to keep this square at the 44px
+    // mobile tap-target size — `button { min-height: 44px }` would otherwise
+    // stretch it to 44x34
+    closeBtn.className = 'am-booking-close';
     closeBtn.setAttribute('aria-label', 'Close');
     closeBtn.textContent = '✕';
     closeBtn.style.cssText =
       'display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;' +
+      'flex-shrink:0;' +
       'border-radius:4px;border:1px solid var(--border-subtle);background:transparent;' +
       'color:var(--forest-900);font-size:18px;line-height:1;cursor:pointer';
 

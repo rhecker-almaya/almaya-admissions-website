@@ -333,3 +333,113 @@ Removing it is straightforward. Making it *good* is a bigger job than your budge
 - **FAQ answers clip.** `Institutions.dc.html:78-81` — `.faq-a.open{max-height:240px}` will cut off
   longer answers on narrow screens.
 - Pages load the design system two different ways; 17 of them fetch the token files twice.
+
+---
+
+## Change log
+
+Appended as work lands. Line numbers elsewhere in this doc are from the original
+audit and are **not** updated as files shift — see the drift note under A2.
+
+### A1 — De-duplicate the homepage ✅ *(committed)*
+
+- Repointed the logo `href` in all 19 remaining pages from `LandingPage.dc.html` → `/`
+- Deleted `LandingPage.dc.html` (byte-identical to `index.html`, md5-verified)
+- `_redirects`: added `/LandingPage.dc.html  /  301!`
+- `README.md`: dropped the now-false "index.html is a duplicate" quirk and the deleted page's row
+
+### A2 — "Get Matched" opens the booking modal ✅ *(uncommitted)*
+
+Done with **one shared `booking-modal.js`** rather than 18 per-page copies. Triggers are
+matched by `href`, not a class or data attribute, because `site-mobile-nav.js:44` builds the
+mobile drawer CTA by copying the header CTA's href and nothing else — so the drawer works with
+zero changes to that file. The links keep a real working `href`, so they still go somewhere if
+JS fails. The overlay is appended to `<body>`, outside `<x-dc>`, so a DC re-render can't strip it.
+
+- New `booking-modal.js` — overlay, delegated click handler, Escape / backdrop / ✕ to close,
+  scroll lock, focus restore. Modified clicks (⌘/ctrl/middle) pass through.
+- Deleted `Free Consultation.dc.html`; repointed its ~48 inbound links across 18 pages
+- All 18 pages load the script in their helmet
+- `index.html`: the 5 `href="#get-started"` buttons now open the modal instead of scrolling.
+  Its bespoke `<sc-if>` modal, `bookingOpen` state, Escape listener and 3 handlers removed —
+  one implementation site-wide, not two.
+- `_redirects`: added `/Free%20Consultation.dc.html  /  301!`
+- `README.md`: documented `booking-modal.js`, removed the deleted page
+
+Side wins: the booking iframe is now fetched on first open rather than on every page load, and
+the close control is a real `<button>` (keyboard + screen-reader reachable) instead of an `<a>`.
+
+**Verified:** no dead references; every `{{ binding }}` on every page still resolves; all
+`data-dc-script` blocks pass `node --check`; pages serve 200 locally.
+**Not verified at the time:** no browser was available — the modal had not been clicked
+through. This has since been done; see A2.1, which found two real bugs the static check missed.
+
+**Known drift from A2** — removing the 11-line `<sc-if>` block shifted `index.html`. Anything
+cited above line 379 in this doc is still correct; these three are stale:
+
+| This doc says | Actually at |
+|---|---|
+| `index.html:411` — state | 400 |
+| `index.html:438-486` — orphaned `playBubbleFlight` | ~423 |
+| `index.html:415, 546, 588` — `stepGridRef` | 402, ~510, ~577 |
+
+#### A2.1 — Close button not square on mobile ✅ *(uncommitted)*
+
+Follow-up on the modal A2 introduced, found by finally clicking it through in a browser.
+(Not to be confused with audit item **A3, header active-link contrast**, which is still open.)
+
+The blanket `site-mobile.css:62` `button { min-height: 44px }` overrides the close button's
+inline `height:34px` but not its `width`, leaving it **34w × 44h** on mobile.
+
+A first pass fixed this by adding an `am-booking-close` class in the JS and a matching
+`width/height: 44px !important` rule in the CSS. Correct in a clean browser, but it did not
+appear to fix anything in practice — because it splits one visual property across two files
+that cache independently, and **neither asset is cache-busted** (`<script src="booking-modal.js">`
+and `<link href="site-mobile.css">` carry no `?v=`). Measured in Chromium:
+
+| `booking-modal.js` | `site-mobile.css` | renders |
+|---|---|---|
+| fresh | fresh | 44 × 44 ✅ |
+| **cached (old)** | fresh | **34 × 44** ❌ — the original bug, unchanged |
+| fresh | cached (old) | 34 × 34 ✅ (small, but square) |
+
+A browser holding the old JS never gets the class, so the new rule matches nothing while the
+generic `button` rule still stretches the height. The fix reproduced the bug it was fixing.
+
+- `site-mobile.css` — selector widened to `.am-booking button, .am-booking-close`. The
+  `.am-booking` overlay class predates this rule, so it bites even against a cached JS.
+- `booking-modal.js` — added `flex-shrink: 0`. Separate bug: at 320px the header title squeezed
+  the button to **43.14 × 44**. Invisible at 390px (iPhone), which is why it went unnoticed.
+
+**Verified in a real browser** (headless Chromium, `python3 -m http.server`): clicked an actual
+"Get Matched" link on `index.html`, `How It Works`, `Arianna Zarka Profile`, `Tutors` and
+`Jon Booking` — 44 × 44 on all five, at 320 / 360 / 390 / 430px. Both stale-asset cases
+re-measured and now render square.
+
+**Caveat:** the cache diagnosis is inference from an exact symptom match, not observed on the
+reporter's machine. In a clean browser the first fix already worked.
+
+**General lesson for this repo:** the helmet assets are unversioned, so any change needing two
+files to land together is a latent bug. Prefer a selector that degrades to the old markup, or
+add cache-busting.
+
+### Open cleanup
+
+- **The 12 profile pages still have their own booking modal** — `"Work With <name>"` →
+  `{{ onOpenBooking }}` → a bespoke `<sc-if>` overlay, whose close control is an `<a>` at
+  34 × 34. Square, so not the A2.1 bug, but it is below the 44px tap target and is a second modal
+  implementation. A2's "one implementation site-wide" claim covers the *Get Matched* path only;
+  these are triggered by a course URL, which `booking-modal.js` does not intercept.
+- `uploads/Depositphotos_702896334_XL.jpg` — **8 MB, now referenced by zero pages** (it was only
+  used by the deleted Free Consultation page). Tracked in git, so deleting is recoverable.
+  Left in place: it's licensed stock art that may be wanted elsewhere.
+- `_redirects` sends the old consultation URL to `/`, not straight to the booking page.
+- `index.html`'s `id="get-started"` section is intact but nothing links to it any more.
+
+### Decisions taken along the way
+
+- **Prettier: rejected.** `Tutors.dc.html` doesn't parse (`Unexpected closing tag "x-dc"`), and
+  prettier rewrites the CSS *inside* `style=""` attributes (`#2D5C49` → `#2d5c49`,
+  `padding:16px` → `padding: 16px`). The whole responsive layer is `[style*="…"]` substring
+  matching against those exact strings, and `Tutors.dc.html:62` depends on the unspaced form.
+  It also inflates files ~6× (197 → 1150 lines), invalidating every line number in this doc.
