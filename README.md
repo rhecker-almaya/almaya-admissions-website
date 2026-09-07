@@ -20,8 +20,7 @@ To deploy: drag this folder into Netlify, or connect this repo to Netlify with
 
 | File | URL / purpose |
 | --- | --- |
-| `index.html` | Homepage. **Copy of `LandingPage.dc.html`** — see "Known quirks" below |
-| `LandingPage.dc.html` | Source of the homepage |
+| `index.html` | Homepage, served at `/`. Every logo links here |
 | `Why Almaya.dc.html` | Why Almaya |
 | `How It Works.dc.html` | How it works |
 | `Tutors.dc.html` | Advisor directory |
@@ -100,9 +99,7 @@ create paid bookings yet.
 
 ## Known quirks / good first tasks
 
-1. **`index.html` is a duplicate of `LandingPage.dc.html`.** Homepage edits must
-   be made in both, or one should be turned into a redirect. Worth fixing.
-2. **Filenames contain spaces and a `.dc.html` extension**, so live URLs look
+1. **Filenames contain spaces and a `.dc.html` extension**, so live URLs look
    like `/Neva%20Hidajat%20Profile.dc.html`. Recommended: rename to slugs
    (`advisors/neva-hidajat.html`) and add redirects from the old paths in
    `_redirects` so existing links keep working, e.g.
@@ -113,17 +110,17 @@ create paid bookings yet.
 
    If you rename files, update the `<a href>` links across all pages — they are
    plain relative links.
-3. **Logo artwork reads "ALMAYYA" (two Ys); all copy says "Almaya" (one Y).**
+2. **Logo artwork reads "ALMAYYA" (two Ys); all copy says "Almaya" (one Y).**
    The image files in `assets/` are the client's supplied artwork. Needs updated
    logo files from the client.
-4. **Icons are hotlinked to `unpkg.com/lucide-static@0.462.0`.** Should be
+3. **Icons are hotlinked to `unpkg.com/lucide-static@0.462.0`.** Should be
    vendored locally so the site does not depend on a third-party CDN.
-5. **Fonts** (Cormorant, Jost) are Google Fonts substitutions, not licensed
+4. **Fonts** (Cormorant, Jost) are Google Fonts substitutions, not licensed
    brand originals.
-6. **Jonathan Mizrahi's profile has no booking course URL yet**, and Arianna
+5. **Jonathan Mizrahi's profile has no booking course URL yet**, and Arianna
    Zarka's Wise course is missing a session duration, so her slot queries fail.
    Both are Wise-account config, not code.
-7. **Two test bookings exist in the Wise account** ("Test Verifier" and
+6. **Two test bookings exist in the Wise account** ("Test Verifier" and
    "ZZ IGNORE Verifier Test") and should be deleted before real traffic.
 
 ## Rebuilding in a framework
