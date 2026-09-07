@@ -89,7 +89,11 @@ Root cause is a selector that JS silently invalidates. `site-mobile.css:94-96` p
 the header — so `div.am-navtoggle` *becomes* `:last-child` and the CTA wrapper loses both
 `flex-shrink:0` and `white-space:nowrap`.
 
-One selector change (`:not(.am-navtoggle)`, or target the CTA wrapper by class). Fixes all 20 pages.
+~~One selector change (`:not(.am-navtoggle)`, or target the CTA wrapper by class). Fixes all 20 pages.~~
+
+> **This prescription is wrong.** `:not(.am-navtoggle)` makes the rule match *nothing*, and two
+> further rules have the same defect. Tried on branch `mobile-cta` and it did not work — see
+> **A4 — correction** in the change log below before attempting this.
 
 ### A5. Advisors page: 5-across grid on mobile · 5 min
 
@@ -470,6 +474,112 @@ selector in `site-mobile.css` keys off any header background, and `.header-compa
 
 Left alone: `booking-modal.js:43` hardcodes `rgba(23,57,47,0.72)`, which is `--forest-900`. Same
 class of stray, out of scope here.
+
+### R1 — The site header is one shared component ✅ *(commit `3dd4635`, branch `shared-header`)*
+
+Not an audit item — a structural fix for the "Header and footer markup is duplicated in all 20
+pages" fact at the top of this doc. Markup changes to the header are now **1 file, not 18**.
+
+The 18 copies had already drifted into two visibly different designs:
+
+| | Pages | Logo mark | Wordmark | Bar | Active-page highlight |
+|---|---|---|---|---|---|
+| Main | 7 | 48px | 26px | solid `--bg-header` | yes |
+| Profile | 11 | 36px | 18px | gradient + `backdrop-filter` | **none** |
+
+`site-header.js` defines a `<site-header>` element that every page now mounts:
+
+```html
+<x-import component-from-global-scope="site-header" data-active="advisors"></x-import>
+```
+
+Attributes, all optional: `data-active` (`why|how|advisors|about|institutions`),
+`data-header-class`, `data-cta-href`, `data-cta-label`, `data-cta-class`. Institutions is the only
+page using the overrides — it keeps its workshop CTA and its `{{ headerClass }}` scroll-compact
+hook (`Institutions.dc.html:104`).
+
+The main-page design won: it is the one with the active-page highlight and the one
+`site-mobile.css` was written against. So the 11 profile pages gain a highlight they never had,
+and the gradient header form is gone.
+
+**Three constraints shaped the implementation:**
+
+- The emitted DOM keeps the old element *shape* — logo `<a>` first, `<nav class="nav-links">`
+  second, CTA wrapped in a trailing `<div>` — because `site-mobile.css` and `site-mobile-nav.js`
+  both select against exactly that structure. Both files were changed **zero** lines.
+- The CTA is a plain styled `<button>` (`.am-hdr-cta`) mirroring
+  `Button{variant:'primary',size:'sm'}` rather than an `x-import`, because the DC runtime only
+  mounts `x-import` tags it parsed from the page source — it does not walk DOM built by a custom
+  element. Keep it in sync with `_ds/.../_ds_bundle.js`.
+- `render()` guards on a signature of the five attributes and only rewrites `innerHTML` when one
+  actually changed. Without that, Institutions' scroll-driven `headerClass` flip would destroy the
+  toggle `site-mobile-nav.js` appended, on every scroll tick.
+
+Net **−46 lines** (166 added, 212 removed) across 20 files.
+
+**Verified in Chrome across all 18 pages:** sticky positioning, logo sizing, 5 nav links, correct
+active highlight, CTA label/colour, mobile drawer, no new console errors or failed requests versus
+baseline. Header screenshots of `index.html` and `About Us.dc.html` are byte-identical to before.
+
+**Knock-on effects on items still open in this doc:**
+
+- **A3** (active-link contrast) is now a **two-line change** in `site-header.js` —
+  `NAV_LINK_ACTIVE` — instead of five hand-maintained per-page edits. The "better: one shared
+  rule" suggestion under A3 is superseded; the component *is* the shared rule.
+- **A3.0**'s `--bg-header` is now referenced from one place (`HEADER_STYLE`) rather than 18, and
+  **`--bg-header-gradient` is now orphaned** — still defined in `tokens/colors.css:29`, referenced
+  by nothing. It was only ever used by the 11 profile headers. Safe to delete; left for B3.
+- **A7** (Institutions header CTA overflows) is now one rule against `.am-hdr-cta` /
+  `data-cta-class="cta-lift"`, not a per-page patch.
+- **A4 is *not* fixed by this** — see the correction below.
+
+#### A4 — correction: `:not(.am-navtoggle)` cannot work *(diagnosis only, still open)*
+
+A4 above proposes `header > div:last-child:not(.am-navtoggle)`. That advice is **wrong**, and the
+attempt on branch `mobile-cta` (`b1408cd`, "didn't work") is why.
+
+`:last-child` is **positional, not filtered**. It means "this element is the last child", full
+stop. Adding `:not(.am-navtoggle)` cannot promote the CTA wrapper to last-child — it only adds a
+second condition to an element that already fails the first. Once `site-mobile-nav.js:79` runs
+`header.appendChild(toggle)`, the compound selector asks for an element that is simultaneously the
+last child *and* not the toggle. No such element exists, so the rule matches **nothing**.
+
+The pre-fix rule at least matched the toggle. The "fix" made it match zero elements — so the CTA
+is exactly as broken as before, which is precisely the reported symptom.
+
+Measured at 390px on `index.html`, both branches, after the toggle is injected:
+
+| Selector | Matches |
+|---|---|
+| `header > div:last-child` | 1 — the `.am-navtoggle` |
+| `header > div:last-child:not(.am-navtoggle)` | **0** |
+| `header > div:nth-last-child(1 of :not(.am-navtoggle))` | 1 — the CTA wrapper ✅ |
+
+CTA wrapper computed `flex-shrink: 1`, `white-space: normal`; the button renders 56px tall — two
+lines.
+
+Two things follow that A4 does not mention:
+
+1. **Three rules are dead, not one.** `site-mobile.css:104`
+   (`header > div:last-child a, header > div:last-child button { white-space: nowrap }`) and
+   `:108` (the ≤1200px font-size/padding rule) have the same defect, and `mobile-cta` touched
+   neither — only `:103`, the `flex-shrink` rule. `white-space: nowrap` is what actually stops
+   the two-line wrap; `flex-shrink: 0` alone would not have fixed it even if it had landed.
+   *(Line numbers are this branch's. `mobile-cta` also reformatted the whole file, so the same
+   three rules sit at `:213`, `:216-218` and `:229` there.)*
+2. **The refactor above does not change this.** `<site-header>` reproduces the old shape
+   faithfully, so the CTA wrapper is still a `header > div` followed by an appended toggle.
+   Verified identical on `shared-header`'s `index.html` and its profile pages.
+
+Real fixes, in preference order:
+
+- Give the wrapper a class in `site-header.js` (e.g. `.am-hdr-cta-wrap`) and select that — the
+  refactor makes this a one-line change, and it is the only option that is not positional. Per
+  the A2.1 cache lesson, pair it with a selector that still degrades on stale assets.
+- Or `header > div:nth-last-child(1 of :not(.am-navtoggle))` — works today (Chrome 111+,
+  Safari 9+, Firefox 113+), but it is still positional and silently no-ops on older browsers.
+- Or have `site-mobile-nav.js` insert the toggle *before* the CTA wrapper rather than appending —
+  fixes all three dead rules at once, but changes the visual order of the header.
 
 ### Open cleanup
 
