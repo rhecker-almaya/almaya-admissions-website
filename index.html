@@ -28,6 +28,7 @@
 <meta name="twitter:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
 <link rel="stylesheet" href="site-mobile.css">
 <script src="site-mobile-nav.js"></script>
+<script src="booking-modal.js"></script>
 <style>html{scroll-behavior:smooth}</style>
 <script src="./ds-base.js"></script>
 <script src="./image-slot.js"></script>
@@ -137,7 +138,7 @@
 <a href="Institutions.dc.html" style="color:var(--text-muted-inverse);font-size:15px;white-space:nowrap">Institutions</a>
 </nav>
 <div style="display:flex;gap:12px">
-<a href="#get-started"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="sm" hint-size="150px,40px">Get Matched</x-import></a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="sm" hint-size="150px,40px">Get Matched</x-import></a>
 </div>
 </header>
 
@@ -148,7 +149,7 @@
 <img class="hero-img hero-img-mobile" src="assets/photos/hero-campus-couple.png" style="display:none;width:100%;max-width:220px;aspect-ratio:4/5;border-radius:8px;object-fit:cover;box-shadow:var(--shadow-lifted);margin:16px auto">
 <p style="color:var(--text-muted-inverse);font-size:18px;margin-top:24px;max-width:460px">Get personally matched with a vetted college admissions advisor based on your goals, needs, personality, and budget — or browse our network and choose for yourself.</p>
 <div class="hero-ctas" style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap">
-<a href="#get-started"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="lg" hint-size="220px,56px">Get Matched — It's Free</x-import></a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="lg" hint-size="220px,56px">Get Matched — It's Free</x-import></a>
 <a href="./Tutors.dc.html"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="secondary" size="lg" hint-size="200px,56px">Browse Advisors</x-import></a>
 </div>
 <div ref="{{ statsRef }}" class="hero-stats" style="display:grid;grid-template-columns:216px 1fr;column-gap:16px;row-gap:20px;margin-top:48px;justify-content:start;justify-items:start">
@@ -204,7 +205,7 @@
 </div>
 </div>
 <div style="text-align:center;margin-top:32px">
-<a href="#get-started"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="lg" hint-size="220px,52px">Get Matched — It's Free</x-import></a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="lg" hint-size="220px,52px">Get Matched — It's Free</x-import></a>
 </div>
 </section>
 
@@ -316,7 +317,7 @@
 <div style="text-align:center;margin-top:24px;max-width:1080px;margin-left:auto;margin-right:auto">
 <p style="color:var(--text-muted);font-size:14.5px;margin:0 0 16px">Need support across multiple areas? Your advisor can stay with you throughout the application process.</p>
 <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
-<a href="#get-started"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="md" hint-size="200px,44px">Get Matched — It's Free</x-import></a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="md" hint-size="200px,44px">Get Matched — It's Free</x-import></a>
 <a href="./Tutors.dc.html" style="display:inline-flex;align-items:center;justify-content:center;height:47px;padding:0 24px;border:1.5px solid var(--forest-900);border-radius:4px;color:var(--forest-900);font-family:Jost,-apple-system,Helvetica,Arial,sans-serif;font-size:16px;font-weight:500;text-decoration:none">Browse Advisors</a>
 </div>
 </div>
@@ -362,20 +363,9 @@
 <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;position:relative;z-index:1"><div style="width:56px;height:56px;border-radius:50%;background:var(--copper);color:var(--ivory);font-family:var(--font-serif-display);font-size:24px;display:flex;align-items:center;justify-content:center">3</div><div style="color:var(--ivory);font-size:14px">Receive personalized matches</div></div>
 </div>
 <div style="display:flex;justify-content:center">
-<a onClick="{{ onOpenBooking }}" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;background:var(--copper);border-radius:4px;color:var(--ivory);font-size:16px;font-weight:500;cursor:pointer" style-hover="background:var(--copper-600,#96492f)">Book a Time Here</a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;background:var(--copper);border-radius:4px;color:var(--ivory);font-size:16px;font-weight:500;cursor:pointer" style-hover="background:var(--copper-600,#96492f)">Book a Time Here</a>
 </div>
 <div style="text-align:center;margin-top:20px"><a href="./Tutors.dc.html" style="color:var(--sand);font-size:15px">Already know what you're looking for? Browse Advisors →</a></div>
-<sc-if value="{{ bookingOpen }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ onCloseBooking }}" style="position:fixed;inset:0;z-index:2000;background:rgba(23,57,47,0.72);display:flex;align-items:center;justify-content:center;padding:32px">
-<div onClick="{{ stopClose }}" style="position:relative;width:100%;max-width:920px;height:min(88vh,900px);background:var(--white);border-radius:8px;box-shadow:0 24px 60px rgba(0,0,0,0.35);overflow:hidden;display:flex;flex-direction:column">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;border-bottom:1px solid var(--border-subtle);flex-shrink:0">
-<span style="font-family:var(--font-serif-display);font-size:18px;color:var(--forest-900)">Book your free consultation</span>
-<a onClick="{{ onCloseBooking }}" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:4px;border:1px solid var(--border-subtle);color:var(--forest-900);font-size:18px;line-height:1;cursor:pointer;text-decoration:none" style-hover="background:var(--sand-100)">✕</a>
-</div>
-<iframe src="https://learn.almayaadmissions.com/book/free-consultation" width="100%" height="100%" frameborder="0" allowfullscreen style="display:block;flex:1;width:100%;border:0"></iframe>
-</div>
-</div>
-</sc-if>
 </div>
 </section>
 <footer class="site-footer" style="background:var(--copper-100);padding:14px 48px">
@@ -390,7 +380,7 @@
 <div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/users.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">500+ families supported</span></div>
 <div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/star.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">5/5 average rating</span></div>
 </div>
-<a href="#get-started" style="color:var(--forest-900);font-size:14px;font-weight:600">Get Matched — It's Free →</a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation" style="color:var(--forest-900);font-size:14px;font-weight:600">Get Matched — It's Free →</a>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;flex-wrap:wrap;gap:12px">
 <div style="font-size:12px;color:var(--text-muted)">© Almaya Admissions. All rights reserved.</div>
@@ -407,7 +397,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { activeStep: 0, stat100: 0, stat500: 0, statRating: 0, bookingOpen: false };
+  state = { activeStep: 0, stat100: 0, stat500: 0, statRating: 0 };
   step0Ref = React.createRef();
   stepGridRef = React.createRef();
   step1Ref = React.createRef();
@@ -499,8 +489,6 @@ class Component extends DCLogic {
   componentDidUpdate() { this.applyStickyColors(); }
   componentDidMount() {
     this.applyStickyColors();
-    this.onBookingKey = e => { if (e.key === 'Escape') this.setState({ bookingOpen: false }); };
-    window.addEventListener('keydown', this.onBookingKey);
     this.statsObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting && !this.statsAnimated) {
         this.statsAnimated = true;
@@ -565,7 +553,6 @@ class Component extends DCLogic {
     window.addEventListener('resize', this.onScroll);
   }
   componentWillUnmount() {
-    if (this.onBookingKey) window.removeEventListener('keydown', this.onBookingKey);
     if (this.onScroll) { window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll); }
     if (this.onRevealScroll) { window.removeEventListener('scroll', this.onRevealScroll); window.removeEventListener('resize', this.onRevealScroll); }
   }
@@ -583,10 +570,6 @@ class Component extends DCLogic {
       bubbleEngRef: this.bubbleEngRef, bubbleBudgetRef: this.bubbleBudgetRef, bubbleGradRef: this.bubbleGradRef, bubbleStrategyRef: this.bubbleStrategyRef,
       targetEngRef: this.targetEngRef, targetBudgetRef: this.targetBudgetRef, targetGradRef: this.targetGradRef, targetStrategyRef: this.targetStrategyRef,
       vetGridRef: this.vetGridRef, servicesSectionRef: this.servicesSectionRef, servicesGridRef: this.servicesGridRef, whyAlmayaRef: this.whyAlmayaRef,
-      bookingOpen: this.state.bookingOpen,
-      onOpenBooking: () => this.setState({ bookingOpen: true }),
-      onCloseBooking: () => this.setState({ bookingOpen: false }),
-      stopClose: e => e.stopPropagation()
     };
   }
 }

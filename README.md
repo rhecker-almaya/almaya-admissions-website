@@ -26,7 +26,6 @@ To deploy: drag this folder into Netlify, or connect this repo to Netlify with
 | `Tutors.dc.html` | Advisor directory |
 | `About Us.dc.html` | About / founders |
 | `Institutions.dc.html` | Schools & orgs |
-| `Free Consultation.dc.html` | Free consult booking page |
 | `Jon Booking.dc.html` | One-off booking page |
 | `<Name> Profile.dc.html` | 11 advisor profile pages (Gabriel Nagel, Arjun Jaswal, Samantha Lofman, Neva Hidajat, Razi Hecker, Eitan Ginsburg, Joseph Schlesinger, Jacob Feit Mann, Arianna Zarka, Sarah Rosen, Jonathan Mizrahi) |
 
@@ -38,6 +37,7 @@ To deploy: drag this folder into Netlify, or connect this repo to Netlify with
 | `ds-base.js` | Loads the design-system stylesheets and component bundle from `_ds/` |
 | `_ds/almayya-design-system-.../` | The Almaya design system: CSS custom-property tokens (`tokens/colors.css`, `typography.css`, `spacing.css`, `fonts.css`) plus a JS component bundle (`Button`, `Card`, `Tag`, etc.) |
 | `site-mobile.css`, `site-mobile-nav.js` | Shared mobile nav + responsive overrides |
+| `booking-modal.js` | Shared "Get Matched" consultation modal. Any link whose `href` is the booking URL opens it in an overlay instead of navigating |
 | `wise-booking.js` | Custom booking widget on advisor profiles — talks to the Wise API. **See `BOOKING.md` before touching this.** |
 | `image-slot.js` | Drag-and-drop image placeholder component |
 | `assets/` | Logos, advisor headshots (`assets/experts/`), team photos, school logos, textures, OG preview image |
