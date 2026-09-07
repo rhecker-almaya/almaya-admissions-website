@@ -36,6 +36,7 @@ To deploy: drag this folder into Netlify, or connect this repo to Netlify with
 | `support.js` | Runtime that renders the `<x-dc>` markup in each page. **Required by every page. Do not delete or rename.** |
 | `ds-base.js` | Loads the design-system stylesheets and component bundle from `_ds/` |
 | `_ds/almayya-design-system-.../` | The Almaya design system: CSS custom-property tokens (`tokens/colors.css`, `typography.css`, `spacing.css`, `fonts.css`) plus a JS component bundle (`Button`, `Card`, `Tag`, etc.) |
+| `site-header.js` | **The site header, shared by all 18 pages.** Defines a `<site-header>` element; edit the nav links, logo, or CTA here and every page changes |
 | `site-mobile.css`, `site-mobile-nav.js` | Shared mobile nav + responsive overrides |
 | `booking-modal.js` | Shared "Get Matched" consultation modal. Any link whose `href` is the booking URL opens it in an overlay instead of navigating |
 | `wise-booking.js` | Custom booking widget on advisor profiles — talks to the Wise API. **See `BOOKING.md` before touching this.** |
@@ -68,6 +69,16 @@ Rules that matter if you edit these files:
   `Component` class. They are **dotted lookups only** — no expressions.
 - `<x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" ...>`
   mounts a design-system component.
+- **The header is not written per page.** Each page mounts the shared one:
+
+  ```html
+  <x-import component-from-global-scope="site-header" data-active="advisors"></x-import>
+  ```
+
+  `data-active` highlights a nav item (`why`, `how`, `advisors`, `about`,
+  `institutions`); omit it for no highlight. `data-cta-href` / `data-cta-label` /
+  `data-cta-class` override the primary CTA (Institutions does this), and
+  `data-header-class` puts a class on the `<header>`. See `site-header.js`.
 - Only `<script>` tags inside `<helmet>` run reliably.
 
 ## Brand tokens (quick reference)

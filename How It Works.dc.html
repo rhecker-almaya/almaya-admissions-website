@@ -28,6 +28,7 @@
 <meta name="twitter:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
 <link rel="stylesheet" href="site-mobile.css">
 <script src="site-mobile-nav.js"></script>
+<script src="site-header.js"></script>
 <script src="booking-modal.js"></script>
 <link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/colors.css">
@@ -72,19 +73,7 @@ a:hover{color:var(--copper-600,#96492f)}
 </style>
 </helmet>
 
-<header style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:16px 48px;background:var(--bg-header,#2D5C49);position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.12)">
-<a href="/" style="display:flex;align-items:center;gap:14px;text-decoration:none"><div style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:radial-gradient(circle,rgba(196,120,74,0.18),rgba(196,120,74,0) 70%)"><img src="assets/almayya-mark-white.png" style="height:36px"></div><span style="font-family:var(--font-serif-display);font-size:26px;letter-spacing:0.02em;color:var(--ivory);font-weight:600">Almaya <em style="font-style:italic;color:var(--ivory)">Admissions</em></span></a>
-<nav class="nav-links" style="display:flex;gap:30px;align-items:center;flex:1;justify-content:center">
-<a href="Why Almaya.dc.html" style="color:var(--text-muted-inverse);font-size:15px;white-space:nowrap">Why Almaya</a>
-<a href="How It Works.dc.html" style="color:var(--copper);font-size:15px;font-weight:600;white-space:nowrap">How It Works</a>
-<a href="Tutors.dc.html" style="color:var(--text-muted-inverse);font-size:15px;white-space:nowrap">Our Advisors</a>
-<a href="About Us.dc.html" style="color:var(--text-muted-inverse);font-size:15px;white-space:nowrap">About Us</a>
-<a href="Institutions.dc.html" style="color:var(--text-muted-inverse);font-size:15px;white-space:nowrap">Institutions</a>
-</nav>
-<div style="display:flex;gap:12px">
-<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="sm" hint-size="150px,40px">Get Matched</x-import></a>
-</div>
-</header>
+<x-import component-from-global-scope="site-header" data-active="how" hint-size="100%,80px"></x-import>
 
 <section style="position:relative;padding:56px 48px;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden">
 <img src="uploads/Depositphotos_476977934_L.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
