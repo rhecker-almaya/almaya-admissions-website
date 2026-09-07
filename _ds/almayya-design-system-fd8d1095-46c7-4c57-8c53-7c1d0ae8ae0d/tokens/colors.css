@@ -1,42 +1,46 @@
-:root{
---forest-900:#17392F;
---forest-800:#1E4A3B;
-/* Header green (#2D5C49). Defined as a triple because the profile-page headers
+:root {
+  --forest-900: #17392f;
+  --forest-800: #1e4a3b;
+  /* Header green (#2D5C49). Defined as a triple because the profile-page headers
    need it with alpha — edit this one line to change every header on the site. */
---forest-700-rgb:45,92,73;
---forest-700:rgb(var(--forest-700-rgb));
---forest-050:#EAF0EC;
---ivory:#F7F3EA;
---ivory-100:#FBF9F4;
---sage:#91A18F;
---sage-100:#DCE3DA;
---sand:#DED4C4;
---sand-100:#EFE9DE;
---charcoal:#202522;
---copper:#B85C3D;
---copper-600:#A14E32;
---copper-100:#F3DED4;
---white:#FFFFFF;
---success:#5A7D5A;
---warning:#C08A2E;
---error:#A6432E;
---bg-page:var(--ivory);
---bg-dark:var(--forest-900);
---bg-dark-alt:var(--forest-800);
---bg-header:var(--forest-700);
-/* Profile pages layer the same green over a backdrop-blur, so it needs alpha.
+  --forest-700-rgb: 45, 92, 73;
+  --forest-700: rgb(var(--forest-700-rgb));
+  --forest-050: #eaf0ec;
+  --ivory: #f7f3ea;
+  --ivory-100: #fbf9f4;
+  --sage: #91a18f;
+  --sage-100: #dce3da;
+  --sand: #ded4c4;
+  --sand-100: #efe9de;
+  --charcoal: #202522;
+  --copper: #b85c3d;
+  --copper-600: #a14e32;
+  --copper-100: #f3ded4;
+  --white: #ffffff;
+  --success: #5a7d5a;
+  --warning: #c08a2e;
+  --error: #a6432e;
+  --bg-page: var(--ivory);
+  --bg-dark: var(--forest-900);
+  --bg-dark-alt: var(--forest-800);
+  --bg-header: var(--forest-700);
+  /* Profile pages layer the same green over a backdrop-blur, so it needs alpha.
    The lower stop (#234B3C) is a one-off shade, not a ramp step. */
---bg-header-gradient:linear-gradient(180deg,rgba(var(--forest-700-rgb),0.96),rgba(35,75,60,0.94));
---bg-surface:var(--white);
---bg-muted:var(--sand-100);
---bg-band:var(--sage-100);
---text-primary:var(--charcoal);
---text-inverse:var(--ivory);
---text-muted:#5B615C;
---text-muted-inverse:#B8C6BE;
---accent-cta:var(--copper);
---accent-cta-hover:var(--copper-600);
---border-subtle:rgba(32,37,34,0.12);
---border-inverse:rgba(247,243,234,0.22);
---focus-ring:var(--copper);
+  --bg-header-gradient: linear-gradient(
+    180deg,
+    rgba(var(--forest-700-rgb), 0.96),
+    rgba(35, 75, 60, 0.94)
+  );
+  --bg-surface: var(--white);
+  --bg-muted: var(--sand-100);
+  --bg-band: var(--sage-100);
+  --text-primary: var(--charcoal);
+  --text-inverse: var(--ivory);
+  --text-muted: #5b615c;
+  --text-muted-inverse: #b8c6be;
+  --accent-cta: var(--copper);
+  --accent-cta-hover: var(--copper-600);
+  --border-subtle: rgba(32, 37, 34, 0.12);
+  --border-inverse: rgba(247, 243, 234, 0.22);
+  --focus-ring: var(--copper);
 }
