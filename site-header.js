@@ -16,8 +16,13 @@
 // The DOM this emits is deliberately identical in *shape* to the old inline
 // markup — logo anchor first, <nav class="nav-links"> second, CTA wrapped in a
 // trailing <div> — because site-mobile.css and site-mobile-nav.js both select
-// against that structure (`header > a:first-child`, `header > div:last-child`,
-// `nav.nav-links`).
+// against that structure (`header > a:first-child`, `nav.nav-links`).
+//
+// The CTA wrapper additionally carries `.am-hdr-cta-wrap`. site-mobile.css used
+// to reach it as `header > div:last-child`, which breaks as soon as
+// site-mobile-nav.js appends its toggle — the class is what makes those rules
+// stop depending on sibling order. Do not remove it without updating the
+// "keep the CTA on one line" block in site-mobile.css.
 (() => {
   // The helmet script can be evaluated more than once (DC re-render /
   // streaming remount), so guard on a global rather than closure state.
@@ -67,7 +72,7 @@ site-header{display:contents}
 <nav class="nav-links" style="display:flex;gap:30px;align-items:center;flex:1;justify-content:center">
 ${NAV.map(n => `<a href="${esc(n.href)}" style="${n.key === active ? NAV_LINK_ACTIVE : NAV_LINK}">${esc(n.label)}</a>`).join('\n')}
 </nav>
-<div style="display:flex;gap:12px">
+<div class="am-hdr-cta-wrap" style="display:flex;gap:12px">
 <a href="${esc(ctaHref)}"${ctaClass ? ` class="${esc(ctaClass)}"` : ''}><button class="am-hdr-cta">${esc(ctaLabel)}</button></a>
 </div>`;
 

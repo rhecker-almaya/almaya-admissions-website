@@ -93,7 +93,11 @@ the header — so `div.am-navtoggle` *becomes* `:last-child` and the CTA wrapper
 
 > **This prescription is wrong.** `:not(.am-navtoggle)` makes the rule match *nothing*, and two
 > further rules have the same defect. Tried on branch `mobile-cta` and it did not work — see
-> **A4 — correction** in the change log below before attempting this.
+> **A4 — correction** in the change log below.
+>
+> ✅ **Fixed** via a `.am-hdr-cta-wrap` class on the CTA wrapper — see **A4 — fixed** in the
+> change log. This also forced **A7** on Institutions; that page's header CTA is now dropped
+> below 900px.
 
 ### A5. Advisors page: 5-across grid on mobile · 5 min
 
@@ -123,6 +127,11 @@ that block. (If you agree it's unnecessary, deleting it outright is the same 5 m
 
 Cheapest fix: **drop the header CTA below 900px** — the mobile drawer already carries a copy
 (`site-mobile-nav.js:41-48`), so nothing is lost. Shortening the label is a copy change; flag it.
+
+✅ **Done** — that is exactly what shipped, forced by the A4 fix. Once the CTA became genuinely
+`nowrap`, this label started clipping instead of wrapping, so it had to be resolved in the same
+change. See **A4 — fixed** in the change log. Shortening the label is still a live copy question:
+if it ever gets short enough to fit, delete the `:has(a.cta-lift)` rule and it comes back.
 
 ### A8. Button height/width mismatch · 15 min
 
@@ -533,7 +542,7 @@ baseline. Header screenshots of `index.html` and `About Us.dc.html` are byte-ide
   `data-cta-class="cta-lift"`, not a per-page patch.
 - **A4 is *not* fixed by this** — see the correction below.
 
-#### A4 — correction: `:not(.am-navtoggle)` cannot work *(diagnosis only, still open)*
+#### A4 — correction: `:not(.am-navtoggle)` cannot work *(diagnosis; fixed in the next entry)*
 
 A4 above proposes `header > div:last-child:not(.am-navtoggle)`. That advice is **wrong**, and the
 attempt on branch `mobile-cta` (`b1408cd`, "didn't work") is why.
@@ -581,6 +590,80 @@ Real fixes, in preference order:
 - Or have `site-mobile-nav.js` insert the toggle *before* the CTA wrapper rather than appending —
   fixes all three dead rules at once, but changes the visual order of the header.
 
+#### A4 — fixed with a wrapper class ✅ *(also closes A7)*
+
+Took the first option. `site-header.js` emits the CTA wrapper as
+`<div class="am-hdr-cta-wrap" style="display:flex;gap:12px">`, and the three dead rules in
+`site-mobile.css` now target that class instead of asking a positional question.
+
+Each selector is its own rule rather than a comma-separated list. That is deliberate: in a
+selector list **one unsupported selector invalidates the whole list**, and the fallback rules use
+`:nth-last-child(… of …)`, which is only Chrome 111+ / Firefox 113+. Listed together, an older
+browser would have dropped the `.am-hdr-cta-wrap` rule along with it.
+
+Those fallback rules exist for the A2.1 hazard — neither asset is versioned, so a browser can hold
+a cached `site-header.js` that predates the class while fetching fresh CSS. Measured, not assumed:
+
+| `site-header.js` | `site-mobile.css` | CTA renders |
+|---|---|---|
+| fresh | fresh | **one line** ✅ |
+| **cached (no class)** | fresh | **one line** ✅ — the `:nth-last-child` fallback carries it |
+| fresh | **cached** | wraps — identical to pre-fix, no regression |
+| cached | cached | wraps — unchanged baseline |
+
+The third row is unavoidable: the CSS *is* the fix. It degrades to the old behavior rather than to
+something worse, which is the bar A2.1 set.
+
+**Making the rules live exposed A7 immediately.** A `nowrap` CTA cannot wrap out of trouble, so
+every pixel it was short now clips instead. Measured across 7 pages × 9 widths:
+
+| Page | Shortfall | Resolution |
+|---|---|---|
+| index, Tutors, About Us, Why Almaya, How It Works, profiles | fits at 375px+; **16px short at 320px** | tighter gutter below 360px |
+| Institutions — "Talk to Us About Our Workshop" | **128px short at 320px** (217px of nowrap label) | header CTA dropped below 900px |
+
+- **≤360px:** header padding 16→12px, gap 12→8px, CTA padding 14→10px. Recovers exactly the 16px
+  the short label was missing, and touches nothing above 360px.
+- **Institutions:** `.am-hdr-cta-wrap:has(a.cta-lift) { display: none !important }` below 900px.
+  `!important` is load-bearing — the wrapper carries an inline `style="display:flex"` that outranks
+  a plain class rule. Verified the drawer still carries the CTA: `site-mobile-nav.js` reads it out
+  of the DOM, so hiding it visually does not remove it from the menu.
+
+**Rejected: ellipsizing the logo.** The obvious alternative was to let the wordmark shrink, since
+it is the only flexible item left once the CTA is `flex-shrink:0`. Implemented and measured, it
+erases the brand: **100 of 143px** of "Almaya Admissions" hidden at 320px on `index`, and
+**all 143px** on Institutions at 320–390px. A tighter gutter is a far cheaper trade. Recorded here
+because the approach looks correct until it is measured.
+
+**Verified in headless Chromium** over `python3 -m http.server`, 7 pages × 9 widths
+(320/360/375/390/430/880/1000/1100/1400) = **63 combinations, all passing**: wrapper found,
+`flex-shrink: 0`, `white-space: nowrap`, CTA on exactly one line box (measured via
+`Range.getClientRects().length`, not height — the 44px tap target from A2.1 makes height a
+misleading proxy), zero clipping past the header edge, zero horizontal document overflow, and the
+wordmark never truncated. Institutions is the only page where the CTA is hidden, only below 900px.
+
+Also updated the header comment in `site-header.js`, which still told the next reader that
+`site-mobile.css` reaches the CTA via `header > div:last-child`.
+
+#### Branches consolidated into `main` ✅
+
+`main` was still sitting on the initial commit — none of the work above had ever been merged. The
+four branches forked at `49ba1d0`:
+
+```
+926573f main
+  └─ … ─ 49ba1d0 ─┬─ 3dd4635  jacob-fix, shared-header ─ 062789e  log-shared-header
+                  └─ b1408cd  mobile-cta
+```
+
+`main` fast-forwarded to `log-shared-header`, then merged `mobile-cta` (no conflicts — the two
+sides touched disjoint files). `mobile-cta`'s broken `:not(.am-navtoggle)` attempt is preserved in
+history rather than rewritten, and superseded by the fix above. All four branches are now
+ancestors of `main`.
+
+Note `mobile-cta` also reformatted the whole of `site-mobile.css`, so the line numbers in the A4
+correction above now refer to the reformatted file.
+
 ### Open cleanup
 
 - **The 12 profile pages still have their own booking modal** — `"Work With <name>"` →
@@ -596,6 +679,13 @@ Real fixes, in preference order:
 
 ### Decisions taken along the way
 
+- **Positional header selectors: banned.** `header > div:last-child` and its `:not()` variant are
+  both broken by design — `site-mobile-nav.js` appends to the header at runtime, so *any* rule
+  keyed on sibling order is one JS change away from silently dying. Header rules target
+  `.am-hdr-cta-wrap` / `.am-navtoggle` by class now. See **A4 — correction**.
+- **Ellipsizing the logo: rejected.** Measured; it hides 100 of 143px of the wordmark at 320px and
+  the entire wordmark on Institutions. Tightening the gutter below 360px buys the same 16px
+  without touching the brand. See **A4 — fixed**.
 - **Prettier: rejected.** `Tutors.dc.html` doesn't parse (`Unexpected closing tag "x-dc"`), and
   prettier rewrites the CSS *inside* `style=""` attributes (`#2D5C49` → `#2d5c49`,
   `padding:16px` → `padding: 16px`). The whole responsive layer is `[style*="…"]` substring
