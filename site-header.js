@@ -30,14 +30,19 @@
   window.__amSiteHeader = true;
 
   const NAV = [
-    { key: 'why',          href: 'Why Almaya.dc.html',   label: 'Why Almaya' },
-    { key: 'how',          href: 'How It Works.dc.html', label: 'How It Works' },
-    { key: 'advisors',     href: 'Tutors.dc.html',       label: 'Our Advisors' },
-    { key: 'about',        href: 'About Us.dc.html',     label: 'About Us' },
-    { key: 'institutions', href: 'Institutions.dc.html', label: 'Institutions' },
+    { key: "why", href: "Why Almaya.dc.html", label: "Why Almaya" },
+    { key: "how", href: "How It Works.dc.html", label: "How It Works" },
+    { key: "advisors", href: "Tutors.dc.html", label: "Our Advisors" },
+    { key: "about", href: "About Us.dc.html", label: "About Us" },
+    {
+      key: "institutions",
+      href: "Institutions.dc.html",
+      label: "Institutions",
+    },
   ];
 
-  const BOOKING_URL = 'https://learn.almayaadmissions.com/book/free-consultation';
+  const BOOKING_URL =
+    "https://learn.almayaadmissions.com/book/free-consultation";
 
   // Mirrors AlmayyaDesignSystem.Button {variant:'primary', size:'sm'} from the
   // design-system bundle. Inlined rather than x-import'd because the DC runtime
@@ -50,35 +55,48 @@ site-header{display:contents}
 `;
 
   const injectCss = () => {
-    if (document.getElementById('am-site-header-css')) return;
-    const s = document.createElement('style');
-    s.id = 'am-site-header-css';
+    if (document.getElementById("am-site-header-css")) return;
+    const s = document.createElement("style");
+    s.id = "am-site-header-css";
     s.textContent = CSS;
     (document.head || document.documentElement).appendChild(s);
   };
 
-  const NAV_LINK = 'color:var(--text-muted-inverse);font-size:15px;white-space:nowrap';
-  const NAV_LINK_ACTIVE = 'color:var(--copper);font-size:15px;font-weight:600;white-space:nowrap';
+  const NAV_LINK =
+    "color:var(--text-muted-inverse);font-size:15px;white-space:nowrap";
+  const NAV_LINK_ACTIVE =
+    "color:var(--copper);font-size:15px;font-weight:600;white-space:nowrap";
 
-  const HEADER_STYLE = 'display:flex;align-items:center;justify-content:space-between;gap:32px;' +
-    'padding:16px 48px;background:var(--bg-header,#2D5C49);position:sticky;top:0;z-index:100;' +
-    'box-shadow:0 1px 3px rgba(0,0,0,0.12)';
+  const HEADER_STYLE =
+    "display:flex;align-items:center;justify-content:space-between;gap:32px;" +
+    "padding:12px 48px;background:var(--bg-header,#2D5C49);position:sticky;top:0;z-index:100;" +
+    "box-shadow:0 1px 3px rgba(0,0,0,0.12)";
 
-  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const esc = (s) =>
+    String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
 
   const markup = (active, ctaHref, ctaLabel, ctaClass) => `
-<a href="/" style="display:flex;align-items:center;gap:14px;text-decoration:none"><div style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:radial-gradient(circle,rgba(196,120,74,0.18),rgba(196,120,74,0) 70%)"><img src="assets/almayya-mark-white.png" style="height:36px"></div><span style="font-family:var(--font-serif-display);font-size:26px;letter-spacing:0.02em;color:var(--ivory);font-weight:600">Almaya <em style="font-style:italic;color:var(--ivory)">Admissions</em></span></a>
+<a href="/" style="display:flex;align-items:center;gap:4px;text-decoration:none"><div style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:radial-gradient(circle,rgba(196,120,74,0.18),rgba(196,120,74,0) 70%)"><img src="assets/almayya-mark-white.png" style="height:36px"></div><span style="font-family:var(--font-serif-display);font-size:26px;letter-spacing:0.02em;color:var(--ivory);font-weight:600">Almaya <em style="font-style:italic;color:var(--ivory)">Admissions</em></span></a>
 <nav class="nav-links" style="display:flex;gap:30px;align-items:center;flex:1;justify-content:center">
-${NAV.map(n => `<a href="${esc(n.href)}" style="${n.key === active ? NAV_LINK_ACTIVE : NAV_LINK}">${esc(n.label)}</a>`).join('\n')}
+${NAV.map((n) => `<a href="${esc(n.href)}" style="${n.key === active ? NAV_LINK_ACTIVE : NAV_LINK}">${esc(n.label)}</a>`).join("\n")}
 </nav>
 <div class="am-hdr-cta-wrap" style="display:flex;gap:12px">
-<a href="${esc(ctaHref)}"${ctaClass ? ` class="${esc(ctaClass)}"` : ''}><button class="am-hdr-cta">${esc(ctaLabel)}</button></a>
+<a href="${esc(ctaHref)}"${ctaClass ? ` class="${esc(ctaClass)}"` : ""}><button class="am-hdr-cta">${esc(ctaLabel)}</button></a>
 </div>`;
 
   class SiteHeader extends HTMLElement {
     static get observedAttributes() {
-      return ['data-active', 'data-header-class', 'data-cta-href', 'data-cta-label', 'data-cta-class'];
+      return [
+        "data-active",
+        "data-header-class",
+        "data-cta-href",
+        "data-cta-label",
+        "data-cta-class",
+      ];
     }
 
     connectedCallback() {
@@ -91,20 +109,23 @@ ${NAV.map(n => `<a href="${esc(n.href)}" style="${n.key === active ? NAV_LINK_AC
     }
 
     render() {
-      const active = this.getAttribute('data-active') || '';
-      const ctaHref = this.getAttribute('data-cta-href') || BOOKING_URL;
-      const ctaLabel = this.getAttribute('data-cta-label') || 'Get Matched';
-      const ctaClass = this.getAttribute('data-cta-class') || '';
+      const active = this.getAttribute("data-active") || "";
+      const ctaHref = this.getAttribute("data-cta-href") || BOOKING_URL;
+      const ctaLabel = this.getAttribute("data-cta-label") || "Get Matched";
+      const ctaClass = this.getAttribute("data-cta-class") || "";
       // `{{ hole }}` values arrive verbatim if the page's Component has not
       // produced them yet — treat an unresolved hole as empty.
-      const extra = (this.getAttribute('data-header-class') || '').includes('{{')
-        ? '' : (this.getAttribute('data-header-class') || '');
+      const extra = (this.getAttribute("data-header-class") || "").includes(
+        "{{",
+      )
+        ? ""
+        : this.getAttribute("data-header-class") || "";
 
       let header = this._header;
       if (!header || !header.isConnected || header.parentNode !== this) {
-        header = this._header = document.createElement('header');
-        header.setAttribute('style', HEADER_STYLE);
-        this.textContent = '';
+        header = this._header = document.createElement("header");
+        header.setAttribute("style", HEADER_STYLE);
+        this.textContent = "";
         this.appendChild(header);
         this._sig = null;
       }
@@ -120,5 +141,6 @@ ${NAV.map(n => `<a href="${esc(n.href)}" style="${n.key === active ? NAV_LINK_AC
     }
   }
 
-  if (!customElements.get('site-header')) customElements.define('site-header', SiteHeader);
+  if (!customElements.get("site-header"))
+    customElements.define("site-header", SiteHeader);
 })();
