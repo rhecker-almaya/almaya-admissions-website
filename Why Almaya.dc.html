@@ -1,187 +1,968 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<!-- @template name="Why Almaya" description="Comparison page: Almaya vs open marketplaces vs traditional consultancies" -->
-<template id="__bundler_thumbnail" data-bg-color="#173b2c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#173b2c"></rect><text x="600" y="420" font-size="90" font-family="Georgia,serif" fill="#e8dcc8" text-anchor="middle">Almaya</text></svg></template>
-<helmet>
-<link rel="icon" type="image/png" href="assets/almayya-mark.png">
-<link rel="apple-touch-icon" href="assets/almayya-mark.png">
-<meta name="description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
-<meta property="og:url" content="https://almayaadmissions.com/Why%20Almaya.dc.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Almaya Admissions">
-<meta property="og:title" content="Why Almaya | Almaya Admissions">
-<meta property="og:description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
-<meta property="og:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Why Almaya | Almaya Admissions">
-<meta name="twitter:description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
-<meta name="twitter:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
-<link rel="stylesheet" href="site-mobile.css"><link rel="stylesheet" href="site-button.css">
-<script src="site-mobile-nav.js"></script>
-<script src="site-header.js"></script>
-<script src="booking-modal.js"></script>
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/colors.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/typography.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/base.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/styles.css">
-<script src="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/_ds_bundle.js"></script>
-<script src="./image-slot.js"></script>
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;max-width:100vw;background:var(--ivory)}
-a{color:var(--copper);text-decoration:none}
-a:hover{color:var(--copper-600,#96492f)}
-@media (max-width:860px){
-.nav-links{display:none!important}
-.cmp-row{grid-template-columns:1.6fr 1fr!important}
-.cmp-row>div:nth-child(2),.cmp-row>div:nth-child(3){display:none!important}
-.cmp-row>div{padding:10px 8px!important;font-size:12px!important}
-.wa-points{grid-template-columns:1fr!important}
-}
-</style>
-</helmet>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <!-- @template name="Why Almaya" description="Comparison page: Almaya vs open marketplaces vs traditional consultancies" -->
+      <template id="__bundler_thumbnail" data-bg-color="#173b2c"
+        ><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1200" height="800" fill="#173b2c"></rect>
+          <text
+            x="600"
+            y="420"
+            font-size="90"
+            font-family="Georgia,serif"
+            fill="#e8dcc8"
+            text-anchor="middle"
+          >
+            Almaya
+          </text>
+        </svg></template
+      >
+      <helmet>
+        <link rel="icon" type="image/png" href="assets/almayya-mark.png" />
+        <link rel="apple-touch-icon" href="assets/almayya-mark.png" />
+        <meta
+          name="description"
+          content="The first college application marketplace built to find your trained mentor at a budget that works for you"
+        />
+        <meta
+          property="og:url"
+          content="https://almayaadmissions.com/Why%20Almaya.dc.html"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Almaya Admissions" />
+        <meta property="og:title" content="Why Almaya | Almaya Admissions" />
+        <meta
+          property="og:description"
+          content="The first college application marketplace built to find your trained mentor at a budget that works for you"
+        />
+        <meta
+          property="og:image"
+          content="https://almayaadmissions.com/assets/og-preview.jpg"
+        />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Why Almaya | Almaya Admissions" />
+        <meta
+          name="twitter:description"
+          content="The first college application marketplace built to find your trained mentor at a budget that works for you"
+        />
+        <meta
+          name="twitter:image"
+          content="https://almayaadmissions.com/assets/og-preview.jpg"
+        />
+        <link rel="stylesheet" href="site-mobile.css" /><link
+          rel="stylesheet"
+          href="site-button.css"
+        />
+        <script src="site-mobile-nav.js"></script>
+        <script src="site-header.js"></script>
+        <script src="booking-modal.js"></script>
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/fonts.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/colors.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/typography.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/spacing.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/base.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/styles.css"
+        />
+        <script src="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/_ds_bundle.js"></script>
+        <script src="./image-slot.js"></script>
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+            max-width: 100vw;
+            background: var(--ivory);
+          }
+          a {
+            color: var(--copper);
+            text-decoration: none;
+          }
+          a:hover {
+            color: var(--copper-600, #96492f);
+          }
+          @media (max-width: 860px) {
+            .nav-links {
+              display: none !important;
+            }
+            .cmp-row {
+              grid-template-columns: 1.6fr 1fr !important;
+            }
+            .cmp-row > div:nth-child(2),
+            .cmp-row > div:nth-child(3) {
+              display: none !important;
+            }
+            .cmp-row > div {
+              padding: 10px 8px !important;
+              font-size: 12px !important;
+            }
+            .wa-points {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        </style>
+      </helmet>
 
-<x-import component-from-global-scope="SiteHeader" data-active="why" hint-size="100%,80px"></x-import>
+      <x-import
+        component-from-global-scope="SiteHeader"
+        data-active="why"
+        hint-size="100%,80px"
+      ></x-import>
 
-<section style="position:relative;padding:56px 48px;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden">
-<img src="uploads/Depositphotos_153333874_L.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,57,47,0.86),rgba(23,57,47,0.9));z-index:1"></div>
-<div style="position:relative;z-index:2;max-width:780px;margin:0 auto">
-<h1 style="font-family:var(--font-serif-display);font-weight:400;font-size:clamp(2.1rem,3.8vw,3.2rem);color:var(--ivory);line-height:1.22;margin:0">A Better Way to Find College Admissions Guidance</h1>
-<p style="color:var(--text-muted-inverse);font-size:17px;line-height:1.7;margin:20px auto 0;max-width:620px">Almaya combines the quality and vetting families expect from a traditional admissions consultancy with the choice, flexibility, and transparent pricing of a marketplace.</p>
-<p style="color:var(--sand);font-size:16px;font-weight:600;margin:14px 0 0">Choose an advisor directly or let us personally match you with the right fit — for free.</p>
-<div style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;justify-content:center">
-<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
-<a href="./Tutors.dc.html" class="am-btn am-btn--secondary am-btn--lg">Browse Advisors</a>
-</div>
-</div>
-</section>
+      <section
+        style="
+          position: relative;
+          padding: 56px 48px;
+          min-height: 520px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          overflow: hidden;
+        "
+      >
+        <img
+          src="uploads/Depositphotos_153333874_L.jpg"
+          style="
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+          "
+        />
+        <div
+          style="
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              180deg,
+              rgba(23, 57, 47, 0.86),
+              rgba(23, 57, 47, 0.9)
+            );
+            z-index: 1;
+          "
+        ></div>
+        <div
+          style="
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+            margin: 0 auto;
+          "
+        >
+          <h1
+            style="
+              font-family: var(--font-serif-display);
+              font-weight: 400;
+              font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+              color: var(--ivory);
+              line-height: 1.22;
+              margin: 0;
+            "
+          >
+            A Better Way to Find College Admissions Guidance
+          </h1>
+          <p
+            style="
+              color: var(--text-muted-inverse);
+              font-size: 17px;
+              line-height: 1.7;
+              margin: 20px auto 0;
+              max-width: 620px;
+            "
+          >
+            Almaya combines the quality and vetting families expect from a
+            traditional admissions consultancy with the choice, flexibility, and
+            transparent pricing of a marketplace.
+          </p>
+          <p
+            style="
+              color: var(--sand);
+              font-size: 16px;
+              font-weight: 600;
+              margin: 14px 0 0;
+            "
+          >
+            Choose an advisor directly or let us personally match you with the
+            right fit — for free.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 16px;
+              margin-top: 32px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <a
+              href="https://learn.almayaadmissions.com/book/free-consultation"
+              class="am-btn am-btn--primary am-btn--lg"
+              >Get Matched — It's Free</a
+            >
+            <a
+              href="./Tutors.dc.html"
+              class="am-btn am-btn--secondary am-btn--lg"
+              >Browse Advisors</a
+            >
+          </div>
+        </div>
+      </section>
 
-<section style="background:var(--ivory);padding:64px 48px 76px">
-<div style="text-align:center;max-width:680px;margin:0 auto 36px">
-<div style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--copper);margin-bottom:12px">The Comparison</div>
-<h2 style="font-family:var(--font-serif-display);font-size:clamp(1.7rem,2.6vw,2.3rem);color:var(--forest-900);margin:0 0 14px">How Almaya compares</h2>
-<p style="color:var(--text-muted);font-size:16.5px;line-height:1.7;margin:0">Marketplaces give you choice without vetting. Consultancies give you vetting without choice. Almaya is built to give families both.</p>
-</div>
-<div style="max-width:1160px;margin:0 auto;border:1px solid var(--border-subtle);border-radius:12px;overflow:hidden;background:var(--white);box-shadow:var(--shadow-card)">
-<div class="cmp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr">
-<div></div>
-<div style="background:#FBEDEB;color:#8C2F1F;font-weight:600;font-size:17px;text-align:center;padding:22px 14px">Open Marketplaces</div>
-<div style="background:#FBEDEB;color:#8C2F1F;font-weight:600;font-size:17px;text-align:center;padding:22px 14px">Traditional Consultancies</div>
-<div style="background:var(--forest-900);color:var(--ivory);font-weight:600;font-size:17px;text-align:center;padding:22px 14px">Almaya Admissions</div>
-</div>
-<div class="cmp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border-top:1px solid var(--border-subtle)">
-<div style="padding:19px 24px;font-size:15.5px;color:var(--forest-900)">Transparent hourly pricing</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:var(--sage)">✓</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:#C9C2B6">—</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;background:rgba(122,143,110,0.08);color:var(--sage)">✓</div>
-</div>
-<div class="cmp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border-top:1px solid var(--border-subtle)">
-<div style="padding:19px 24px;font-size:15.5px;color:var(--forest-900)">Choose your advisor directly</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:var(--sage)">✓</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:#C9C2B6">—</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;background:rgba(122,143,110,0.08);color:var(--sage)">✓</div>
-</div>
-<div class="cmp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border-top:1px solid var(--border-subtle)">
-<div style="padding:19px 24px;font-size:15.5px;color:var(--forest-900)">Advisors rigorously vetted</div>
-<div style="text-align:center;padding:19px 12px;color:var(--copper-600,#96492f);font-size:14.5px;font-weight:600">Varies</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:var(--sage)">✓</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;background:rgba(122,143,110,0.08);color:var(--sage)">✓</div>
-</div>
-<div class="cmp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border-top:1px solid var(--border-subtle)">
-<div style="padding:19px 24px;font-size:15.5px;color:var(--forest-900)">College admissions focused</div>
-<div style="text-align:center;padding:19px 12px;color:var(--copper-600,#96492f);font-size:14.5px;font-weight:600">Varies</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:var(--sage)">✓</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;background:rgba(122,143,110,0.08);color:var(--sage)">✓</div>
-</div>
-<div class="cmp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border-top:1px solid var(--border-subtle)">
-<div style="padding:19px 24px;font-size:15.5px;color:var(--forest-900)">Multiple experience &amp; price levels</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:var(--sage)">✓</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:#C9C2B6">—</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;background:rgba(122,143,110,0.08);color:var(--sage)">✓</div>
-</div>
-<div class="cmp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;border-top:1px solid var(--border-subtle)">
-<div style="padding:19px 24px;font-size:15.5px;color:var(--forest-900)">Free personalized matching</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:#C9C2B6">—</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;color:#C9C2B6">—</div>
-<div style="text-align:center;padding:19px 12px;font-size:18px;background:var(--forest-900);color:var(--ivory)">✓</div>
-</div>
-</div>
-</section>
+      <section style="background: var(--ivory); padding: 64px 48px 76px">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 36px">
+          <h2
+            style="
+              font-family: var(--font-serif-display);
+              font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+              color: var(--forest-900);
+              margin: 0 0 14px;
+            "
+          >
+            How Almaya compares
+          </h2>
+          <p
+            style="
+              color: var(--text-muted);
+              font-size: 16.5px;
+              line-height: 1.7;
+              margin: 0;
+            "
+          >
+            Marketplaces give you choice without vetting. Consultancies give you
+            vetting without choice. Almaya is built to give families both.
+          </p>
+        </div>
+        <div
+          style="
+            max-width: 1160px;
+            margin: 0 auto;
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--shadow-card);
+          "
+        >
+          <div
+            class="cmp-row"
+            style="display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr"
+          >
+            <div></div>
+            <div
+              style="
+                background: #fbedeb;
+                color: #8c2f1f;
+                font-weight: 600;
+                font-size: 17px;
+                text-align: center;
+                padding: 22px 14px;
+              "
+            >
+              Open Marketplaces
+            </div>
+            <div
+              style="
+                background: #fbedeb;
+                color: #8c2f1f;
+                font-weight: 600;
+                font-size: 17px;
+                text-align: center;
+                padding: 22px 14px;
+              "
+            >
+              Traditional Consultancies
+            </div>
+            <div
+              style="
+                background: var(--forest-900);
+                color: var(--ivory);
+                font-weight: 600;
+                font-size: 17px;
+                text-align: center;
+                padding: 22px 14px;
+              "
+            >
+              Almaya Admissions
+            </div>
+          </div>
+          <div
+            class="cmp-row"
+            style="
+              display: grid;
+              grid-template-columns: 1.3fr 1fr 1fr 1fr;
+              border-top: 1px solid var(--border-subtle);
+            "
+          >
+            <div
+              style="
+                padding: 19px 24px;
+                font-size: 15.5px;
+                color: var(--forest-900);
+              "
+            >
+              Transparent hourly pricing
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: var(--copper-300);
+              "
+            >
+              ✓
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: #c9c2b6;
+              "
+            >
+              —
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                background: rgba(122, 143, 110, 0.08);
+                color: var(--copper);
+              "
+            >
+              ✓
+            </div>
+          </div>
+          <div
+            class="cmp-row"
+            style="
+              display: grid;
+              grid-template-columns: 1.3fr 1fr 1fr 1fr;
+              border-top: 1px solid var(--border-subtle);
+            "
+          >
+            <div
+              style="
+                padding: 19px 24px;
+                font-size: 15.5px;
+                color: var(--forest-900);
+              "
+            >
+              Choose your advisor directly
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: var(--copper-300);
+              "
+            >
+              ✓
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: #c9c2b6;
+              "
+            >
+              —
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                background: rgba(122, 143, 110, 0.08);
+                color: var(--copper);
+              "
+            >
+              ✓
+            </div>
+          </div>
+          <div
+            class="cmp-row"
+            style="
+              display: grid;
+              grid-template-columns: 1.3fr 1fr 1fr 1fr;
+              border-top: 1px solid var(--border-subtle);
+            "
+          >
+            <div
+              style="
+                padding: 19px 24px;
+                font-size: 15.5px;
+                color: var(--forest-900);
+              "
+            >
+              Advisors rigorously vetted
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                color: var(--copper-300);
+                font-size: 14.5px;
+                font-weight: 600;
+              "
+            >
+              Varies
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: var(--copper-300);
+              "
+            >
+              ✓
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                background: rgba(122, 143, 110, 0.08);
+                color: var(--copper);
+              "
+            >
+              ✓
+            </div>
+          </div>
+          <div
+            class="cmp-row"
+            style="
+              display: grid;
+              grid-template-columns: 1.3fr 1fr 1fr 1fr;
+              border-top: 1px solid var(--border-subtle);
+            "
+          >
+            <div
+              style="
+                padding: 19px 24px;
+                font-size: 15.5px;
+                color: var(--forest-900);
+              "
+            >
+              College admissions focused
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                color: var(--copper-300);
+                font-size: 14.5px;
+                font-weight: 600;
+              "
+            >
+              Varies
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: var(--copper-300);
+              "
+            >
+              ✓
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                background: rgba(122, 143, 110, 0.08);
+                color: var(--copper);
+              "
+            >
+              ✓
+            </div>
+          </div>
+          <div
+            class="cmp-row"
+            style="
+              display: grid;
+              grid-template-columns: 1.3fr 1fr 1fr 1fr;
+              border-top: 1px solid var(--border-subtle);
+            "
+          >
+            <div
+              style="
+                padding: 19px 24px;
+                font-size: 15.5px;
+                color: var(--forest-900);
+              "
+            >
+              Multiple experience &amp; price levels
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: var(--copper-300);
+              "
+            >
+              ✓
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: #c9c2b6;
+              "
+            >
+              —
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                background: rgba(122, 143, 110, 0.08);
+                color: var(--copper);
+              "
+            >
+              ✓
+            </div>
+          </div>
+          <div
+            class="cmp-row"
+            style="
+              display: grid;
+              grid-template-columns: 1.3fr 1fr 1fr 1fr;
+              border-top: 1px solid var(--border-subtle);
+            "
+          >
+            <div
+              style="
+                padding: 19px 24px;
+                font-size: 15.5px;
+                color: var(--forest-900);
+              "
+            >
+              Free personalized matching
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: #c9c2b6;
+              "
+            >
+              —
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                color: #c9c2b6;
+              "
+            >
+              —
+            </div>
+            <div
+              style="
+                text-align: center;
+                padding: 19px 12px;
+                font-size: 18px;
+                background: var(--forest-900);
+                color: var(--ivory);
+              "
+            >
+              ✓
+            </div>
+          </div>
+        </div>
+      </section>
 
-<section style="background:var(--sand-100);padding:72px 48px 80px">
-<div style="text-align:center;max-width:680px;margin:0 auto 40px">
-<div style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--copper);margin-bottom:12px">For Families</div>
-<h2 style="font-family:var(--font-serif-display);font-size:clamp(1.8rem,2.8vw,2.4rem);color:var(--forest-900);margin:0 0 14px">What This Means for Your Family</h2>
-<p style="color:var(--text-muted);font-size:16.5px;line-height:1.7;margin:0">Three things you get from the first conversation onward.</p>
-</div>
-<div class="wa-points" style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-<div style="background:var(--white);border:1px solid var(--border-subtle);border-radius:8px;box-shadow:var(--shadow-card);padding:32px 28px;text-align:center;display:flex;flex-direction:column;align-items:center">
-<div style="width:60px;height:60px;border-radius:50%;background:var(--sand-100);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><img src="https://unpkg.com/lucide-static@0.462.0/icons/shield-check.svg" style="width:28px;height:28px"></div>
-<h3 style="font-family:var(--font-serif-display);font-size:21px;color:var(--forest-900);margin:0 0 10px">Quality Without the Guesswork</h3>
-<p style="font-size:15.5px;line-height:1.65;color:var(--charcoal);margin:0">Every Almaya advisor is carefully vetted before joining the network — credentials, coaching ability, and track record.</p>
-</div>
-<div style="background:var(--white);border:1px solid var(--border-subtle);border-radius:8px;box-shadow:var(--shadow-card);padding:32px 28px;text-align:center;display:flex;flex-direction:column;align-items:center">
-<div style="width:60px;height:60px;border-radius:50%;background:var(--sand-100);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><img src="https://unpkg.com/lucide-static@0.462.0/icons/compass.svg" style="width:28px;height:28px"></div>
-<h3 style="font-family:var(--font-serif-display);font-size:21px;color:var(--forest-900);margin:0 0 10px">Choice Without the Overwhelm</h3>
-<p style="font-size:15.5px;line-height:1.65;color:var(--charcoal);margin:0">Browse advisors yourself or let us narrow the options based on your student’s needs, goals, and personality.</p>
-</div>
-<div style="background:var(--white);border:1px solid var(--border-subtle);border-radius:8px;box-shadow:var(--shadow-card);padding:32px 28px;text-align:center;display:flex;flex-direction:column;align-items:center">
-<div style="width:60px;height:60px;border-radius:50%;background:var(--sand-100);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><img src="https://unpkg.com/lucide-static@0.462.0/icons/tag.svg" style="width:28px;height:28px"></div>
-<h3 style="font-family:var(--font-serif-display);font-size:21px;color:var(--forest-900);margin:0 0 10px">Pricing Without the Mystery</h3>
-<p style="font-size:15.5px;line-height:1.65;color:var(--charcoal);margin:0">See hourly rates upfront and choose the level of experience that fits your goals and budget. No packages, no surprises.</p>
-</div>
-</div>
-</section>
+      <section style="background: var(--sand-100); padding: 72px 48px 80px">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 40px">
+          <h2
+            style="
+              font-family: var(--font-serif-display);
+              font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+              color: var(--forest-900);
+              margin: 0 0 14px;
+            "
+          >
+            What This Means for Your Family
+          </h2>
+          <p
+            style="
+              color: var(--text-muted);
+              font-size: 16.5px;
+              line-height: 1.7;
+              margin: 0;
+            "
+          >
+            Three things you get from the first conversation onward.
+          </p>
+        </div>
+        <div
+          class="wa-points"
+          style="
+            max-width: 1060px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+          "
+        >
+          <div
+            style="
+              background: var(--white);
+              border: 1px solid var(--border-subtle);
+              border-radius: 8px;
+              box-shadow: var(--shadow-card);
+              padding: 32px 28px;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: var(--sand-100);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 18px;
+              "
+            >
+              <img
+                src="https://unpkg.com/lucide-static@0.462.0/icons/shield-check.svg"
+                style="width: 28px; height: 28px"
+              />
+            </div>
+            <h3
+              style="
+                font-family: var(--font-serif-display);
+                font-size: 21px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              Quality Without the Guesswork
+            </h3>
+            <p
+              style="
+                font-size: 15.5px;
+                line-height: 1.65;
+                color: var(--charcoal);
+                margin: 0;
+              "
+            >
+              Every Almaya advisor is carefully vetted before joining the
+              network — credentials, coaching ability, and track record.
+            </p>
+          </div>
+          <div
+            style="
+              background: var(--white);
+              border: 1px solid var(--border-subtle);
+              border-radius: 8px;
+              box-shadow: var(--shadow-card);
+              padding: 32px 28px;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: var(--sand-100);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 18px;
+              "
+            >
+              <img
+                src="https://unpkg.com/lucide-static@0.462.0/icons/compass.svg"
+                style="width: 28px; height: 28px"
+              />
+            </div>
+            <h3
+              style="
+                font-family: var(--font-serif-display);
+                font-size: 21px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              Choice Without the Overwhelm
+            </h3>
+            <p
+              style="
+                font-size: 15.5px;
+                line-height: 1.65;
+                color: var(--charcoal);
+                margin: 0;
+              "
+            >
+              Browse advisors yourself or let us narrow the options based on
+              your student’s needs, goals, and personality.
+            </p>
+          </div>
+          <div
+            style="
+              background: var(--white);
+              border: 1px solid var(--border-subtle);
+              border-radius: 8px;
+              box-shadow: var(--shadow-card);
+              padding: 32px 28px;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: var(--sand-100);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 18px;
+              "
+            >
+              <img
+                src="https://unpkg.com/lucide-static@0.462.0/icons/tag.svg"
+                style="width: 28px; height: 28px"
+              />
+            </div>
+            <h3
+              style="
+                font-family: var(--font-serif-display);
+                font-size: 21px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              Pricing Without the Mystery
+            </h3>
+            <p
+              style="
+                font-size: 15.5px;
+                line-height: 1.65;
+                color: var(--charcoal);
+                margin: 0;
+              "
+            >
+              See hourly rates upfront and choose the level of experience that
+              fits your goals and budget. No packages, no surprises.
+            </p>
+          </div>
+        </div>
+      </section>
 
-<section style="background:var(--forest-900);padding:64px 48px;text-align:center">
-<h2 style="font-family:var(--font-serif-display);font-weight:400;font-size:clamp(28px,3.4vw,40px);color:var(--ivory);margin:0 0 14px">Find the right advisor — your way.</h2>
-<p style="color:var(--text-muted-inverse);font-size:16px;line-height:1.6;max-width:520px;margin:0 auto 12px">Get personally matched for free or browse our advisor network and choose directly.</p>
-<p style="color:var(--sage);font-size:14px;margin:0 0 28px">Every Almaya advisor is vetted. Every rate is visible upfront. The choice stays with you.</p>
-<div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
-<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
-<a href="./Tutors.dc.html" class="am-btn am-btn--secondary am-btn--lg">Browse Advisors</a>
-</div>
-</section>
+      <section
+        style="
+          background: var(--forest-900);
+          padding: 64px 48px;
+          text-align: center;
+        "
+      >
+        <h2
+          style="
+            font-family: var(--font-serif-display);
+            font-weight: 400;
+            font-size: clamp(28px, 3.4vw, 40px);
+            color: var(--ivory);
+            margin: 0 0 14px;
+          "
+        >
+          Find the right advisor — your way.
+        </h2>
+        <p
+          style="
+            color: var(--text-muted-inverse);
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 0 auto 12px;
+          "
+        >
+          Get personally matched for free or browse our advisor network and
+          choose directly.
+        </p>
+        <p style="color: var(--sage); font-size: 14px; margin: 0 0 28px">
+          Every Almaya advisor is vetted. Every rate is visible upfront. The
+          choice stays with you.
+        </p>
+        <div
+          style="
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+          "
+        >
+          <a
+            href="https://learn.almayaadmissions.com/book/free-consultation"
+            class="am-btn am-btn--primary am-btn--lg"
+            >Get Matched — It's Free</a
+          >
+          <a href="./Tutors.dc.html" class="am-btn am-btn--secondary am-btn--lg"
+            >Browse Advisors</a
+          >
+        </div>
+      </section>
 
-<footer class="site-footer" style="background:var(--copper-100);padding:14px 48px">
-<div style="max-width:1160px;margin:0 auto">
-<div class="footer-top" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:14px;border-bottom:1px solid rgba(59,45,31,0.14)">
-<div>
-<img src="assets/almayya-mark.png" style="height:22px;margin-bottom:4px">
-<div style="font-size:13px;color:var(--text-muted)">Expert guidance. Personally matched.</div>
-</div>
-<div class="footer-stats" style="display:flex;gap:32px;flex-wrap:wrap">
-<div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/landmark.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">100+ colleges represented</span></div>
-<div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/users.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">500+ families supported</span></div>
-<div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/star.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">5/5 average rating</span></div>
-</div>
-<a href="https://learn.almayaadmissions.com/book/free-consultation" style="color:var(--forest-900);font-size:14px;font-weight:600">Get Matched — It's Free →</a>
-</div>
-<div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;flex-wrap:wrap;gap:12px">
-<div style="font-size:12px;color:var(--text-muted)">© Almaya Admissions. All rights reserved.</div>
-<div style="display:flex;gap:16px">
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/instagram.svg" style="width:18px;height:18px"></a>
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/rss.svg" style="width:18px;height:18px"></a>
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/facebook.svg" style="width:18px;height:18px"></a>
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/linkedin.svg" style="width:18px;height:18px"></a>
-</div>
-</div>
-</div>
-</footer>
-
-</x-dc>
-</body>
+      <footer
+        class="site-footer"
+        style="background: var(--copper-100); padding: 14px 48px"
+      >
+        <div style="max-width: 1160px; margin: 0 auto">
+          <div
+            class="footer-top"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 20px;
+              padding-bottom: 14px;
+              border-bottom: 1px solid rgba(59, 45, 31, 0.14);
+            "
+          >
+            <div>
+              <img
+                src="assets/almayya-mark.png"
+                style="height: 22px; margin-bottom: 4px"
+              />
+              <div style="font-size: 13px; color: var(--text-muted)">
+                Expert guidance. Personally matched.
+              </div>
+            </div>
+            <div
+              class="footer-stats"
+              style="display: flex; gap: 32px; flex-wrap: wrap"
+            >
+              <div style="display: flex; gap: 8px; align-items: center">
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/landmark.svg"
+                  style="width: 16px; height: 16px"
+                /><span style="color: var(--forest-900); font-size: 14px"
+                  >100+ colleges represented</span
+                >
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center">
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/users.svg"
+                  style="width: 16px; height: 16px"
+                /><span style="color: var(--forest-900); font-size: 14px"
+                  >500+ families supported</span
+                >
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center">
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/star.svg"
+                  style="width: 16px; height: 16px"
+                /><span style="color: var(--forest-900); font-size: 14px"
+                  >5/5 average rating</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://learn.almayaadmissions.com/book/free-consultation"
+              style="
+                color: var(--forest-900);
+                font-size: 14px;
+                font-weight: 600;
+              "
+              >Get Matched — It's Free →</a
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding-top: 10px;
+              flex-wrap: wrap;
+              gap: 12px;
+            "
+          >
+            <div style="font-size: 12px; color: var(--text-muted)">
+              © Almaya Admissions. All rights reserved.
+            </div>
+            <div style="display: flex; gap: 16px">
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/instagram.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/rss.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/facebook.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/linkedin.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </x-dc>
+  </body>
 </html>
