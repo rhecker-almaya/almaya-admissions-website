@@ -8,7 +8,7 @@
 <body>
 <x-dc>
 
-<!-- @template name="Partnerships" description="For Schools: workshop pitch, math calculator, sticky-scroll workshop walkthrough, matching/parents section with tutors + testimonials, FAQ, full-bleed CTA contact" -->
+<!-- @template name="Partnerships" description="For Schools: workshop pitch, math calculator, workshop walkthrough, matching/parents section with tutors + testimonials, FAQ, full-bleed CTA contact" -->
 <template id="__bundler_thumbnail" data-bg-color="#173b2c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#173b2c"></rect><text x="600" y="420" font-size="70" font-family="Georgia,serif" fill="#e8dcc8" text-anchor="middle">Partner</text></svg></template>
 <helmet>
 <link rel="icon" type="image/png" href="assets/almayya-mark.png">
@@ -168,22 +168,9 @@ label{font-size:13px;color:var(--text-muted);display:block;margin-bottom:6px}
 <h2 style="font-family:var(--font-serif-display);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);letter-spacing:0.02em;color:var(--forest-900);margin:0;text-transform:uppercase">Rethinking the college essay.</h2>
 <p style="color:var(--text-muted);font-size:14px;margin:12px 0 0">One hour, led by Razi and Eitan.</p>
 </div>
-<div class="hiw-grid" style="display:grid;grid-template-columns:0.7fr 1.3fr;gap:56px;max-width:1100px;margin:0 auto">
-<div class="sticky-panel" style="position:sticky;top:32px;height:260px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lifted)">
-<div ref="{{ stickyPanelRef }}" style="background:var(--forest-900);height:100%;transition:background 0.5s ease">
-<div style="padding:28px;height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center">
-<div ref="{{ stickyKickerRef }}" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);margin-bottom:8px">{{ stickyKicker }}</div>
-<div style="font-family:var(--font-serif-display);font-size:30px;color:var(--copper);letter-spacing:0.02em;margin-bottom:4px">{{ clockLabel }}</div>
-<div style="width:120px;height:4px;background:rgba(255,255,255,0.18);border-radius:2px;overflow:hidden;margin-bottom:8px">
-<div style="height:100%;background:var(--copper);border-radius:2px;transition:width .5s ease;width:{{ clockProgress }}%"></div>
-</div>
-<div ref="{{ stickyTitleRef }}" style="font-family:var(--font-serif-display);font-size:22px;color:var(--ivory);margin-bottom:6px">{{ stickyTitle }}</div>
-<p ref="{{ stickyBodyRef }}" style="font-size:13px;line-height:1.5;color:var(--text-muted-inverse);margin:0">{{ stickyBody }}</p>
-</div>
-</div>
-</div>
-<div class="hiw-steps-col" style="display:flex;flex-direction:column;gap:72px;padding-top:12px">
-<div ref="{{ step0Ref }}" class="hiw-step" style="min-height:560px;display:flex;flex-direction:column;justify-content:center">
+<div style="max-width:760px;margin:0 auto">
+<div class="hiw-steps-col" style="display:flex;flex-direction:column;gap:56px">
+<div class="hiw-step" style="display:flex;flex-direction:column">
 <div style="font-family:var(--font-serif-display);font-size:13px;letter-spacing:0.08em;color:var(--sage);margin-bottom:10px">0:00</div>
 <div class="bios-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left;margin-bottom:20px">
 <div style="border:1px solid var(--border-subtle);border-radius:8px;padding:18px;display:flex;gap:14px;align-items:flex-start;background:var(--white)">
@@ -203,19 +190,19 @@ label{font-size:13px;color:var(--text-muted);display:block;margin-bottom:6px}
 <div class="worry-bubble {{ bubbleClass2 }}" style="--rot:-1deg;background:var(--sand-100);border-radius:6px;padding:10px 12px;font-size:13px;color:var(--forest-900);max-width:220px">"I don't know where to start."</div>
 </div>
 </div>
-<div ref="{{ step1Ref }}" class="hiw-step" style="min-height:560px;display:flex;flex-direction:column;justify-content:center">
+<div class="hiw-step" style="display:flex;flex-direction:column">
 <div style="font-family:var(--font-serif-display);font-size:13px;letter-spacing:0.08em;color:var(--forest-900);margin-bottom:10px">0:00 – 0:15</div>
 <div style="overflow:hidden;border-radius:8px;margin-bottom:20px;max-width:420px"><img src="assets/photos/workshop-insight.jpg" class="wk-thumb" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;box-shadow:var(--shadow-card)"></div>
 <div class="hiw-heading" style="font-family:var(--font-serif-display);font-size:44px;color:var(--forest-900);margin-bottom:12px">Part One: What Schools Actually Care About</div>
 <p style="font-size:18px;line-height:1.7;color:var(--text-primary);margin:0">What admissions officers are really reading for behind the checklist — and how that should shape every choice a student makes from here on.</p>
 </div>
-<div ref="{{ step2Ref }}" class="hiw-step" style="min-height:560px;display:flex;flex-direction:column;justify-content:center">
+<div class="hiw-step" style="display:flex;flex-direction:column">
 <div style="font-family:var(--font-serif-display);font-size:13px;letter-spacing:0.08em;color:var(--copper);margin-bottom:10px">0:15 – 0:30</div>
 <div style="overflow:hidden;border-radius:8px;margin-bottom:20px;max-width:420px"><img src="assets/photos/workshop-strategy.jpg" class="wk-thumb" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;box-shadow:var(--shadow-card)"></div>
 <div class="hiw-heading" style="font-family:var(--font-serif-display);font-size:44px;color:var(--copper);margin-bottom:12px">Part Two: Building the Application</div>
 <p style="font-size:18px;line-height:1.7;color:var(--text-primary);margin:0">The strategy behind a cohesive application — activities, recommenders, and story lining up instead of pulling in different directions.</p>
 </div>
-<div ref="{{ step3Ref }}" class="hiw-step" style="min-height:560px;display:flex;flex-direction:column;justify-content:center">
+<div class="hiw-step" style="display:flex;flex-direction:column">
 <div style="font-family:var(--font-serif-display);font-size:13px;letter-spacing:0.08em;color:var(--sage-700,var(--sage));margin-bottom:10px">0:30 – 1:00</div>
 <div style="overflow:hidden;border-radius:8px;margin-bottom:20px;max-width:420px"><img src="assets/photos/workshop-writing.jpg" class="wk-thumb" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;box-shadow:var(--shadow-card)"></div>
 <div class="hiw-heading" style="font-family:var(--font-serif-display);font-size:44px;color:var(--sage-700,var(--sage));margin-bottom:12px">Part Three: Writing Standout Essays</div>
@@ -406,54 +393,23 @@ label{font-size:13px;color:var(--text-muted);display:block;margin-bottom:6px}
 class Component extends DCLogic {
   state = {
     mathHours: 0, mathRatio: 0, mathTotal: 0,
-    activeStep: 0, mathStage: 0,
+    mathStage: 0,
     headerCompact: false, bubbleStage: 0, submitted: false,
     calcHoursPerWeek: 5, calcNumCounselors: 2, calcNumSeniors: 60,
     faqOpen: -1,
     formName: '', formEmail: '', formSchool: '', formMessage: ''
   };
-  step0Ref = React.createRef();
-  step1Ref = React.createRef();
-  step2Ref = React.createRef();
-  step3Ref = React.createRef();
   mathRef = React.createRef();
   worryRowRef = React.createRef();
-  stickyPanelRef = React.createRef();
-  stickyKickerRef = React.createRef();
-  stickyTitleRef = React.createRef();
-  stickyBodyRef = React.createRef();
   mathAnimated = false;
   bubblesAnimated = false;
-  applyStickyColors() {
-    const panels = [
-      { bg: 'var(--forest-900)', kickerColor: 'var(--sage)', titleColor: 'var(--ivory)', bodyColor: 'var(--text-muted-inverse)' },
-      { bg: 'var(--copper)', kickerColor: 'var(--copper-100)', titleColor: 'var(--ivory)', bodyColor: 'var(--ivory)' },
-      { bg: 'var(--sage)', kickerColor: 'var(--forest-900)', titleColor: 'var(--ivory)', bodyColor: 'var(--ivory)' },
-      { bg: 'var(--forest-800)', kickerColor: 'var(--sand)', titleColor: 'var(--ivory)', bodyColor: 'var(--text-muted-inverse)' }
-    ];
-    const p = panels[this.state.activeStep];
-    if (this.stickyPanelRef.current) this.stickyPanelRef.current.style.background = p.bg;
-    if (this.stickyKickerRef.current) this.stickyKickerRef.current.style.color = p.kickerColor;
-    if (this.stickyTitleRef.current) this.stickyTitleRef.current.style.color = p.titleColor;
-    if (this.stickyBodyRef.current) this.stickyBodyRef.current.style.color = p.bodyColor;
-  }
-  componentDidUpdate() { this.applyStickyColors(); }
   componentDidMount() {
-    this.applyStickyColors();
-    const refs = [this.step0Ref, this.step1Ref, this.step2Ref, this.step3Ref];
     let ticking = false;
-    const pickActive = () => {
+    // Was also the driver for the sticky workshop card (A6, deleted): it tracked
+    // which .hiw-step was nearest the viewport centre and recoloured the card.
+    // Only the header-compact flip and the worry-bubble reveal are left.
+    const onScrollTick = () => {
       ticking = false;
-      const centerY = window.innerHeight / 2;
-      let bestIdx = -1, bestDist = Infinity;
-      refs.forEach((r, idx) => {
-        if (!r.current) return;
-        const rect = r.current.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-        const dist = Math.abs((rect.top + rect.bottom) / 2 - centerY);
-        if (dist < bestDist) { bestDist = dist; bestIdx = idx; }
-      });
-      if (bestIdx !== -1 && bestIdx !== this.state.activeStep) this.setState({ activeStep: bestIdx });
       const compact = window.scrollY > 360;
       if (compact !== this.state.headerCompact) this.setState({ headerCompact: compact });
       if (!this.bubblesAnimated && this.worryRowRef.current) {
@@ -464,10 +420,10 @@ class Component extends DCLogic {
         }
       }
     };
-    this.onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(pickActive); } };
+    this.onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScrollTick); } };
     window.addEventListener('scroll', this.onScroll, { passive: true });
     window.addEventListener('resize', this.onScroll);
-    pickActive();
+    onScrollTick();
     const animateMath = () => {
       if (this.mathAnimated || !this.mathRef.current) return;
       const rect = this.mathRef.current.getBoundingClientRect();
@@ -509,23 +465,8 @@ class Component extends DCLogic {
     if (this.onMathScroll) window.removeEventListener('scroll', this.onMathScroll);
   }
   renderVals() {
-    const kickers = ['Part One', 'Part Two', 'Part Three', 'Part Four'];
-    const titles = ['Led by Razi & Eitan', 'What Schools Care About', 'Building the Application', 'Writing Standout Essays'];
-    const bodies = [
-      '20+ years of combined admissions and writing experience, in the room with your seniors.',
-      'What admissions officers are really reading for, behind the checklist.',
-      'Activities, recommenders, and story — lining up instead of pulling apart.',
-      'Hands-on drafting and live edits, live in the room.'
-    ];
-    const i = this.state.activeStep;
-    const clockLabels = ['0:00', '0:15', '0:30', '1:00'];
-    const clockProgress = [8, 25, 50, 100];
     return {
-      clockLabel: clockLabels[i], clockProgress: clockProgress[i],
-      step0Ref: this.step0Ref, step1Ref: this.step1Ref, step2Ref: this.step2Ref, step3Ref: this.step3Ref,
       worryRowRef: this.worryRowRef,
-      stickyPanelRef: this.stickyPanelRef, stickyKickerRef: this.stickyKickerRef, stickyTitleRef: this.stickyTitleRef, stickyBodyRef: this.stickyBodyRef,
-      stickyKicker: kickers[i], stickyTitle: titles[i], stickyBody: bodies[i],
       headerClass: this.state.headerCompact ? 'header-compact' : '',
       bubbleClass0: this.state.bubbleStage >= 1 ? 'dropped' : '',
       bubbleClass1: this.state.bubbleStage >= 2 ? 'dropped' : '',

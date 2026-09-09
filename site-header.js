@@ -77,8 +77,13 @@ site-header{display:contents}
 
   const NAV_LINK =
     "color:var(--text-muted-inverse);font-size:15px;white-space:nowrap";
+  // --copper-300, not --copper: the base copper is 1.7:1 on the header green,
+  // i.e. the "you are here" link was 2.5x *less* legible than the ones that
+  // aren't selected (--text-muted-inverse, 4.3:1). The tint reads at 4.9:1.
+  // Literal fallback because neither this file nor colors.css is versioned —
+  // a browser holding a stale colors.css must not lose the link colour.
   const NAV_LINK_ACTIVE =
-    "color:var(--copper);font-size:15px;font-weight:600;white-space:nowrap";
+    "color:var(--copper-300,#F7C3A4);font-size:15px;font-weight:600;white-space:nowrap";
 
   // React wants a style object; the legacy element below wants a string. The
   // object is the source of truth and the string is derived, so the two forms

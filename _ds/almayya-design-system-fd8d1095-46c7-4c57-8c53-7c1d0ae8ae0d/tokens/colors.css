@@ -15,6 +15,10 @@
   --charcoal: #202522;
   --copper: #b85c3d;
   --copper-600: #a14e32;
+  /* Light tint for copper on dark grounds. --copper itself is 1.7:1 on the
+   header green and unreadable there; this is 4.9:1. Keep it above 4.5:1
+   against --bg-header if the palette moves in B3. */
+  --copper-300: #f7c3a4;
   --copper-100: #f3ded4;
   --white: #ffffff;
   --success: #5a7d5a;

@@ -75,12 +75,15 @@ The "you are here" link is 2.5× *less* legible than the ones that aren't select
 copper tint, which doesn't exist yet — `--copper` only has darker variants (`--copper-600`).
 
 - Add `--copper-300` (something around `#E0A183`) to `tokens/colors.css`
-- Set the 5 active links to it: `Why Almaya:57`, `How It Works:78`, `Tutors:72`, `About Us:75`, `Institutions:109`
-- Better: one shared `.nav-links a[aria-current="page"]` rule in `site-mobile.css` and mark the links — kills the hand-maintained-per-page problem permanently
+- ~~Set the 5 active links to it~~ — superseded by R1; it is one constant in `site-header.js`
+- ~~Better: one shared `.nav-links a[aria-current="page"]` rule~~ — the component *is* the shared rule
 
 ~~Also worth fixing while you're here: the header background `#2D5C49` is **hardcoded in 9 pages and
 matches no token**~~ — **done, see A3.0 below.** The contrast ground is now `--bg-header`
 (still `#2D5C49`, unchanged); define `--copper-300` against that token rather than the raw hex.
+
+✅ **Done** — see **A3 — active-link contrast** in the change log. `#E0A183` as suggested above
+measures 3.5:1 and would have failed AA; the shipped tint is `#F7C3A4`.
 
 ### A4. Mobile header CTA wraps to two lines · 5 min
 
@@ -108,6 +111,8 @@ is missing it, and `site-mobile.css`'s generic collapse list covers `repeat(2/3/
 
 *Not in your notes — found while looking at the repeated process sections. It's outright broken.*
 
+⏭ **Skipped**, at your instruction. Still open and still broken.
+
 ### A6. Institutions: sticky card overlaps the header on mobile · 5 min
 
 Your "a) broken b) unnecessary" card. `Institutions.dc.html:177` is
@@ -118,6 +123,9 @@ sticky header, then floats over ~2,240px of content below.
 
 Add `.sticky-panel{position:static;height:auto}` and `.hiw-grid{grid-template-columns:1fr}` to
 that block. (If you agree it's unnecessary, deleting it outright is the same 5 minutes.)
+
+✅ **Done — deleted**, per your call. See **A6 — Institutions sticky card deleted** in the change
+log. `How It Works.dc.html` has its own copy of this component and is **untouched**.
 
 ### A7. Institutions: header CTA overflows the screen · 5 min
 
@@ -401,7 +409,8 @@ cited above line 379 in this doc is still correct; these three are stale:
 #### A2.1 — Close button not square on mobile ✅ *(uncommitted)*
 
 Follow-up on the modal A2 introduced, found by finally clicking it through in a browser.
-(Not to be confused with audit item **A3, header active-link contrast**, which is still open.)
+(Not to be confused with audit item **A3, header active-link contrast**, which was still open at
+the time and has since landed.)
 
 The blanket `site-mobile.css:62` `button { min-height: 44px }` overrides the close button's
 inline `height:34px` but not its `width`, leaving it **34w × 44h** on mobile.
@@ -440,8 +449,8 @@ add cache-busting.
 
 ### A3.0 — Header background tokenized ✅ *(uncommitted)*
 
-Sub-item of A3 only. **The active-link contrast fix — the actual A3 — is still open**, as is
-`--copper-300`.
+Sub-item of A3 only. ~~**The active-link contrast fix — the actual A3 — is still open**, as is
+`--copper-300`.~~ Both have since landed — see **A3 — active-link contrast** below.
 
 The audit said 9 pages; it's **18**, in two forms. A1/A2 deleted two of the 9, and the 11 profile
 pages carry the same green as a translucent gradient (`rgba(45,92,73,.96)` *is* `#2D5C49`), which a
@@ -718,7 +727,89 @@ recorded. See the 320px item under **Open cleanup**.
 tied, so **source order is the cascade**. Narrower breakpoints must come last. A page-local copy of
 a shared rule is worse than either — it wins everywhere and is invisible from the shared file.
 
-### Open cleanup
+### A3 — active-link contrast ✅ *(uncommitted)*
+
+The audit item itself, finally. Two lines, because R1 had already collapsed five per-page edits
+into one constant.
+
+- `tokens/colors.css` — new `--copper-300: #f7c3a4`, placed between `--copper-600` and
+  `--copper-100`, with a comment naming the constraint (≥4.5:1 on `--bg-header`) so B3 doesn't
+  quietly break it during the palette swap.
+- `site-header.js` — `NAV_LINK_ACTIVE` reads `var(--copper-300,#F7C3A4)` instead of `var(--copper)`.
+
+**A3's own suggestion of `#E0A183` would not have worked.** Measured against `--bg-header`:
+
+| Colour | Contrast on `#2D5C49` | |
+|---|---|---|
+| `--copper` `#B85C3D` (before) | **1.7 : 1** | the inversion this item is about |
+| `--text-muted-inverse` `#B8C6BE` (inactive links) | 4.3 : 1 | the bar to beat |
+| `#E0A183` (as proposed above) | **3.5 : 1** | still fails AA, and still dimmer than inactive |
+| `#F7C3A4` (shipped) | **4.9 : 1** | passes AA, and now brighter than inactive |
+
+The link is 15px/600 — that is not "large text" under WCAG (needs 18.66px bold), so 4.5:1 is the
+real threshold, not 3:1. `#E0A183` clears neither that nor the more important informal bar: the
+current-page link has to out-read the ones that aren't current, which is the whole complaint.
+
+Per the A2.1 lesson the JS carries a literal fallback, and **the stale-asset case proved itself by
+accident**: the first page load in the test browser held a cached `colors.css` where
+`--copper-300` resolved to the empty string, and the link still rendered `rgb(247,195,164)` — the
+fallback took over with no visual difference. After a hard reload the token itself resolved to
+`#f7c3a4`. Both paths, same pixel.
+
+| `site-header.js` | `colors.css` | active link renders |
+|---|---|---|
+| fresh | fresh | `rgb(247,195,164)` ✅ |
+| fresh | **cached (no `--copper-300`)** | `rgb(247,195,164)` ✅ — literal fallback |
+| cached | either | old copper — degrades to the pre-fix bug, not to something worse |
+
+**Verified in Chrome** over `python3 -m http.server`, computed styles read from sized iframes at
+320 / 390 / 860 / 1000 / 1400px: active link `rgb(247,195,164)`, the other four
+`rgb(184,198,190)`, no console errors.
+
+**Verified on `Institutions.dc.html` only.** All 18 pages mount the same `SiteHeader` and the
+constant is shared, so the other 17 follow by construction — but that is an inference, not a
+measurement, and this doc's own history (A4, A4.2) is a list of times that inference was wrong.
+Worth a sweep before committing.
+
+### A6 — Institutions sticky card deleted ✅ *(uncommitted)*
+
+Deleted outright rather than given mobile rules, per your call — "a) broken b) unnecessary".
+
+`Institutions.dc.html`, all in the `#workshop` section:
+
+- The `.sticky-panel` block and its four inner `ref` targets — gone.
+- The `.hiw-grid` wrapper was `0.7fr 1.3fr`; with one child left it is now a plain
+  `max-width:760px` block. That is within a pixel or two of the width the steps column had before
+  (`(1100−56)×0.65 ≈ 679`… widened slightly to 760 so the text column doesn't get narrower than it
+  was), so the steps themselves are unmoved at desktop.
+- `min-height:560px; justify-content:center` came off all four `.hiw-step`s. Those existed **only**
+  to give the sticky card scroll runway — with the card gone they are 2,240px of dead whitespace.
+  `gap` 72 → 56px for the same reason.
+- **~35 lines of now-unreachable JS**: `activeStep` state, `step0Ref`–`step3Ref`,
+  `applyStickyColors()` and its 4-panel colour table, `componentDidUpdate`, the nearest-to-centre
+  ref scan inside the scroll handler, and the `clockLabel` / `clockProgress` / `stickyKicker` /
+  `stickyTitle` / `stickyBody` bindings with their four-item copy arrays.
+- The scroll handler survives — it also drives `headerCompact` and the worry-bubble reveal. Renamed
+  `pickActive` → `onScrollTick`, since it no longer picks anything, with a comment recording what
+  it used to do.
+- The `@template` comment at the top still advertised a "sticky-scroll workshop walkthrough";
+  updated.
+
+`.hiw-step` keeps its class — `site-mobile.css:402` still uses it to force `opacity:1` on mobile.
+
+**Verified**: `node --check` on the extracted `data-dc-script`; every `{{ binding }}` still present
+in the page resolves against `renderVals()`; no console errors. In Chrome at 320 / 390 / 860 /
+1000 / 1400px — zero `.sticky-panel` elements, all four steps render, content column 760px at
+≥1000px and full-width below, `document.scrollWidth === innerWidth` at every width (no horizontal
+overflow).
+
+**Not verified — and I edited the code path in question.** The `headerCompact` flip and the
+worry-bubble reveal both live in the handler I trimmed, and I could not exercise either:
+`window.scrollY` reads `0` through the browser tooling on this page even after the viewport
+visibly moves, both top-level and inside an iframe, so `scrollY > 360` never fired during testing.
+The edit is a deletion from the middle of that function and the surrounding logic is untouched,
+but that is an argument, not evidence. **Someone should scroll this page by hand** and confirm the
+header still compacts past 360px and the three worry bubbles still drop in.
 
 - **Header content overflows its own box at 320px** on `index` and `Why Almaya` — measured
   `header.scrollWidth` 358 vs `clientWidth` 320, i.e. ~38px of the "Get Matched" CTA past the
@@ -751,6 +842,11 @@ a shared rule is worse than either — it wins everywhere and is invisible from 
   Left in place: it's licensed stock art that may be wanted elsewhere.
 - `_redirects` sends the old consultation URL to `/`, not straight to the booking page.
 - `index.html`'s `id="get-started"` section is intact but nothing links to it any more.
+- **`index.html:104-107` carries mobile rules for `.hiw-grid`, `.sticky-panel`, `.hiw-steps-col`
+  and `.hiw-step` — none of which exist in `index.html`.** Pre-existing dead code, not caused by
+  A6, and left alone. Note the shape: it is `.sticky-panel{position:static;height:auto}`, i.e. the
+  exact rule A6 says to add to `Institutions.dc.html` — it was written once, on the wrong page.
+  Another instance of the C6 drift. `How It Works.dc.html:50-54` is the copy that does something.
 
 ### Decisions taken along the way
 
@@ -766,6 +862,10 @@ a shared rule is worse than either — it wins everywhere and is invisible from 
 - **Ellipsizing the logo: rejected.** Measured; it hides 100 of 143px of the wordmark at 320px and
   the entire wordmark on Institutions. Tightening the gutter below 360px buys the same 16px
   without touching the brand. See **A4 — fixed**.
+- **Colour values in this doc are suggestions, not specs.** A3 proposed `#E0A183` "or thereabouts"
+  for `--copper-300`; it measures 3.5:1 on the header green — below AA, and *below the inactive
+  links it is supposed to outrank*. Every colour this doc names should be re-measured against its
+  actual ground before it ships. See **A3 — active-link contrast**.
 - **Prettier: rejected.** `Tutors.dc.html` doesn't parse (`Unexpected closing tag "x-dc"`), and
   prettier rewrites the CSS *inside* `style=""` attributes (`#2D5C49` → `#2d5c49`,
   `padding:16px` → `padding: 16px`). The whole responsive layer is `[style*="…"]` substring
