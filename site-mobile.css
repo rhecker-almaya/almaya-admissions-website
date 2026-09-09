@@ -13,6 +13,38 @@ video {
   max-width: 100%;
 }
 
+/* ---------- header: tablet / small-laptop tightening ----------
+   This MUST stay above the 900px block below. A ≤900px viewport is also
+   ≤1200px, so both blocks match `header` with equal specificity (0,0,1) and
+   both are !important — media queries add nothing to specificity, so the rule
+   that comes *later in the file* wins.
+
+   This block used to live near the bottom of the file, next to the other header
+   rules, which silently killed the `padding: 12px 16px` and `gap: 12px` in the
+   900px block: every viewport from 361px to 900px was rendering with the wider
+   tablet values (24px gutters, 16px gap) instead. Narrower breakpoints come
+   last, always. */
+@media (max-width: 1200px) {
+  header {
+    gap: 16px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .nav-links {
+    gap: 20px !important;
+  }
+  /* kept as separate rules, not a selector list — see the note above the
+     .am-hdr-cta-wrap rules further down */
+  .am-hdr-cta-wrap button {
+    font-size: 13px !important;
+    padding: 0 14px !important;
+  }
+  header > div:nth-last-child(1 of :not(.am-navtoggle)) button {
+    font-size: 13px !important;
+    padding: 0 14px !important;
+  }
+}
+
 @media (max-width: 900px) {
   /* ---- page gutters: use the full screen ---- */
   header {
@@ -238,24 +270,10 @@ header > div:nth-last-child(1 of :not(.am-navtoggle)) a,
 header > div:nth-last-child(1 of :not(.am-navtoggle)) button {
   white-space: nowrap;
 }
-@media (max-width: 1200px) {
-  header {
-    gap: 16px !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
-  .nav-links {
-    gap: 20px !important;
-  }
-  .am-hdr-cta-wrap button {
-    font-size: 13px !important;
-    padding: 0 14px !important;
-  }
-  header > div:nth-last-child(1 of :not(.am-navtoggle)) button {
-    font-size: 13px !important;
-    padding: 0 14px !important;
-  }
-}
+/* The `@media (max-width: 1200px)` header block that used to sit here now lives
+   ABOVE the 900px block near the top of this file. It has to: down here it
+   out-ordered the 900px block's own header padding/gap and overrode it. Do not
+   move it back. */
 
 /* ---------- mobile nav (injected by site-mobile-nav.js) ---------- */
 .am-navtoggle {

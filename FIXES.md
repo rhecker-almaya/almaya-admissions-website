@@ -664,7 +664,70 @@ ancestors of `main`.
 Note `mobile-cta` also reformatted the whole of `site-mobile.css`, so the line numbers in the A4
 correction above now refer to the reformatted file.
 
+#### A4.2 — the mobile header gutters were never applied ✅ *(uncommitted)*
+
+Follow-up on the header work above, found by asking a plain question about `site-mobile.css:19`:
+is `header { padding: 12px 16px !important }` overridden by `site-header.js`?
+
+**No — but it was dead anyway, and the file was overriding itself.** Two separate causes:
+
+1. `site-mobile.css`'s own `@media (max-width: 1200px)` header block sat ~220 lines *below* the
+   `@media (max-width: 900px)` block. A ≤900px viewport is also ≤1200px, so both matched `header`
+   at equal specificity (0,0,1) with `!important` on both — and media queries contribute nothing
+   to specificity, so **the later rule won**. The 900px block's `padding: 12px 16px` and
+   `gap: 12px` never applied at any width.
+2. `Institutions.dc.html:58` carried a **copy** of that same 1200px block in its page `<style>`,
+   which loads *after* `site-mobile.css` (`:30` vs `:36`). That copy beat the shared file
+   regardless of ordering within it — so on Institutions the `≤360px` block was dead too, not
+   just the 900px one.
+
+The JS is innocent: `HEADER_STYLE` emits `padding: 12px 48px` as a *plain* inline style, and an
+`!important` author declaration outranks a non-important inline one. That is the one case where
+inline styles lose, and it is why the CSS was always in control.
+
+- `site-mobile.css` — moved the `@media (max-width: 1200px)` header block **above** the 900px
+  block, with a comment stating the constraint. A "do not move it back" note is left where it
+  used to sit, next to the other header rules.
+- `Institutions.dc.html` — deleted the duplicated block. Every declaration it carried exists in
+  `site-mobile.css`; its `.cta-lift button` rule is covered by `.am-hdr-cta-wrap button`, which is
+  what `site-header.js` actually emits.
+
+**Verified in Chrome**, computed styles read from sized iframes, measured before *and* after
+(`padding-left/right` / `gap`):
+
+| viewport | Why Almaya before | after | Institutions before | after |
+|---|---|---|---|---|
+| 320px | 12px / 8px | 12px / 8px | **24px / 16px** | 12px / 8px |
+| 360px | 12px / 8px | 12px / 8px | **24px / 16px** | 12px / 8px |
+| 700px | **24px / 16px** | 16px / 12px | **24px / 16px** | 16px / 12px |
+| 900px | **24px / 16px** | 16px / 12px | **24px / 16px** | 16px / 12px |
+| 1000px | 24px / 16px | 24px / 16px | 24px / 16px | 24px / 16px |
+| 1400px | 48px / 32px | 48px / 32px | 48px / 32px | 48px / 32px |
+
+901–1200px and ≥1201px are unchanged. Also checked across `index`, `Why Almaya`, `Tutors` and
+`Institutions` at 320/360/390/860/900/1000px: the CTA button keeps `13px` / `0 14px` at ≤1200px on
+Institutions after the deletion, the CTA never wraps to a second line, and no page overflows
+horizontally.
+
+**This weakens a claim in "A4 — fixed" above.** That entry says the ≤360px block "recovers exactly
+the 16px the short label was missing" — but the 16px starting gutter it reasoned from was never in
+effect; the real gutter at that point was 24px. The fix worked, for different arithmetic than
+recorded. See the 320px item under **Open cleanup**.
+
+**General lesson for this repo:** in a file this `!important`-heavy, specificity is nearly always
+tied, so **source order is the cascade**. Narrower breakpoints must come last. A page-local copy of
+a shared rule is worse than either — it wins everywhere and is invisible from the shared file.
+
 ### Open cleanup
+
+- **Header content overflows its own box at 320px** on `index` and `Why Almaya` — measured
+  `header.scrollWidth` 358 vs `clientWidth` 320, i.e. ~38px of the "Get Matched" CTA past the
+  edge. **Pre-existing**: identical before and after A4.2, so not a regression from it. This sits
+  awkwardly against A4 — fixed's "zero clipping past the header edge" across 63 combinations; the
+  two were measured differently (that pass checked the CTA's right edge, this one the header's own
+  scroll width) and it is not yet established which is the right question. `html,body` carry
+  `overflow-x:hidden`, so the page does not scroll — the excess is simply hidden. Worth a proper
+  look now that the gutter values underneath it are finally the ones the file intends.
 
 - **`site-header.js` still carries the `<site-header>` custom-element shim.** The header is now a
   React component (`window.SiteHeader`) and all 18 pages mount it by that name, but neither the
@@ -695,6 +758,11 @@ correction above now refer to the reformatted file.
   both broken by design — `site-mobile-nav.js` appends to the header at runtime, so *any* rule
   keyed on sibling order is one JS change away from silently dying. Header rules target
   `.am-hdr-cta-wrap` / `.am-navtoggle` by class now. See **A4 — correction**.
+- **Breakpoint blocks are ordered widest-first; page-local copies of shared header rules are
+  banned.** Nearly every rule in `site-mobile.css` is `!important` on a bare element or single
+  class, so specificity ties and source order decides. A narrower `@media` block placed above a
+  wider one is silently dead — and a copy of a shared rule in a page `<style>` outranks the whole
+  shared file. Both were happening at once. See **A4.2**.
 - **Ellipsizing the logo: rejected.** Measured; it hides 100 of 143px of the wordmark at 320px and
   the entire wordmark on Institutions. Tightening the gutter below 360px buys the same 16px
   without touching the brand. See **A4 — fixed**.

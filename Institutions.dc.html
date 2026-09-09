@@ -55,7 +55,12 @@ header{transition:padding .3s ease}
 header > a:first-child span{white-space:nowrap}
 .cta-lift{flex-shrink:0}
 .cta-lift button,.cta-lift a{white-space:nowrap}
-@media (max-width:1200px){header{gap:16px!important;padding-left:24px!important;padding-right:24px!important}.nav-links{gap:20px!important}.cta-lift button{font-size:13px!important;padding:0 14px!important}}
+/* The `@media (max-width:1200px)` header block that used to be here was a copy of
+   the one in site-mobile.css. This <style> loads after that file, so the copy won
+   the cascade regardless of ordering there — and since a ≤900px viewport is also
+   ≤1200px, it overrode the shared 900px block's mobile header gutters on this page
+   only. Every declaration it carried is in site-mobile.css (the CTA button rule as
+   `.am-hdr-cta-wrap button`, which is what site-header.js emits). Do not re-add it. */
 .header-compact{padding-top:10px!important;padding-bottom:10px!important}
 .header-compact .cta-lift{transform:scale(0.9)}
 .seg-active{background:var(--copper)!important;border-color:var(--copper)!important}
