@@ -1,340 +1,1546 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<!-- @template name="How It Works" description="Full sticky-scroll how-it-works: free consultation, define goals, get matched, get started" -->
-<template id="__bundler_thumbnail" data-bg-color="#173b2c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#173b2c"></rect><text x="600" y="420" font-size="90" font-family="Georgia,serif" fill="#e8dcc8" text-anchor="middle">Almaya</text></svg></template>
-<helmet>
-<link rel="icon" type="image/png" href="assets/almayya-mark.png">
-<link rel="apple-touch-icon" href="assets/almayya-mark.png">
-<meta name="description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
-<meta property="og:url" content="https://almayaadmissions.com/How%20It%20Works.dc.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Almaya Admissions">
-<meta property="og:title" content="How It Works | Almaya Admissions">
-<meta property="og:description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
-<meta property="og:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How It Works | Almaya Admissions">
-<meta name="twitter:description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
-<meta name="twitter:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
-<link rel="stylesheet" href="site-mobile.css"><link rel="stylesheet" href="site-button.css">
-<script src="site-mobile-nav.js"></script>
-<script src="site-header.js"></script>
-<script src="booking-modal.js"></script>
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/colors.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/typography.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/base.css">
-<link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/styles.css">
-<script src="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/_ds_bundle.js"></script>
-<script src="./image-slot.js"></script>
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;max-width:100vw;background:var(--ivory)}
-a{color:var(--copper);text-decoration:none}
-a:hover{color:var(--copper-600,#96492f)}
-.bubble{position:relative;transition:transform .3s}
-.bubble:hover{transform:translateY(-4px) scale(1.03)}
-@media (max-width:860px){
-.nav-links{display:none!important}
-.hiw-grid{grid-template-columns:1fr!important;gap:32px!important}
-.sticky-panel{position:sticky!important;top:76px!important;height:150px!important;margin-bottom:20px;z-index:20}
-.sticky-panel [style*="padding:28px"],.sticky-panel [style*="padding: 28px"]{padding:16px!important}
-.hiw-steps-col{gap:32px!important;padding-top:0!important}
-.hiw-step{min-height:auto!important}
-.step-heading{font-size:34px!important}
-.step3-grid{grid-template-columns:1fr!important}
-.step3-arrow{transform:rotate(90deg);justify-self:center}
-}
-@media (max-width:520px){
-.hiw-heading{font-size:28px!important;letter-spacing:0!important}
-}
-@keyframes marquee-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee-track{display:flex;width:max-content;gap:44px;white-space:nowrap;will-change:transform}
-@keyframes testi-fade{0%,14%{opacity:1}18%,98%{opacity:0}100%{opacity:1}}
-.testi-slide{position:absolute;inset:0;opacity:0;animation:testi-fade 30s infinite;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.testi-slide:nth-child(1){animation-delay:0s}
-.testi-slide:nth-child(2){animation-delay:5s}
-.testi-slide:nth-child(3){animation-delay:10s}
-.testi-slide:nth-child(4){animation-delay:15s}
-.testi-slide:nth-child(5){animation-delay:20s}
-.testi-slide:nth-child(6){animation-delay:25s}
-@media (max-width:860px){.testi-desktop{display:none!important}.testi-mobile{display:block!important}}
-</style>
-</helmet>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <!-- @template name="How It Works" description="Full sticky-scroll how-it-works: free consultation, define goals, get matched, get started" -->
+      <template id="__bundler_thumbnail" data-bg-color="#173b2c"
+        ><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1200" height="800" fill="#173b2c"></rect>
+          <text
+            x="600"
+            y="420"
+            font-size="90"
+            font-family="Georgia,serif"
+            fill="#e8dcc8"
+            text-anchor="middle"
+          >
+            Almaya
+          </text>
+        </svg></template
+      >
+      <helmet>
+        <link rel="icon" type="image/png" href="assets/almayya-mark.png" />
+        <link rel="apple-touch-icon" href="assets/almayya-mark.png" />
+        <meta
+          name="description"
+          content="The first college application marketplace built to find your trained mentor at a budget that works for you"
+        />
+        <meta
+          property="og:url"
+          content="https://almayaadmissions.com/How%20It%20Works.dc.html"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Almaya Admissions" />
+        <meta property="og:title" content="How It Works | Almaya Admissions" />
+        <meta
+          property="og:description"
+          content="The first college application marketplace built to find your trained mentor at a budget that works for you"
+        />
+        <meta
+          property="og:image"
+          content="https://almayaadmissions.com/assets/og-preview.jpg"
+        />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="How It Works | Almaya Admissions" />
+        <meta
+          name="twitter:description"
+          content="The first college application marketplace built to find your trained mentor at a budget that works for you"
+        />
+        <meta
+          name="twitter:image"
+          content="https://almayaadmissions.com/assets/og-preview.jpg"
+        />
+        <link rel="stylesheet" href="site-mobile.css" /><link
+          rel="stylesheet"
+          href="site-button.css"
+        />
+        <script src="site-mobile-nav.js"></script>
+        <script src="site-header.js"></script>
+        <script src="booking-modal.js"></script>
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/fonts.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/colors.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/typography.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/spacing.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/base.css"
+        />
+        <link
+          rel="stylesheet"
+          href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/styles.css"
+        />
+        <script src="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/_ds_bundle.js"></script>
+        <script src="./image-slot.js"></script>
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+            max-width: 100vw;
+            background: var(--ivory);
+          }
+          a {
+            color: var(--copper);
+            text-decoration: none;
+          }
+          a:hover {
+            color: var(--copper-600, #96492f);
+          }
+          .bubble {
+            position: relative;
+            transition: transform 0.3s;
+          }
+          .bubble:hover {
+            transform: translateY(-4px) scale(1.03);
+          }
+          @media (max-width: 860px) {
+            .nav-links {
+              display: none !important;
+            }
+            .hiw-grid {
+              grid-template-columns: 1fr !important;
+              gap: 32px !important;
+            }
+            .sticky-panel {
+              position: sticky !important;
+              top: 76px !important;
+              height: 150px !important;
+              margin-bottom: 20px;
+              z-index: 20;
+            }
+            .sticky-panel [style*="padding:28px"],
+            .sticky-panel [style*="padding: 28px"] {
+              padding: 16px !important;
+            }
+            .hiw-steps-col {
+              gap: 32px !important;
+              padding-top: 0 !important;
+            }
+            .hiw-step {
+              min-height: auto !important;
+            }
+            .step-heading {
+              font-size: 34px !important;
+            }
+            .step3-grid {
+              grid-template-columns: 1fr !important;
+            }
+            .step3-arrow {
+              transform: rotate(90deg);
+              justify-self: center;
+            }
+          }
+          @media (max-width: 520px) {
+            .hiw-heading {
+              font-size: 28px !important;
+              letter-spacing: 0 !important;
+            }
+          }
+          @keyframes marquee-left {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
+          }
+          .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 44px;
+            white-space: nowrap;
+            will-change: transform;
+          }
+          @keyframes testi-fade {
+            0%,
+            14% {
+              opacity: 1;
+            }
+            18%,
+            98% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+          .testi-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            animation: testi-fade 30s infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          }
+          .testi-slide:nth-child(1) {
+            animation-delay: 0s;
+          }
+          .testi-slide:nth-child(2) {
+            animation-delay: 5s;
+          }
+          .testi-slide:nth-child(3) {
+            animation-delay: 10s;
+          }
+          .testi-slide:nth-child(4) {
+            animation-delay: 15s;
+          }
+          .testi-slide:nth-child(5) {
+            animation-delay: 20s;
+          }
+          .testi-slide:nth-child(6) {
+            animation-delay: 25s;
+          }
+          @media (max-width: 860px) {
+            .testi-desktop {
+              display: none !important;
+            }
+            .testi-mobile {
+              display: block !important;
+            }
+          }
+        </style>
+      </helmet>
 
-<x-import component-from-global-scope="SiteHeader" data-active="how" hint-size="100%,80px"></x-import>
+      <x-import
+        component-from-global-scope="SiteHeader"
+        data-active="how"
+        hint-size="100%,80px"
+      ></x-import>
 
-<section style="position:relative;padding:56px 48px;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden">
-<img src="uploads/Depositphotos_476977934_L.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
-<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,57,47,0.86),rgba(23,57,47,0.9));z-index:1"></div>
-<div style="position:relative;z-index:2;max-width:760px;margin:0 auto">
-<h1 class="hiw-heading" style="font-family:var(--font-serif-display);font-weight:400;font-size:clamp(2.1rem,3.8vw,3.2rem);color:var(--ivory);line-height:1.22;margin:0;text-transform:uppercase;letter-spacing:0.01em">Find the Right Advisor. Get the Support You Need.</h1>
-<p style="color:var(--text-muted-inverse);font-size:17px;line-height:1.7;margin:20px auto 0;max-width:600px">Want help choosing? Follow the matching process below. Already know what you're looking for? Browse available advisors and choose directly.</p>
-<div style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;justify-content:center">
-<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
-<a href="./Tutors.dc.html" class="am-btn am-btn--secondary am-btn--lg">Browse Advisors</a>
-</div>
-</div>
-</section>
+      <section
+        style="
+          position: relative;
+          padding: 56px 48px;
+          min-height: 520px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          overflow: hidden;
+        "
+      >
+        <img
+          src="uploads/Depositphotos_476977934_L.jpg"
+          style="
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+          "
+        />
+        <div
+          style="
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              180deg,
+              rgba(23, 57, 47, 0.86),
+              rgba(23, 57, 47, 0.9)
+            );
+            z-index: 1;
+          "
+        ></div>
+        <div
+          style="
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 0 auto;
+          "
+        >
+          <h1
+            class="hiw-heading"
+            style="
+              font-family: var(--font-serif-display);
+              font-weight: 400;
+              font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+              color: var(--ivory);
+              line-height: 1.22;
+              margin: 0;
+              letter-spacing: 0.01em;
+            "
+          >
+            Find the Right Advisor.</br>Get the Support You Need.
+          </h1>
+          <p
+            style="
+              color: var(--text-muted-inverse);
+              font-size: 17px;
+              line-height: 1.7;
+              margin: 20px auto 0;
+              max-width: 600px;
+            "
+          >
+            Want help choosing? Follow the matching process below. Already know
+            what you're looking for? Browse available advisors and choose
+            directly.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 16px;
+              margin-top: 32px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <a
+              href="https://learn.almayaadmissions.com/book/free-consultation"
+              class="am-btn am-btn--primary am-btn--lg"
+              >Get Matched — It's Free</a
+            >
+            <a
+              href="./Tutors.dc.html"
+              class="am-btn am-btn--secondary am-btn--lg"
+              >Browse Advisors</a
+            >
+          </div>
+        </div>
+      </section>
 
-<section id="how-it-works" style="background:var(--white);padding:64px 48px 96px">
-<div class="hiw-grid" style="display:grid;grid-template-columns:0.7fr 1.3fr;gap:56px;max-width:1100px;margin:0 auto">
-<div class="sticky-panel" style="position:sticky;top:32px;height:220px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lifted)">
-<div ref="{{ stickyPanelRef }}" style="background:var(--forest-900);height:100%;transition:background 0.5s ease">
-<div style="padding:28px;height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center">
-<div ref="{{ stickyKickerRef }}" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--sage);margin-bottom:8px">{{ stickyKicker }}</div>
-<div ref="{{ stickyTitleRef }}" style="font-family:var(--font-serif-display);font-size:24px;color:var(--ivory);margin-bottom:8px">{{ stickyTitle }}</div>
-<p ref="{{ stickyBodyRef }}" style="font-size:13px;line-height:1.5;color:var(--text-muted-inverse);margin:0">{{ stickyBody }}</p>
-</div>
-</div>
-</div>
-<div class="hiw-steps-col" style="display:flex;flex-direction:column;gap:32px;padding-top:8px">
-<div ref="{{ step0Ref }}" class="hiw-step" style="min-height:320px;display:flex;flex-direction:column;justify-content:center">
-<div style="display:flex;gap:0;margin-bottom:16px"><img src="assets/team/razi.jpeg" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--white);box-shadow:var(--shadow-card)"><img src="assets/team/eitan.jpeg" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--white);box-shadow:var(--shadow-card);margin-left:-14px"></div>
-<div class="step-heading" style="font-family:var(--font-serif-display);font-size:40px;color:var(--forest-900);margin-bottom:10px">Step 1: Tell Us What You Need</div>
-<p style="font-size:18px;line-height:1.6;color:var(--text-primary);margin:0 0 18px">Start with a free 15–20 minute conversation with one of our co-founders. Tell us about your student, what kind of support you're looking for, and your budget. No preparation or commitment required.</p>
-<div><a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--md">Get Matched — It's Free</a></div>
-</div>
-<div ref="{{ step1Ref }}" class="hiw-step" style="min-height:380px;display:flex;flex-direction:column;justify-content:center">
-<div class="step-heading" style="font-family:var(--font-serif-display);font-size:40px;color:var(--copper);margin-bottom:12px">Step 2: Tell Us What Matters</div>
-<p style="font-size:18px;line-height:1.6;color:var(--text-primary);margin:0 0 18px">Every family comes to us with something different. Maybe you need a full application strategy. Maybe you only need an essay editor. Maybe budget, STEM expertise, scholarships, or accountability matters most.</p>
-<div style="position:relative;display:flex;flex-wrap:wrap;gap:12px">
-<div class="bubble" style="background:var(--copper-100);border-radius:18px 18px 18px 4px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(-2deg)">🎯 "Can I switch into business, even with no business experience?"</div>
-<div class="bubble" style="background:var(--sage);color:var(--ivory);border-radius:18px 18px 4px 18px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(1.5deg)">📊 "Where can I go with a 1500 SAT and 3.9 GPA?"</div>
-<div class="bubble" style="background:var(--copper-100);border-radius:18px 4px 18px 18px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(2deg)">✍️ "I really just need help writing essays — specifically."</div>
-<div class="bubble" style="background:var(--sand);border-radius:4px 18px 18px 18px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(-1deg)">💡 "I can brainstorm myself — I just need an editor."</div>
-<div ref="{{ bubbleStrategyRef }}" class="bubble" style="background:var(--sage);color:var(--ivory);border-radius:18px 18px 18px 4px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(1deg)">📝 "I don't know how to ask teachers for recs — can a strategist help?"</div>
-<div ref="{{ bubbleBudgetRef }}" class="bubble" style="background:var(--copper-100);border-radius:18px 4px 18px 18px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(-2.5deg)">💰 "We need broad application support on a limited budget."</div>
-<div ref="{{ bubbleEngRef }}" class="bubble" style="background:var(--sand);border-radius:18px 18px 4px 18px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(2deg)">⚙️ "My student loves engineering — want someone specialized."</div>
-<div ref="{{ bubbleGradRef }}" class="bubble" style="background:var(--sage);color:var(--ivory);border-radius:4px 18px 18px 18px;padding:10px 16px;font-size:13px;max-width:230px;transform:rotate(-1.5deg)">🎓 "We're hoping for scholarships too."</div>
-</div>
-</div>
-<div ref="{{ step2Ref }}" class="hiw-step" style="min-height:380px;display:flex;flex-direction:column;justify-content:center">
-<div class="step-heading" style="font-family:var(--font-serif-display);font-size:40px;color:var(--sage-700, var(--sage));margin-bottom:10px">Step 3: Get Personally Matched</div>
-<p style="font-size:18px;line-height:1.6;color:var(--text-primary);margin:0 0 20px;max-width:520px">We recommend advisors whose experience, strengths, personality, and price point fit what you're looking for.</p>
-<div class="step3-grid" style="display:grid;grid-template-columns:1fr auto 1fr;gap:14px 20px;align-items:center">
-<div ref="{{ targetEngRef }}" style="background:var(--copper-100);border-radius:14px;padding:12px 14px"><span style="font-size:13px;color:var(--text-primary)">⚙️ "My kid loves engineering — someone specialized?"</span></div>
-<img class="step3-arrow" src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg" style="width:16px;height:16px">
-<div style="display:flex;align-items:center;gap:10px"><img src="assets/experts/jacob-feit-mann.jpeg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--white)"><div><div style="font-size:13px;font-weight:600;color:var(--forest-900)">Jacob F.</div><div style="font-size:11px;color:var(--text-muted)">CS major at Yale, specializes in STEM students</div></div></div>
-<div ref="{{ targetBudgetRef }}" style="background:var(--sage);border-radius:14px;padding:12px 14px"><span style="font-size:13px;color:var(--ivory)">💰 "We need broad application support on a limited budget."</span></div>
-<img src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg" style="width:16px;height:16px">
-<div style="display:flex;align-items:center;gap:10px"><img src="assets/experts/jonathan-mizrahi.jpg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--white)"><div><div style="font-size:13px;font-weight:600;color:var(--forest-900)">Jonathan M.</div><div style="font-size:11px;color:var(--text-muted)">Strong essay and application support at an accessible hourly rate.</div></div></div>
-<div ref="{{ targetGradRef }}" style="background:var(--sand);border-radius:14px;padding:12px 14px"><span style="font-size:13px;color:var(--text-primary)">🎓 "My student would connect best with someone closer to their age."</span></div>
-<img src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg" style="width:16px;height:16px">
-<div style="display:flex;align-items:center;gap:10px"><img src="assets/experts/gabriel.png" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--white)"><div><div style="font-size:13px;font-weight:600;color:var(--forest-900)">Gabriel</div><div style="font-size:11px;color:var(--text-muted)">Current Stanford student with exceptional writing and mentorship experience.</div></div></div>
-<div ref="{{ targetStrategyRef }}" style="background:var(--forest-800);border-radius:14px;padding:12px 14px"><span style="font-size:13px;color:var(--ivory)">🧭 "We just need an overall strategy — where's she even a fit?"</span></div>
-<img src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg" style="width:16px;height:16px">
-<div style="display:flex;align-items:center;gap:10px"><img src="assets/experts/sarah-rosen.jpeg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--white)"><div><div style="font-size:13px;font-weight:600;color:var(--forest-900)">Sarah R.</div><div style="font-size:11px;color:var(--text-muted)">Former admissions officer, 10+ years reading applications</div></div></div>
-</div>
-</div>
-<div ref="{{ step3Ref }}" class="hiw-step" style="min-height:320px;display:flex;flex-direction:column;justify-content:center">
-<div class="step-heading" style="font-family:var(--font-serif-display);font-size:40px;color:var(--forest-800, var(--forest-900));margin-bottom:12px">Step 4: Start Working Together</div>
-<p style="font-size:18px;line-height:1.6;color:var(--text-primary);margin:0 0 16px">Book and pay securely through Almaya, then meet 1:1 with your advisor online. Work together for one focused need or throughout the application process — it's up to you.</p>
-<img src="assets/photos/tutoring-session-a.png" style="width:100%;max-width:600px;aspect-ratio:16/10;object-fit:cover;border-radius:8px">
-<div style="margin-top:20px;display:flex;gap:16px;flex-wrap:wrap"><a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a><a href="./Tutors.dc.html" class="am-btn am-btn--secondary-light am-btn--lg">Browse Advisors</a></div>
-</div>
-</div>
-</div>
-</section>
+      <section
+        id="how-it-works"
+        style="background: var(--white); padding: 64px 48px 96px"
+      >
+        <div
+          class="hiw-grid"
+          style="
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 56px;
+            max-width: 1100px;
+            margin: 0 auto;
+          "
+        >
+          <div
+            class="sticky-panel"
+            style="
+              position: sticky;
+              top: 32px;
+              height: 220px;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: var(--shadow-lifted);
+            "
+          >
+            <div
+              ref="{{ stickyPanelRef }}"
+              style="
+                background: var(--forest-900);
+                height: 100%;
+                transition: background 0.5s ease;
+              "
+            >
+              <div
+                style="
+                  padding: 28px;
+                  height: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  text-align: center;
+                  align-items: center;
+                "
+              >
+                <div
+                  ref="{{ stickyKickerRef }}"
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    color: var(--sage);
+                    margin-bottom: 8px;
+                  "
+                >
+                  {{ stickyKicker }}
+                </div>
+                <div
+                  ref="{{ stickyTitleRef }}"
+                  style="
+                    font-family: var(--font-serif-display);
+                    font-size: 24px;
+                    color: var(--ivory);
+                    margin-bottom: 8px;
+                  "
+                >
+                  {{ stickyTitle }}
+                </div>
+                <p
+                  ref="{{ stickyBodyRef }}"
+                  style="
+                    font-size: 13px;
+                    line-height: 1.5;
+                    color: var(--text-muted-inverse);
+                    margin: 0;
+                  "
+                >
+                  {{ stickyBody }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="hiw-steps-col"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 32px;
+              padding-top: 8px;
+            "
+          >
+            <div
+              ref="{{ step0Ref }}"
+              class="hiw-step"
+              style="
+                min-height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <div style="display: flex; gap: 0; margin-bottom: 16px">
+                <img
+                  src="assets/team/razi.jpeg"
+                  style="
+                    width: 52px;
+                    height: 52px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid var(--white);
+                    box-shadow: var(--shadow-card);
+                  "
+                /><img
+                  src="assets/team/eitan.jpeg"
+                  style="
+                    width: 52px;
+                    height: 52px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid var(--white);
+                    box-shadow: var(--shadow-card);
+                    margin-left: -14px;
+                  "
+                />
+              </div>
+              <div
+                class="step-heading"
+                style="
+                  font-family: var(--font-serif-display);
+                  font-size: 40px;
+                  color: var(--forest-900);
+                  margin-bottom: 10px;
+                "
+              >
+                Step 1: Tell Us What You Need
+              </div>
+              <p
+                style="
+                  font-size: 18px;
+                  line-height: 1.6;
+                  color: var(--text-primary);
+                  margin: 0 0 18px;
+                "
+              >
+                Start with a free 15–20 minute conversation with one of our
+                co-founders. Tell us about your student, what kind of support
+                you're looking for, and your budget. No preparation or
+                commitment required.
+              </p>
+              <div>
+                <a
+                  href="https://learn.almayaadmissions.com/book/free-consultation"
+                  class="am-btn am-btn--primary am-btn--md"
+                  >Get Matched — It's Free</a
+                >
+              </div>
+            </div>
+            <div
+              ref="{{ step1Ref }}"
+              class="hiw-step"
+              style="
+                min-height: 380px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <div
+                class="step-heading"
+                style="
+                  font-family: var(--font-serif-display);
+                  font-size: 40px;
+                  color: var(--copper);
+                  margin-bottom: 12px;
+                "
+              >
+                Step 2: Tell Us What Matters
+              </div>
+              <p
+                style="
+                  font-size: 18px;
+                  line-height: 1.6;
+                  color: var(--text-primary);
+                  margin: 0 0 18px;
+                "
+              >
+                Every family comes to us with something different. Maybe you
+                need a full application strategy. Maybe you only need an essay
+                editor. Maybe budget, STEM expertise, scholarships, or
+                accountability matters most.
+              </p>
+              <div
+                style="
+                  position: relative;
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 12px;
+                "
+              >
+                <div
+                  class="bubble"
+                  style="
+                    background: var(--copper-100);
+                    border-radius: 18px 18px 18px 4px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(-2deg);
+                  "
+                >
+                  🎯 "Can I switch into business, even with no business
+                  experience?"
+                </div>
+                <div
+                  class="bubble"
+                  style="
+                    background: var(--sage);
+                    color: var(--ivory);
+                    border-radius: 18px 18px 4px 18px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(1.5deg);
+                  "
+                >
+                  📊 "Where can I go with a 1500 SAT and 3.9 GPA?"
+                </div>
+                <div
+                  class="bubble"
+                  style="
+                    background: var(--copper-100);
+                    border-radius: 18px 4px 18px 18px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(2deg);
+                  "
+                >
+                  ✍️ "I really just need help writing essays — specifically."
+                </div>
+                <div
+                  class="bubble"
+                  style="
+                    background: var(--sand);
+                    border-radius: 4px 18px 18px 18px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(-1deg);
+                  "
+                >
+                  💡 "I can brainstorm myself — I just need an editor."
+                </div>
+                <div
+                  ref="{{ bubbleStrategyRef }}"
+                  class="bubble"
+                  style="
+                    background: var(--sage);
+                    color: var(--ivory);
+                    border-radius: 18px 18px 18px 4px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(1deg);
+                  "
+                >
+                  📝 "I don't know how to ask teachers for recs — can a
+                  strategist help?"
+                </div>
+                <div
+                  ref="{{ bubbleBudgetRef }}"
+                  class="bubble"
+                  style="
+                    background: var(--copper-100);
+                    border-radius: 18px 4px 18px 18px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(-2.5deg);
+                  "
+                >
+                  💰 "We need broad application support on a limited budget."
+                </div>
+                <div
+                  ref="{{ bubbleEngRef }}"
+                  class="bubble"
+                  style="
+                    background: var(--sand);
+                    border-radius: 18px 18px 4px 18px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(2deg);
+                  "
+                >
+                  ⚙️ "My student loves engineering — want someone specialized."
+                </div>
+                <div
+                  ref="{{ bubbleGradRef }}"
+                  class="bubble"
+                  style="
+                    background: var(--sage);
+                    color: var(--ivory);
+                    border-radius: 4px 18px 18px 18px;
+                    padding: 10px 16px;
+                    font-size: 13px;
+                    max-width: 230px;
+                    transform: rotate(-1.5deg);
+                  "
+                >
+                  🎓 "We're hoping for scholarships too."
+                </div>
+              </div>
+            </div>
+            <div
+              ref="{{ step2Ref }}"
+              class="hiw-step"
+              style="
+                min-height: 380px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <div
+                class="step-heading"
+                style="
+                  font-family: var(--font-serif-display);
+                  font-size: 40px;
+                  color: var(--sage-700, var(--sage));
+                  margin-bottom: 10px;
+                "
+              >
+                Step 3: Get Personally Matched
+              </div>
+              <p
+                style="
+                  font-size: 18px;
+                  line-height: 1.6;
+                  color: var(--text-primary);
+                  margin: 0 0 20px;
+                  max-width: 520px;
+                "
+              >
+                We recommend advisors whose experience, strengths, personality,
+                and price point fit what you're looking for.
+              </p>
+              <div
+                class="step3-grid"
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr auto 1fr;
+                  gap: 14px 20px;
+                  align-items: center;
+                "
+              >
+                <div
+                  ref="{{ targetEngRef }}"
+                  style="
+                    background: var(--copper-100);
+                    border-radius: 14px;
+                    padding: 12px 14px;
+                  "
+                >
+                  <span style="font-size: 13px; color: var(--text-primary)"
+                    >⚙️ "My kid loves engineering — someone specialized?"</span
+                  >
+                </div>
+                <img
+                  class="step3-arrow"
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg"
+                  style="width: 16px; height: 16px"
+                />
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <img
+                    src="assets/experts/jacob-feit-mann.jpeg"
+                    style="
+                      width: 34px;
+                      height: 34px;
+                      border-radius: 50%;
+                      object-fit: cover;
+                      flex-shrink: 0;
+                      border: 2px solid var(--white);
+                    "
+                  />
+                  <div>
+                    <div
+                      style="
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: var(--forest-900);
+                      "
+                    >
+                      Jacob F.
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted)">
+                      CS major at Yale, specializes in STEM students
+                    </div>
+                  </div>
+                </div>
+                <div
+                  ref="{{ targetBudgetRef }}"
+                  style="
+                    background: var(--sage);
+                    border-radius: 14px;
+                    padding: 12px 14px;
+                  "
+                >
+                  <span style="font-size: 13px; color: var(--ivory)"
+                    >💰 "We need broad application support on a limited
+                    budget."</span
+                  >
+                </div>
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg"
+                  style="width: 16px; height: 16px"
+                />
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <img
+                    src="assets/experts/jonathan-mizrahi.jpg"
+                    style="
+                      width: 34px;
+                      height: 34px;
+                      border-radius: 50%;
+                      object-fit: cover;
+                      flex-shrink: 0;
+                      border: 2px solid var(--white);
+                    "
+                  />
+                  <div>
+                    <div
+                      style="
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: var(--forest-900);
+                      "
+                    >
+                      Jonathan M.
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted)">
+                      Strong essay and application support at an accessible
+                      hourly rate.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  ref="{{ targetGradRef }}"
+                  style="
+                    background: var(--sand);
+                    border-radius: 14px;
+                    padding: 12px 14px;
+                  "
+                >
+                  <span style="font-size: 13px; color: var(--text-primary)"
+                    >🎓 "My student would connect best with someone closer to
+                    their age."</span
+                  >
+                </div>
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg"
+                  style="width: 16px; height: 16px"
+                />
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <img
+                    src="assets/experts/gabriel.png"
+                    style="
+                      width: 34px;
+                      height: 34px;
+                      border-radius: 50%;
+                      object-fit: cover;
+                      flex-shrink: 0;
+                      border: 2px solid var(--white);
+                    "
+                  />
+                  <div>
+                    <div
+                      style="
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: var(--forest-900);
+                      "
+                    >
+                      Gabriel
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted)">
+                      Current Stanford student with exceptional writing and
+                      mentorship experience.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  ref="{{ targetStrategyRef }}"
+                  style="
+                    background: var(--forest-800);
+                    border-radius: 14px;
+                    padding: 12px 14px;
+                  "
+                >
+                  <span style="font-size: 13px; color: var(--ivory)"
+                    >🧭 "We just need an overall strategy — where's she even a
+                    fit?"</span
+                  >
+                </div>
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/arrow-right.svg"
+                  style="width: 16px; height: 16px"
+                />
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <img
+                    src="assets/experts/sarah-rosen.jpeg"
+                    style="
+                      width: 34px;
+                      height: 34px;
+                      border-radius: 50%;
+                      object-fit: cover;
+                      flex-shrink: 0;
+                      border: 2px solid var(--white);
+                    "
+                  />
+                  <div>
+                    <div
+                      style="
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: var(--forest-900);
+                      "
+                    >
+                      Sarah R.
+                    </div>
+                    <div style="font-size: 11px; color: var(--text-muted)">
+                      Former admissions officer, 10+ years reading applications
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              ref="{{ step3Ref }}"
+              class="hiw-step"
+              style="
+                min-height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <div
+                class="step-heading"
+                style="
+                  font-family: var(--font-serif-display);
+                  font-size: 40px;
+                  color: var(--forest-800, var(--forest-900));
+                  margin-bottom: 12px;
+                "
+              >
+                Step 4: Start Working Together
+              </div>
+              <p
+                style="
+                  font-size: 18px;
+                  line-height: 1.6;
+                  color: var(--text-primary);
+                  margin: 0 0 16px;
+                "
+              >
+                Book and pay securely through Almaya, then meet 1:1 with your
+                advisor online. Work together for one focused need or throughout
+                the application process — it's up to you.
+              </p>
+              <img
+                src="assets/photos/tutoring-session-a.png"
+                style="
+                  width: 100%;
+                  max-width: 600px;
+                  aspect-ratio: 16/10;
+                  object-fit: cover;
+                  border-radius: 8px;
+                "
+              />
+              <div
+                style="
+                  margin-top: 20px;
+                  display: flex;
+                  gap: 16px;
+                  flex-wrap: wrap;
+                "
+              >
+                <a
+                  href="https://learn.almayaadmissions.com/book/free-consultation"
+                  class="am-btn am-btn--primary am-btn--lg"
+                  >Get Matched — It's Free</a
+                ><a
+                  href="./Tutors.dc.html"
+                  class="am-btn am-btn--secondary-light am-btn--lg"
+                  >Browse Advisors</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section
+        style="background: var(--sand-100); padding: 36px 0; overflow: hidden"
+      >
+        <div
+          style="
+            font-family: var(--font-serif-display);
+            font-size: 36px;
+            color: var(--copper);
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+          "
+        >
+          WHAT FAMILIES
+          <em style="font-style: italic; font-weight: 700">ARE SAYING</em>
+        </div>
+        <div
+          class="testi-mobile"
+          style="
+            display: none;
+            position: relative;
+            height: 190px;
+            max-width: 340px;
+            margin: 0 auto;
+          "
+        >
+          <div class="testi-slide">
+            <p
+              style="
+                font-family: var(--font-serif-display);
+                font-style: italic;
+                font-size: 16px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              "Our expert understood my daughter’s goals immediately and helped
+              her craft applications that truly reflected who she is."
+            </p>
+            <div style="font-size: 12px; color: var(--text-muted)">
+              — Parent of a Brown ’28 Admit
+            </div>
+          </div>
+          <div class="testi-slide">
+            <p
+              style="
+                font-family: var(--font-serif-display);
+                font-style: italic;
+                font-size: 16px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              "Neva was so kind and amazing! She helped me the same day over
+              Zoom, cutting down my word count while keeping my voice."
+            </p>
+            <div style="font-size: 12px; color: var(--text-muted)">
+              — Student, on Neva
+            </div>
+          </div>
+          <div class="testi-slide">
+            <p
+              style="
+                font-family: var(--font-serif-display);
+                font-style: italic;
+                font-size: 16px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              "Gabriel’s expertise and personalized approach helped our daughter
+              craft concise, authentic essays that boosted her confidence."
+            </p>
+            <div style="font-size: 12px; color: var(--text-muted)">
+              — Parent, on Gabriel
+            </div>
+          </div>
+          <div class="testi-slide">
+            <p
+              style="
+                font-family: var(--font-serif-display);
+                font-style: italic;
+                font-size: 16px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              "Joseph helped me brainstorm topics and ideas for my essays. He
+              was always on time and communicated professionally."
+            </p>
+            <div style="font-size: 12px; color: var(--text-muted)">
+              — Student, on Joseph
+            </div>
+          </div>
+          <div class="testi-slide">
+            <p
+              style="
+                font-family: var(--font-serif-display);
+                font-style: italic;
+                font-size: 16px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              "I was accepted to Harvard, Yale, Cornell, and Dartmouth — because
+              of Razi’s unmatched teaching and genuine care."
+            </p>
+            <div style="font-size: 12px; color: var(--text-muted)">
+              — Student, on Razi
+            </div>
+          </div>
+          <div class="testi-slide">
+            <p
+              style="
+                font-family: var(--font-serif-display);
+                font-style: italic;
+                font-size: 16px;
+                color: var(--forest-900);
+                margin: 0 0 10px;
+              "
+            >
+              "Thanks to Eitan’s guidance, our daughter was accepted into a
+              remarkable list of universities and received over $284,000 in
+              scholarships."
+            </p>
+            <div style="font-size: 12px; color: var(--text-muted)">
+              — Parent, on Eitan
+            </div>
+          </div>
+        </div>
+        <div class="testi-desktop" style="overflow: hidden">
+          <div
+            class="marquee-track"
+            style="animation: marquee-left 70s linear infinite"
+          >
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Our expert understood my daughter’s goals immediately and
+                helped her craft applications that truly reflected who she is."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Parent of a Brown ’28 Admit
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Neva was so kind and amazing! She helped me the same day over
+                Zoom, cutting down my word count while keeping my voice."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Student, on Neva
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Gabriel’s expertise and personalized approach helped our
+                daughter craft concise, authentic essays that boosted her
+                confidence."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Parent, on Gabriel
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Joseph helped me brainstorm topics and ideas for my essays. He
+                was always on time and communicated professionally."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Student, on Joseph
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "I was accepted to Harvard, Yale, Cornell, and Dartmouth —
+                because of Razi’s unmatched teaching and genuine care."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Student, on Razi
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Thanks to Eitan’s guidance, our daughter was accepted into a
+                remarkable list of universities and received over $284,000 in
+                scholarships."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Parent, on Eitan
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Our expert understood my daughter’s goals immediately and
+                helped her craft applications that truly reflected who she is."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Parent of a Brown ’28 Admit
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Neva was so kind and amazing! She helped me the same day over
+                Zoom, cutting down my word count while keeping my voice."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Student, on Neva
+              </div>
+            </div>
+            <div
+              style="
+                background: var(--white);
+                border-radius: 8px;
+                padding: 18px 24px;
+                max-width: 360px;
+                white-space: normal;
+                box-shadow: var(--shadow-card);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--font-serif-display);
+                  font-style: italic;
+                  font-size: 15px;
+                  color: var(--forest-900);
+                  margin: 0 0 8px;
+                "
+              >
+                "Gabriel’s expertise and personalized approach helped our
+                daughter craft concise, authentic essays that boosted her
+                confidence."
+              </p>
+              <div style="font-size: 12px; color: var(--text-muted)">
+                — Parent, on Gabriel
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-
-<section style="background:var(--sand-100);padding:36px 0;overflow:hidden">
-<div style="font-family:var(--font-serif-display);font-size:36px;color:var(--copper);text-align:center;text-transform:uppercase;margin-bottom:22px">WHAT FAMILIES <em style="font-style:italic;font-weight:700">ARE SAYING</em></div>
-<div class="testi-mobile" style="display:none;position:relative;height:190px;max-width:340px;margin:0 auto">
-<div class="testi-slide"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:16px;color:var(--forest-900);margin:0 0 10px">"Our expert understood my daughter’s goals immediately and helped her craft applications that truly reflected who she is."</p><div style="font-size:12px;color:var(--text-muted)">— Parent of a Brown ’28 Admit</div></div>
-<div class="testi-slide"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:16px;color:var(--forest-900);margin:0 0 10px">"Neva was so kind and amazing! She helped me the same day over Zoom, cutting down my word count while keeping my voice."</p><div style="font-size:12px;color:var(--text-muted)">— Student, on Neva</div></div>
-<div class="testi-slide"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:16px;color:var(--forest-900);margin:0 0 10px">"Gabriel’s expertise and personalized approach helped our daughter craft concise, authentic essays that boosted her confidence."</p><div style="font-size:12px;color:var(--text-muted)">— Parent, on Gabriel</div></div>
-<div class="testi-slide"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:16px;color:var(--forest-900);margin:0 0 10px">"Joseph helped me brainstorm topics and ideas for my essays. He was always on time and communicated professionally."</p><div style="font-size:12px;color:var(--text-muted)">— Student, on Joseph</div></div>
-<div class="testi-slide"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:16px;color:var(--forest-900);margin:0 0 10px">"I was accepted to Harvard, Yale, Cornell, and Dartmouth — because of Razi’s unmatched teaching and genuine care."</p><div style="font-size:12px;color:var(--text-muted)">— Student, on Razi</div></div>
-<div class="testi-slide"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:16px;color:var(--forest-900);margin:0 0 10px">"Thanks to Eitan’s guidance, our daughter was accepted into a remarkable list of universities and received over $284,000 in scholarships."</p><div style="font-size:12px;color:var(--text-muted)">— Parent, on Eitan</div></div>
-</div>
-<div class="testi-desktop" style="overflow:hidden"><div class="marquee-track" style="animation:marquee-left 70s linear infinite">
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Our expert understood my daughter’s goals immediately and helped her craft applications that truly reflected who she is."</p><div style="font-size:12px;color:var(--text-muted)">— Parent of a Brown ’28 Admit</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Neva was so kind and amazing! She helped me the same day over Zoom, cutting down my word count while keeping my voice."</p><div style="font-size:12px;color:var(--text-muted)">— Student, on Neva</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Gabriel’s expertise and personalized approach helped our daughter craft concise, authentic essays that boosted her confidence."</p><div style="font-size:12px;color:var(--text-muted)">— Parent, on Gabriel</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Joseph helped me brainstorm topics and ideas for my essays. He was always on time and communicated professionally."</p><div style="font-size:12px;color:var(--text-muted)">— Student, on Joseph</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"I was accepted to Harvard, Yale, Cornell, and Dartmouth — because of Razi’s unmatched teaching and genuine care."</p><div style="font-size:12px;color:var(--text-muted)">— Student, on Razi</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Thanks to Eitan’s guidance, our daughter was accepted into a remarkable list of universities and received over $284,000 in scholarships."</p><div style="font-size:12px;color:var(--text-muted)">— Parent, on Eitan</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Our expert understood my daughter’s goals immediately and helped her craft applications that truly reflected who she is."</p><div style="font-size:12px;color:var(--text-muted)">— Parent of a Brown ’28 Admit</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Neva was so kind and amazing! She helped me the same day over Zoom, cutting down my word count while keeping my voice."</p><div style="font-size:12px;color:var(--text-muted)">— Student, on Neva</div></div>
-<div style="background:var(--white);border-radius:8px;padding:18px 24px;max-width:360px;white-space:normal;box-shadow:var(--shadow-card)"><p style="font-family:var(--font-serif-display);font-style:italic;font-size:15px;color:var(--forest-900);margin:0 0 8px">"Gabriel’s expertise and personalized approach helped our daughter craft concise, authentic essays that boosted her confidence."</p><div style="font-size:12px;color:var(--text-muted)">— Parent, on Gabriel</div></div>
-</div></div>
-</section>
-
-<footer class="site-footer" style="background:var(--copper-100);padding:14px 48px">
-<div style="max-width:1160px;margin:0 auto">
-<div class="footer-top" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:14px;border-bottom:1px solid rgba(59,45,31,0.14)">
-<div>
-<img src="assets/almayya-mark.png" style="height:22px;margin-bottom:4px">
-<div style="font-size:13px;color:var(--text-muted)">Expert guidance. Personally matched.</div>
-</div>
-<div class="footer-stats" style="display:flex;gap:32px;flex-wrap:wrap">
-<div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/landmark.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">100+ colleges represented</span></div>
-<div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/users.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">500+ families supported</span></div>
-<div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/star.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">5/5 average rating</span></div>
-</div>
-<a href="https://learn.almayaadmissions.com/book/free-consultation" style="color:var(--forest-900);font-size:14px;font-weight:600">Get Matched — It's Free →</a>
-</div>
-<div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;flex-wrap:wrap;gap:12px">
-<div style="font-size:12px;color:var(--text-muted)">© Almaya Admissions. All rights reserved.</div>
-<div style="display:flex;gap:16px">
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/instagram.svg" style="width:18px;height:18px"></a>
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/rss.svg" style="width:18px;height:18px"></a>
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/facebook.svg" style="width:18px;height:18px"></a>
-<a href="#" style="color:var(--forest-900)"><img src="https://unpkg.com/lucide-static@0.462.0/icons/linkedin.svg" style="width:18px;height:18px"></a>
-</div>
-</div>
-</div>
-</footer>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { activeStep: 0 };
-  step0Ref = React.createRef();
-  step1Ref = React.createRef();
-  step2Ref = React.createRef();
-  step3Ref = React.createRef();
-  stickyPanelRef = React.createRef();
-  stickyKickerRef = React.createRef();
-  stickyTitleRef = React.createRef();
-  stickyBodyRef = React.createRef();
-  bubbleEngRef = React.createRef();
-  bubbleBudgetRef = React.createRef();
-  bubbleGradRef = React.createRef();
-  bubbleStrategyRef = React.createRef();
-  targetEngRef = React.createRef();
-  targetBudgetRef = React.createRef();
-  targetGradRef = React.createRef();
-  targetStrategyRef = React.createRef();
-  playBubbleFlight(reverse) {
-    if (this.bubblesAnimating) return;
-    this.bubblesAnimating = true;
-    this.bubblesState = reverse ? 'reverse' : 'forward';
-    const pairs = [
-      [this.bubbleEngRef, this.targetEngRef],
-      [this.bubbleBudgetRef, this.targetBudgetRef],
-      [this.bubbleGradRef, this.targetGradRef],
-      [this.bubbleStrategyRef, this.targetStrategyRef]
-    ];
-    const fromRefs = reverse ? pairs.map(p => p[1]) : pairs.map(p => p[0]);
-    const toRefs = reverse ? pairs.map(p => p[0]) : pairs.map(p => p[1]);
-    let pending = fromRefs.length;
-    fromRefs.forEach((srcRef, i) => {
-      const dstRef = toRefs[i];
-      const src = srcRef.current, dst = dstRef.current;
-      if (!src || !dst) { pending--; if (pending <= 0) this.bubblesAnimating = false; return; }
-      const srcRect = src.getBoundingClientRect();
-      const clone = src.cloneNode(true);
-      Object.assign(clone.style, { position: 'fixed', left: srcRect.left + 'px', top: srcRect.top + 'px', width: srcRect.width + 'px', margin: '0', zIndex: 9999, pointerEvents: 'none', transition: 'none', transformOrigin: 'top left', opacity: '0.9' });
-      document.body.appendChild(clone);
-      src.style.transition = 'opacity 0.3s ease';
-      src.style.opacity = '0.15';
-      dst.style.transition = 'none';
-      dst.style.opacity = '0';
-      const delay = i * 130, dur = 850;
-      const startT = performance.now() + delay;
-      const finish = () => {
-        clone.remove();
-        dst.style.transition = 'opacity 0.4s ease';
-        dst.style.opacity = '1';
-        src.style.transition = 'opacity 0.4s ease';
-        src.style.opacity = '1';
-        pending--;
-        if (pending <= 0) this.bubblesAnimating = false;
-      };
-      const step = (now) => {
-        const t = Math.min(1, Math.max(0, (now - startT) / dur));
-        if (now < startT) { requestAnimationFrame(step); return; }
-        const dstRect = dst.getBoundingClientRect();
-        const eased = 1 - Math.pow(1 - t, 3);
-        const cx = srcRect.left + (dstRect.left - srcRect.left) * eased;
-        const cy = srcRect.top + (dstRect.top - srcRect.top) * eased;
-        const scale = 1 + (dstRect.width / srcRect.width - 1) * eased;
-        clone.style.left = cx + 'px';
-        clone.style.top = cy + 'px';
-        clone.style.transform = `scale(${scale})`;
-        clone.style.opacity = String(0.9 - 0.6 * eased);
-        if (t < 1) requestAnimationFrame(step); else finish();
-      };
-      requestAnimationFrame(step);
-    });
-  }
-  applyStickyColors() {
-    const panels = [
-      { bg: 'var(--forest-900)', kickerColor: 'var(--sage)', titleColor: 'var(--ivory)', bodyColor: 'var(--text-muted-inverse)' },
-      { bg: 'var(--copper)', kickerColor: 'var(--copper-100)', titleColor: 'var(--ivory)', bodyColor: 'var(--ivory)' },
-      { bg: 'var(--sage)', kickerColor: 'var(--forest-900)', titleColor: 'var(--ivory)', bodyColor: 'var(--ivory)' },
-      { bg: 'var(--forest-800)', kickerColor: 'var(--sand)', titleColor: 'var(--ivory)', bodyColor: 'var(--text-muted-inverse)' }
-    ];
-    const p = panels[this.state.activeStep];
-    if (this.stickyPanelRef.current) this.stickyPanelRef.current.style.background = p.bg;
-    if (this.stickyKickerRef.current) this.stickyKickerRef.current.style.color = p.kickerColor;
-    if (this.stickyTitleRef.current) this.stickyTitleRef.current.style.color = p.titleColor;
-    if (this.stickyBodyRef.current) this.stickyBodyRef.current.style.color = p.bodyColor;
-  }
-  componentDidUpdate() { this.applyStickyColors(); }
-  componentDidMount() {
-    this.applyStickyColors();
-    const refs = [this.step0Ref, this.step1Ref, this.step2Ref, this.step3Ref];
-    let ticking = false;
-    const pickActive = () => {
-      ticking = false;
-      const centerY = window.innerHeight / 2;
-      let bestIdx = -1, bestDist = Infinity;
-      refs.forEach((r, idx) => {
-        if (!r.current) return;
-        const rect = r.current.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-        const dist = Math.abs((rect.top + rect.bottom) / 2 - centerY);
-        if (dist < bestDist) { bestDist = dist; bestIdx = idx; }
-      });
-      if (bestIdx !== -1 && bestIdx !== this.state.activeStep) {
-        const prevIdx = this.state.activeStep;
-        this.setState({ activeStep: bestIdx });
-        if (bestIdx === 2 && prevIdx < 2 && this.bubblesState !== 'forward') this.playBubbleFlight(false);
-        if (bestIdx === 1 && prevIdx === 2 && this.bubblesState === 'forward') this.playBubbleFlight(true);
+      <footer
+        class="site-footer"
+        style="background: var(--copper-100); padding: 14px 48px"
+      >
+        <div style="max-width: 1160px; margin: 0 auto">
+          <div
+            class="footer-top"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 20px;
+              padding-bottom: 14px;
+              border-bottom: 1px solid rgba(59, 45, 31, 0.14);
+            "
+          >
+            <div>
+              <img
+                src="assets/almayya-mark.png"
+                style="height: 22px; margin-bottom: 4px"
+              />
+              <div style="font-size: 13px; color: var(--text-muted)">
+                Expert guidance. Personally matched.
+              </div>
+            </div>
+            <div
+              class="footer-stats"
+              style="display: flex; gap: 32px; flex-wrap: wrap"
+            >
+              <div style="display: flex; gap: 8px; align-items: center">
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/landmark.svg"
+                  style="width: 16px; height: 16px"
+                /><span style="color: var(--forest-900); font-size: 14px"
+                  >100+ colleges represented</span
+                >
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center">
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/users.svg"
+                  style="width: 16px; height: 16px"
+                /><span style="color: var(--forest-900); font-size: 14px"
+                  >500+ families supported</span
+                >
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center">
+                <img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/star.svg"
+                  style="width: 16px; height: 16px"
+                /><span style="color: var(--forest-900); font-size: 14px"
+                  >5/5 average rating</span
+                >
+              </div>
+            </div>
+            <a
+              href="https://learn.almayaadmissions.com/book/free-consultation"
+              style="
+                color: var(--forest-900);
+                font-size: 14px;
+                font-weight: 600;
+              "
+              >Get Matched — It's Free →</a
+            >
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding-top: 10px;
+              flex-wrap: wrap;
+              gap: 12px;
+            "
+          >
+            <div style="font-size: 12px; color: var(--text-muted)">
+              © Almaya Admissions. All rights reserved.
+            </div>
+            <div style="display: flex; gap: 16px">
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/instagram.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/rss.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/facebook.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+              <a href="#" style="color: var(--forest-900)"
+                ><img
+                  src="https://unpkg.com/lucide-static@0.462.0/icons/linkedin.svg"
+                  style="width: 18px; height: 18px"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </x-dc>
+    <script type="text/x-dc" data-dc-script>
+      class Component extends DCLogic {
+        state = { activeStep: 0 };
+        step0Ref = React.createRef();
+        step1Ref = React.createRef();
+        step2Ref = React.createRef();
+        step3Ref = React.createRef();
+        stickyPanelRef = React.createRef();
+        stickyKickerRef = React.createRef();
+        stickyTitleRef = React.createRef();
+        stickyBodyRef = React.createRef();
+        bubbleEngRef = React.createRef();
+        bubbleBudgetRef = React.createRef();
+        bubbleGradRef = React.createRef();
+        bubbleStrategyRef = React.createRef();
+        targetEngRef = React.createRef();
+        targetBudgetRef = React.createRef();
+        targetGradRef = React.createRef();
+        targetStrategyRef = React.createRef();
+        playBubbleFlight(reverse) {
+          if (this.bubblesAnimating) return;
+          this.bubblesAnimating = true;
+          this.bubblesState = reverse ? 'reverse' : 'forward';
+          const pairs = [
+            [this.bubbleEngRef, this.targetEngRef],
+            [this.bubbleBudgetRef, this.targetBudgetRef],
+            [this.bubbleGradRef, this.targetGradRef],
+            [this.bubbleStrategyRef, this.targetStrategyRef]
+          ];
+          const fromRefs = reverse ? pairs.map(p => p[1]) : pairs.map(p => p[0]);
+          const toRefs = reverse ? pairs.map(p => p[0]) : pairs.map(p => p[1]);
+          let pending = fromRefs.length;
+          fromRefs.forEach((srcRef, i) => {
+            const dstRef = toRefs[i];
+            const src = srcRef.current, dst = dstRef.current;
+            if (!src || !dst) { pending--; if (pending <= 0) this.bubblesAnimating = false; return; }
+            const srcRect = src.getBoundingClientRect();
+            const clone = src.cloneNode(true);
+            Object.assign(clone.style, { position: 'fixed', left: srcRect.left + 'px', top: srcRect.top + 'px', width: srcRect.width + 'px', margin: '0', zIndex: 9999, pointerEvents: 'none', transition: 'none', transformOrigin: 'top left', opacity: '0.9' });
+            document.body.appendChild(clone);
+            src.style.transition = 'opacity 0.3s ease';
+            src.style.opacity = '0.15';
+            dst.style.transition = 'none';
+            dst.style.opacity = '0';
+            const delay = i * 130, dur = 850;
+            const startT = performance.now() + delay;
+            const finish = () => {
+              clone.remove();
+              dst.style.transition = 'opacity 0.4s ease';
+              dst.style.opacity = '1';
+              src.style.transition = 'opacity 0.4s ease';
+              src.style.opacity = '1';
+              pending--;
+              if (pending <= 0) this.bubblesAnimating = false;
+            };
+            const step = (now) => {
+              const t = Math.min(1, Math.max(0, (now - startT) / dur));
+              if (now < startT) { requestAnimationFrame(step); return; }
+              const dstRect = dst.getBoundingClientRect();
+              const eased = 1 - Math.pow(1 - t, 3);
+              const cx = srcRect.left + (dstRect.left - srcRect.left) * eased;
+              const cy = srcRect.top + (dstRect.top - srcRect.top) * eased;
+              const scale = 1 + (dstRect.width / srcRect.width - 1) * eased;
+              clone.style.left = cx + 'px';
+              clone.style.top = cy + 'px';
+              clone.style.transform = `scale(${scale})`;
+              clone.style.opacity = String(0.9 - 0.6 * eased);
+              if (t < 1) requestAnimationFrame(step); else finish();
+            };
+            requestAnimationFrame(step);
+          });
+        }
+        applyStickyColors() {
+          const panels = [
+            { bg: 'var(--forest-900)', kickerColor: 'var(--sage)', titleColor: 'var(--ivory)', bodyColor: 'var(--text-muted-inverse)' },
+            { bg: 'var(--copper)', kickerColor: 'var(--copper-100)', titleColor: 'var(--ivory)', bodyColor: 'var(--ivory)' },
+            { bg: 'var(--sage)', kickerColor: 'var(--forest-900)', titleColor: 'var(--ivory)', bodyColor: 'var(--ivory)' },
+            { bg: 'var(--forest-800)', kickerColor: 'var(--sand)', titleColor: 'var(--ivory)', bodyColor: 'var(--text-muted-inverse)' }
+          ];
+          const p = panels[this.state.activeStep];
+          if (this.stickyPanelRef.current) this.stickyPanelRef.current.style.background = p.bg;
+          if (this.stickyKickerRef.current) this.stickyKickerRef.current.style.color = p.kickerColor;
+          if (this.stickyTitleRef.current) this.stickyTitleRef.current.style.color = p.titleColor;
+          if (this.stickyBodyRef.current) this.stickyBodyRef.current.style.color = p.bodyColor;
+        }
+        componentDidUpdate() { this.applyStickyColors(); }
+        componentDidMount() {
+          this.applyStickyColors();
+          const refs = [this.step0Ref, this.step1Ref, this.step2Ref, this.step3Ref];
+          let ticking = false;
+          const pickActive = () => {
+            ticking = false;
+            const centerY = window.innerHeight / 2;
+            let bestIdx = -1, bestDist = Infinity;
+            refs.forEach((r, idx) => {
+              if (!r.current) return;
+              const rect = r.current.getBoundingClientRect();
+              if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+              const dist = Math.abs((rect.top + rect.bottom) / 2 - centerY);
+              if (dist < bestDist) { bestDist = dist; bestIdx = idx; }
+            });
+            if (bestIdx !== -1 && bestIdx !== this.state.activeStep) {
+              const prevIdx = this.state.activeStep;
+              this.setState({ activeStep: bestIdx });
+              if (bestIdx === 2 && prevIdx < 2 && this.bubblesState !== 'forward') this.playBubbleFlight(false);
+              if (bestIdx === 1 && prevIdx === 2 && this.bubblesState === 'forward') this.playBubbleFlight(true);
+            }
+          };
+          this.onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(pickActive); } };
+          // capture phase so it fires no matter which ancestor actually scrolls
+          document.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+          window.addEventListener('resize', this.onScroll);
+          this.io = new IntersectionObserver(this.onScroll, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+          refs.forEach(r => { if (r.current) this.io.observe(r.current); });
+          this.onScroll();
+        }
+        componentWillUnmount() {
+          if (this.onScroll) { document.removeEventListener('scroll', this.onScroll, true); window.removeEventListener('resize', this.onScroll); }
+          if (this.io) this.io.disconnect();
+        }
+        renderVals() {
+          const kickers = ['Step 1', 'Step 2', 'Step 3', 'Step 4'];
+          const titles = ['Tell Us What You Need', 'Tell Us What Matters', 'Get Personally Matched', 'Start Working Together'];
+          const bodies = ['A free, no-pressure conversation about your student, goals, needs, and budget.', 'Goals, budget, timeline, specialty, and where your student needs support most.', 'We recommend the best fits. You meet your options and choose who feels right.', 'Book securely, meet 1:1 online, and get the level of support you need.'];
+          const i = this.state.activeStep;
+          return {
+            step0Ref: this.step0Ref, step1Ref: this.step1Ref, step2Ref: this.step2Ref, step3Ref: this.step3Ref,
+            stickyPanelRef: this.stickyPanelRef, stickyKickerRef: this.stickyKickerRef, stickyTitleRef: this.stickyTitleRef, stickyBodyRef: this.stickyBodyRef,
+            stickyKicker: kickers[i], stickyTitle: titles[i], stickyBody: bodies[i],
+            bubbleEngRef: this.bubbleEngRef, bubbleBudgetRef: this.bubbleBudgetRef, bubbleGradRef: this.bubbleGradRef, bubbleStrategyRef: this.bubbleStrategyRef,
+            targetEngRef: this.targetEngRef, targetBudgetRef: this.targetBudgetRef, targetGradRef: this.targetGradRef, targetStrategyRef: this.targetStrategyRef
+          };
+        }
       }
-    };
-    this.onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(pickActive); } };
-    // capture phase so it fires no matter which ancestor actually scrolls
-    document.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
-    window.addEventListener('resize', this.onScroll);
-    this.io = new IntersectionObserver(this.onScroll, { threshold: [0, 0.25, 0.5, 0.75, 1] });
-    refs.forEach(r => { if (r.current) this.io.observe(r.current); });
-    this.onScroll();
-  }
-  componentWillUnmount() {
-    if (this.onScroll) { document.removeEventListener('scroll', this.onScroll, true); window.removeEventListener('resize', this.onScroll); }
-    if (this.io) this.io.disconnect();
-  }
-  renderVals() {
-    const kickers = ['Step 1', 'Step 2', 'Step 3', 'Step 4'];
-    const titles = ['Tell Us What You Need', 'Tell Us What Matters', 'Get Personally Matched', 'Start Working Together'];
-    const bodies = ['A free, no-pressure conversation about your student, goals, needs, and budget.', 'Goals, budget, timeline, specialty, and where your student needs support most.', 'We recommend the best fits. You meet your options and choose who feels right.', 'Book securely, meet 1:1 online, and get the level of support you need.'];
-    const i = this.state.activeStep;
-    return {
-      step0Ref: this.step0Ref, step1Ref: this.step1Ref, step2Ref: this.step2Ref, step3Ref: this.step3Ref,
-      stickyPanelRef: this.stickyPanelRef, stickyKickerRef: this.stickyKickerRef, stickyTitleRef: this.stickyTitleRef, stickyBodyRef: this.stickyBodyRef,
-      stickyKicker: kickers[i], stickyTitle: titles[i], stickyBody: bodies[i],
-      bubbleEngRef: this.bubbleEngRef, bubbleBudgetRef: this.bubbleBudgetRef, bubbleGradRef: this.bubbleGradRef, bubbleStrategyRef: this.bubbleStrategyRef,
-      targetEngRef: this.targetEngRef, targetBudgetRef: this.targetBudgetRef, targetGradRef: this.targetGradRef, targetStrategyRef: this.targetStrategyRef
-    };
-  }
-}
-
-</script>
-</body>
+    </script>
+  </body>
 </html>
