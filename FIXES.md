@@ -666,6 +666,18 @@ correction above now refer to the reformatted file.
 
 ### Open cleanup
 
+- **`site-header.js` still carries the `<site-header>` custom-element shim.** The header is now a
+  React component (`window.SiteHeader`) and all 18 pages mount it by that name, but neither the
+  pages nor the script are versioned assets, so a browser holding cached HTML that still says
+  `component-from-global-scope="site-header"` would get no header at all without the shim.
+  Delete the shim block, and the `site-header{display:contents}` rule above it, once the renamed
+  pages have been live long enough to age out of caches.
+- **The header still inlines its own copy of the design-system `Button`.** That was forced by the
+  custom element — the DC runtime does not walk DOM built by one, so `x-import` was unavailable.
+  A React component can call `AlmayyaDesignSystem_fd8d10.Button` directly, which would delete the
+  hand-synced `.am-hdr-cta` CSS block. Left out of the port deliberately: it changes the emitted
+  DOM, and the port was meant to be behaviour-identical.
+
 - **The 12 profile pages still have their own booking modal** — `"Work With <name>"` →
   `{{ onOpenBooking }}` → a bespoke `<sc-if>` overlay, whose close control is an `<a>` at
   34 × 34. Square, so not the A2.1 bug, but it is below the 44px tap target and is a second modal
