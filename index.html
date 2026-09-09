@@ -26,7 +26,7 @@
 <meta name="twitter:title" content="Almaya Admissions">
 <meta name="twitter:description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
 <meta name="twitter:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
-<link rel="stylesheet" href="site-mobile.css">
+<link rel="stylesheet" href="site-mobile.css"><link rel="stylesheet" href="site-button.css">
 <script src="site-mobile-nav.js"></script>
 <script src="site-header.js"></script>
 <script src="booking-modal.js"></script>
@@ -138,8 +138,8 @@
 <img class="hero-img hero-img-mobile" src="assets/photos/hero-campus-couple.png" style="display:none;width:100%;max-width:220px;aspect-ratio:4/5;border-radius:8px;object-fit:cover;box-shadow:var(--shadow-lifted);margin:16px auto">
 <p style="color:var(--text-muted-inverse);font-size:18px;margin-top:24px;max-width:460px">Get personally matched with a vetted college admissions advisor based on your goals, needs, personality, and budget — or browse our network and choose for yourself.</p>
 <div class="hero-ctas" style="display:flex;gap:16px;margin-top:32px;flex-wrap:wrap">
-<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="lg" hint-size="220px,56px">Get Matched — It's Free</x-import></a>
-<a href="./Tutors.dc.html"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="secondary" size="lg" hint-size="200px,56px">Browse Advisors</x-import></a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
+<a href="./Tutors.dc.html" class="am-btn am-btn--secondary am-btn--lg">Browse Advisors</a>
 </div>
 <div ref="{{ statsRef }}" class="hero-stats" style="display:grid;grid-template-columns:216px 1fr;column-gap:16px;row-gap:20px;margin-top:48px;justify-content:start;justify-items:start">
 <div style="display:flex;gap:12px;align-items:center" class="stat-colleges"><div style="width:40px;height:40px;border-radius:50%;background:var(--ivory);display:flex;align-items:center;justify-content:center;flex-shrink:0"><img src="https://unpkg.com/lucide-static@0.462.0/icons/landmark.svg" style="width:20px;height:20px"></div><div><div style="color:var(--ivory);font-family:var(--font-serif-display);font-size:30px;line-height:1">{{ stat100 }}+</div><div style="color:var(--text-muted-inverse);font-size:13px">colleges represented</div></div></div>
@@ -194,7 +194,7 @@
 </div>
 </div>
 <div style="text-align:center;margin-top:32px">
-<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="lg" hint-size="220px,52px">Get Matched — It's Free</x-import></a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
 </div>
 </section>
 
@@ -268,7 +268,7 @@
 
 </div>
 <div style="text-align:center;margin-top:24px;margin-bottom:-16px">
-<a href="./Tutors.dc.html" style="display:inline-flex;align-items:center;justify-content:center;height:47px;padding:0 24px;border:1.5px solid var(--forest-900);border-radius:4px;color:var(--forest-900);font-family:Jost,-apple-system,Helvetica,Arial,sans-serif;font-size:16px;font-weight:500;text-decoration:none">Browse Advisors</a>
+<a href="./Tutors.dc.html" class="am-btn am-btn--secondary-light am-btn--md">Browse Advisors</a>
 </div>
 </section>
 
@@ -306,8 +306,8 @@
 <div style="text-align:center;margin-top:24px;max-width:1080px;margin-left:auto;margin-right:auto">
 <p style="color:var(--text-muted);font-size:14.5px;margin:0 0 16px">Need support across multiple areas? Your advisor can stay with you throughout the application process.</p>
 <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
-<a href="https://learn.almayaadmissions.com/book/free-consultation"><x-import component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button" variant="primary" size="md" hint-size="200px,44px">Get Matched — It's Free</x-import></a>
-<a href="./Tutors.dc.html" style="display:inline-flex;align-items:center;justify-content:center;height:47px;padding:0 24px;border:1.5px solid var(--forest-900);border-radius:4px;color:var(--forest-900);font-family:Jost,-apple-system,Helvetica,Arial,sans-serif;font-size:16px;font-weight:500;text-decoration:none">Browse Advisors</a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--md">Get Matched — It's Free</a>
+<a href="./Tutors.dc.html" class="am-btn am-btn--secondary-light am-btn--md">Browse Advisors</a>
 </div>
 </div>
 </section>
@@ -352,7 +352,7 @@
 <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;position:relative;z-index:1"><div style="width:56px;height:56px;border-radius:50%;background:var(--copper);color:var(--ivory);font-family:var(--font-serif-display);font-size:24px;display:flex;align-items:center;justify-content:center">3</div><div style="color:var(--ivory);font-size:14px">Receive personalized matches</div></div>
 </div>
 <div style="display:flex;justify-content:center">
-<a href="https://learn.almayaadmissions.com/book/free-consultation" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;background:var(--copper);border-radius:4px;color:var(--ivory);font-size:16px;font-weight:500;cursor:pointer" style-hover="background:var(--copper-600,#96492f)">Book a Time Here</a>
+<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--md">Book a Time Here</a>
 </div>
 <div style="text-align:center;margin-top:20px"><a href="./Tutors.dc.html" style="color:var(--sand);font-size:15px">Already know what you're looking for? Browse Advisors →</a></div>
 </div>

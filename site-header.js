@@ -52,19 +52,15 @@
   const BOOKING_URL =
     "https://learn.almayaadmissions.com/book/free-consultation";
 
-  // Mirrors AlmayyaDesignSystem.Button {variant:'primary', size:'sm'} from the
-  // design-system bundle. Inlined rather than x-import'd because the DC runtime
-  // only mounts x-import tags it parsed from the page — it does not walk DOM
-  // built by a custom element. Keep in sync with _ds/.../_ds_bundle.js Button.
-  //
-  // That constraint no longer applies to the React component below, which can
-  // call AlmayyaDesignSystem_fd8d10.Button directly — but swapping it out
-  // changes the emitted DOM, so it is deliberately left for a follow-up rather
-  // than folded into a port that is meant to be behaviour-identical.
+  // The CTA's appearance lives in site-button.css (`.am-btn`), which every page
+  // links from its <helmet> — this file used to carry a hand-copied duplicate of
+  // AlmayyaDesignSystem.Button {variant:'primary', size:'sm'}, which is exactly
+  // the kind of copy that let button sizing drift apart site-wide in the first
+  // place. The `.am-hdr-cta` class is kept as a pure hook: nothing styles it
+  // here, but site-mobile.css narrows the CTA through `.am-hdr-cta-wrap button`
+  // and the class documents which button that is.
   const CSS = `
 site-header{display:contents}
-.am-hdr-cta{font-family:var(--font-sans-body);font-weight:500;letter-spacing:0.02em;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius-md);transition:background 0.15s ease,color 0.15s ease,border-color 0.15s ease;padding:8px 16px;font-size:var(--text-small);background:var(--accent-cta);color:var(--ivory)}
-.am-hdr-cta:hover{background:var(--accent-cta-hover)}
 `;
 
   const injectCss = () => {
@@ -132,7 +128,7 @@ site-header{display:contents}
 ${NAV.map((n) => `<a href="${esc(n.href)}" style="${n.key === active ? NAV_LINK_ACTIVE : NAV_LINK}">${esc(n.label)}</a>`).join("\n")}
 </nav>
 <div class="am-hdr-cta-wrap" style="display:flex;gap:12px">
-<a href="${esc(ctaHref)}"${ctaClass ? ` class="${esc(ctaClass)}"` : ""}><button class="am-hdr-cta">${esc(ctaLabel)}</button></a>
+<a href="${esc(ctaHref)}"${ctaClass ? ` class="${esc(ctaClass)}"` : ""}><button class="am-hdr-cta am-btn am-btn--primary am-btn--sm">${esc(ctaLabel)}</button></a>
 </div>`;
 
   // `{{ hole }}` values arrive verbatim if the page's Component has not

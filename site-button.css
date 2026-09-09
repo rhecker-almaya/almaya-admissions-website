@@ -1,0 +1,180 @@
+/* Almaya — the CTA button, as one shared component.
+   ==================================================================
+   Every call-to-action on the site is now a single element carrying
+   `.am-btn` plus one variant and one size:
+
+       <a href="…" class="am-btn am-btn--primary am-btn--lg">Get Matched</a>
+
+   Variants: --primary | --secondary | --secondary-light | --dark
+   Sizes:    --sm | --md | --lg          Modifier: --block (full width)
+
+   Loaded from every page's <helmet>, immediately after site-mobile.css so
+   the responsive block at the bottom of this file is the last word on
+   button geometry. Nothing else in the codebase may set a CTA's height,
+   padding, font-size, radius or border — if a call site needs a different
+   size, add a size here rather than an inline style.
+
+   WHY THIS FILE EXISTS
+   --------------------
+   Buttons had drifted into nine primary treatments and three secondary
+   ones. Measured in Chrome at 1280px, before this file:
+
+     hero primary   58.5px   (design-system Button, size lg)
+     hero secondary 60.5px   (same Button, but +1px border on each edge)
+     hero secondary 52px     (hand-rolled <a> with a hard height:52px)
+     hero secondary 47px     (same anchor, index.html only)
+     mid-page       47px     (design-system Button, size md)
+     "Book a Time"  52px     (hand-rolled copper <a>)
+     "Work With X"  52px     (forest-900 <a>, radius 6px, weight 600)
+     Tutors card    46.8px   (same treatment, different padding)
+     founder card   38px     (same treatment, different font)
+
+   Three separate causes, all fixed below:
+
+   1. The design-system Button sets no `line-height`, so it inherited
+      `body { line-height: 1.6 }` and its height was font-size dependent
+      (18px x 1.6 + 32px padding = 60.8px). `.am-btn` sets `line-height:1`
+      and an explicit `height`, so a size is a size.
+   2. Secondary buttons carried a border that primary buttons did not, and
+      `box-sizing` was content-box, so the border added 2px of height. The
+      base rule below gives *every* button a 1px transparent border and
+      `box-sizing:border-box`, so bordered and unbordered match exactly.
+   3. Hand-rolled anchors hard-coded `height`, and the responsive layer
+      keyed off those literal pixel strings
+      (`a[style*="height: 52px"]` in site-mobile.css). Those selectors are
+      gone; the media block at the bottom of this file targets the classes.
+
+   Geometry is the design system's intent with the ambiguity removed —
+   `_ds/…/_ds_bundle.js` Button, sizes sm/md/lg, variants primary /
+   secondary / secondary-light. `--dark` is the forest-900 fill the advisor
+   cards and profile pages use; it has no design-system equivalent yet. */
+
+.am-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* No `gap`. The design-system Button sets `gap: 8px` for an icon + label,
+     but no CTA here has an icon and the gap is actively wrong for templated
+     labels: the DC runtime wraps every `{{ hole }}` in its own <span>, so
+     `Work With {{ t.firstName }}` is two flex items and the gap renders as
+     "Work With<8px>Arjun" on top of the space already in the text.
+
+     A label that mixes text and a hole must be wrapped in a single <span> so
+     it stays one flex item — flexbox strips the whitespace at an item
+     boundary, so without the wrapper the label reads "Work WithArjun" with
+     gap:0 and "Work With  Arjun" with gap:8px. Neither is right.
+     Tutors.dc.html is the only such call site today. */
+  font-family: var(--font-sans-body);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  /* transparent by default so a bordered variant is the same height as an
+     unbordered one — do not move this into the variants */
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* ---------- sizes ----------
+   Height is explicit rather than derived from padding + line-height, which
+   is what made the old buttons diverge whenever a font-size changed. */
+.am-btn--sm {
+  height: 40px;
+  padding: 0 16px;
+  font-size: var(--text-small); /* 14px */
+}
+.am-btn--md {
+  height: 48px;
+  padding: 0 24px;
+  font-size: var(--text-body); /* 16px */
+}
+.am-btn--lg {
+  height: 56px;
+  padding: 0 32px;
+  font-size: var(--text-body-lg); /* 18px */
+}
+
+/* ---------- variants ---------- */
+.am-btn--primary {
+  background: var(--accent-cta);
+  color: var(--ivory);
+}
+.am-btn--primary:hover {
+  background: var(--accent-cta-hover);
+}
+
+/* on dark grounds (forest hero bands, footers) */
+.am-btn--secondary {
+  background: transparent;
+  color: var(--ivory);
+  border-color: var(--ivory);
+}
+.am-btn--secondary:hover {
+  background: rgba(247, 243, 234, 0.1);
+}
+
+/* on light grounds (ivory sections) */
+.am-btn--secondary-light {
+  background: transparent;
+  color: var(--forest-900);
+  border-color: var(--forest-900);
+}
+.am-btn--secondary-light:hover {
+  background: var(--bg-muted);
+}
+
+/* solid forest fill — advisor cards, profile "Work With X", founder cards */
+.am-btn--dark {
+  background: var(--forest-900);
+  color: var(--ivory);
+}
+.am-btn--dark:hover {
+  background: var(--forest-800);
+}
+
+/* ---------- modifier ---------- */
+.am-btn--block {
+  width: 100%;
+}
+
+/* ---------- responsive ----------
+   Replaces the `a[style*="height: 47px"]` / `a[style*="height: 52px"]`
+   rules that used to live in site-mobile.css:143-152. Those matched the
+   literal inline pixel strings the hand-rolled anchors carried, so they
+   applied to the anchors and silently missed every design-system Button
+   next to them — which is why the two halves of a hero CTA pair ended up
+   different widths on a phone (FIXES.md A8).
+
+   Everything md and up goes full width and stacks. `flex-shrink:0` is what
+   forces the stack: the hero pairs sit in `display:flex;flex-wrap:wrap` rows
+   where `width:100%` alone still lets both buttons shrink back onto one
+   line. Small buttons keep their intrinsic width — they are the header CTA
+   and the in-card actions, neither of which should span the viewport.
+
+   Do NOT reach for `flex-basis:100%` here. It reads as a *height* inside a
+   column-direction flex parent, and the Institutions contact form is one:
+   the Send button collapsed to 44px (its min-height floor) instead of 52px,
+   because basis-100%-then-shrink resolved smaller than the fixed height. */
+@media (max-width: 900px) {
+  .am-btn--md,
+  .am-btn--lg {
+    height: 52px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  /* 44px is the minimum comfortable tap target */
+  .am-btn--sm {
+    height: 44px;
+  }
+  /* the header CTA is a flex item in a row that must never wrap */
+  header .am-btn {
+    width: auto;
+  }
+}

@@ -59,6 +59,7 @@
           content="https://almayaadmissions.com/assets/og-preview.jpg"
         />
         <link rel="stylesheet" href="site-mobile.css" />
+        <link rel="stylesheet" href="site-button.css" />
         <script src="site-mobile-nav.js"></script>
         <script src="site-header.js"></script>
         <script src="booking-modal.js"></script>
@@ -113,12 +114,19 @@
             filter: saturate(1.35) contrast(1.05);
             transform: scale(1.06);
           }
-          .cta-lift {
+          /* .cta-lift is the hover-lift effect only. It is applied both to
+             .am-btn CTAs (hero) and to the header's wrapper <a> (via
+             data-cta-class), so it must not carry geometry: this <style>
+             loads after site-button.css and would otherwise win the cascade
+             on display/radius and flatten the buttons back to inline-block. */
+          .cta-lift:not(.am-btn) {
             display: inline-block;
+            border-radius: 4px;
+          }
+          .cta-lift {
             transition:
               transform 0.25s ease,
               filter 0.25s ease;
-            border-radius: 4px;
           }
           .cta-lift:hover {
             transform: translateY(-3px);
@@ -507,23 +515,15 @@
               justify-content: center;
             "
           >
-            <a href="#workshop" class="cta-lift"
-              ><x-import
-                component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button"
-                variant="primary"
-                size="lg"
-                hint-size="220px,56px"
-                >See the Workshop</x-import
-              ></a
+            <a
+              href="#workshop"
+              class="cta-lift am-btn am-btn--primary am-btn--lg"
+              >See the Workshop</a
             >
-            <a href="#contact" class="cta-lift"
-              ><x-import
-                component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button"
-                variant="secondary"
-                size="lg"
-                hint-size="220px,56px"
-                >Schedule a Time to Talk</x-import
-              ></a
+            <a
+              href="#contact"
+              class="cta-lift am-btn am-btn--secondary am-btn--lg"
+              >Schedule a Time to Talk</a
             >
           </div>
         </div>
@@ -2165,14 +2165,9 @@
                   placeholder="Interested in learning more about the workshop?"
                 ></textarea>
               </div>
-              <x-import
-                component-from-global-scope="AlmayyaDesignSystem_fd8d10.Button"
-                variant="primary"
-                size="lg"
-                hint-size="200px,52px"
-                type="submit"
-                >Send</x-import
-              >
+              <button type="submit" class="am-btn am-btn--primary am-btn--lg">
+                Send
+              </button>
               <p style="font-size: 12px; color: var(--text-muted); margin: 0">
                 Sends to info@almayaadmissions.com. We reply within one business
                 day.

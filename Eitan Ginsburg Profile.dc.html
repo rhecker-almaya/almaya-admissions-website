@@ -24,7 +24,7 @@
 <meta name="twitter:title" content="Eitan Ginsburg | Almaya Admissions">
 <meta name="twitter:description" content="Work with Eitan Ginsburg. The first college application marketplace built to find your trained mentor at a budget that works for you.">
 <meta name="twitter:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
-<link rel="stylesheet" href="site-mobile.css">
+<link rel="stylesheet" href="site-mobile.css"><link rel="stylesheet" href="site-button.css">
 <script src="site-mobile-nav.js"></script>
 <script src="site-header.js"></script>
 <script src="booking-modal.js"></script>
@@ -92,7 +92,7 @@ a:hover{color:var(--copper-600)}
 <div style="text-align:center;padding:28px 40px 32px;border-top:1px solid var(--border-subtle)">
 <h2 style="font-family:var(--font-serif-display);font-size:26px;color:var(--forest-900);margin:0 0 4px">Work with Eitan</h2>
 <p style="font-size:15px;color:var(--text-muted);margin:0 0 12px;max-width:460px;margin-left:auto;margin-right:auto">Book directly with Eitan for personalized college admissions guidance.</p>
-<a href="https://learn.almayaadmissions.com/courses/college-guidance-with-eitan-6a87ba3ef1c854f803f917db" onClick="{{ onOpenBooking }}" style="display:inline-block;background:var(--forest-900);color:var(--ivory);font-size:15px;font-weight:600;padding:14px 36px;border-radius:6px;text-decoration:none;cursor:pointer">Work With Eitan</a>
+<a href="https://learn.almayaadmissions.com/courses/college-guidance-with-eitan-6a87ba3ef1c854f803f917db" onClick="{{ onOpenBooking }}" class="am-btn am-btn--dark am-btn--md">Work With Eitan</a>
 <sc-if value="{{ bookingOpen }}" hint-placeholder-val="{{ false }}">
 <div onClick="{{ onCloseBooking }}" style="position:fixed;inset:0;z-index:2000;background:rgba(23,57,47,0.72);display:flex;align-items:flex-start;justify-content:center;padding:32px 20px;overflow:auto">
 <div onClick="{{ stopClose }}" style="position:relative;width:100%;max-width:640px;background:var(--ivory);border-radius:8px;box-shadow:0 24px 60px rgba(0,0,0,0.35);margin:auto;max-height:min(88vh,860px);display:flex;flex-direction:column;overflow:hidden">

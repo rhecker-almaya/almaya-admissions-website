@@ -140,16 +140,13 @@ video {
     padding-left: 0 !important;
   }
 
-  /* ---- tap targets ---- */
-  a[style*="height: 38px"],
-  a[style*="height: 47px"] {
-    height: 48px !important;
-  }
-  a[style*="height: 52px"],
-  a[style*="height: 56px"] {
-    height: 52px !important;
-    width: 100% !important;
-  }
+  /* ---- tap targets ----
+     The `a[style*="height: 47px"]` / `a[style*="height: 52px"]` rules that
+     used to live here are gone. They keyed on the literal pixel string in a
+     hand-rolled anchor's inline style, so they resized those anchors and
+     silently missed the design-system <button> standing next to them — the
+     mobile half of FIXES.md A8. CTAs now carry `.am-btn` and their responsive
+     sizing lives with the rest of the button in site-button.css. */
   button {
     min-height: 44px;
   }
