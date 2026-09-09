@@ -638,6 +638,12 @@ every pixel it was short now clips instead. Measured across 7 pages × 9 widths:
   a plain class rule. Verified the drawer still carries the CTA: `site-mobile-nav.js` reads it out
   of the DOM, so hiding it visually does not remove it from the menu.
 
+  **Reverted 2026-09-08 by request.** The hide rule is deleted; the Institutions CTA is now visible
+  in the mobile header again. The 128px shortfall measured above is real and unaddressed, so the
+  bar is expected to be tight or overflowing at narrow widths until the label is shortened. Do not
+  re-add the rule without asking — shorten `data-cta-label` on
+  `Institutions.dc.html:106` instead.
+
 **Rejected: ellipsizing the logo.** The obvious alternative was to let the wordmark shrink, since
 it is the only flexible item left once the CTA is `flex-shrink:0`. Implemented and measured, it
 erases the brand: **100 of 143px** of "Almaya Admissions" hidden at 320px on `index`, and
@@ -847,6 +853,45 @@ header still compacts past 360px and the three worry bubbles still drop in.
   A6, and left alone. Note the shape: it is `.sticky-panel{position:static;height:auto}`, i.e. the
   exact rule A6 says to add to `Institutions.dc.html` — it was written once, on the wrong page.
   Another instance of the C6 drift. `How It Works.dc.html:50-54` is the copy that does something.
+
+#### A6.1 — Institutions: workshop stock photos deleted ✅ *(uncommitted)*
+
+Not an audit item — your call, "delete the stock image cards with the hover zoom behavior, they're
+not needed at all". Same section as A6 (`#workshop`), so logged alongside it.
+
+The three `.wk-thumb` cards were one per walkthrough step: `workshop-insight.jpg` (Part One),
+`workshop-strategy.jpg` (Part Two), `workshop-writing.jpg` (Part Three) — each a
+`max-width:420px`, `aspect-ratio:4/3` framed image that scaled to `1.05` on hover.
+
+- The three wrapper `<div>`s and their `<img>`s — gone. Each step's `hiw-heading` now sits directly
+  under its timestamp; the steps are otherwise untouched (still `flex-direction:column`, gap 56px
+  from A6).
+- The `.wk-thumb` / `.wk-thumb:hover` rules in the page `<style>` — deleted, zero remaining users.
+- `.wk-grid{grid-template-columns:1fr 1fr!important}` in the 860px block — **already dead before
+  this change**; no `.wk-grid` element existed anywhere in the repo. Swept out while adjacent.
+
+**Kept deliberately, both also stock and both easy to confuse with the above:**
+
+- `workshop-insight.jpg` as the full-bleed background of `#contact` — a background under a 0.82–0.88
+  forest gradient, not a card, and not hover-animated.
+- The `.founder-photo` avatars for Razi and Eitan. They have their own hover transform
+  (`saturate(1.35) scale(1.06)`), so they match "hover zoom" on a grep — but they are real team
+  photos, not stock.
+
+**Knock-on: `assets/photos/workshop-strategy.jpg` is now referenced by zero pages — and it is
+18.9 MB**, the largest file in the repo by a factor of eight. It was only ever used here.
+`workshop-writing.jpg` (7.3 MB) survives on `About Us.dc.html`; `workshop-insight.jpg` survives in
+the `#contact` background above. Same disposition as the orphaned 8 MB `uploads/` stock photo
+already listed above: tracked in git, so deletion is recoverable, but it is licensed art — left in
+place pending your call. Worth noting the page was shipping ~28 MB of un-resized JPEGs before this.
+
+**Verified:** the file's own grep — no `wk-thumb`, `wk-grid`, or `workshop-strategy` reference
+remains anywhere outside `.git`. The diff is six deleted lines, all of them removals.
+**Not verified in a browser.** This is pure subtraction from static markup with no `{{ binding }}`,
+`ref`, or JS touched, so there is no state to break — but per this doc's own track record that is
+an argument, not a measurement. The vertical rhythm of the walkthrough is now three text-only
+steps under one step that still carries the founder cards; **someone should eyeball whether that
+first step now looks unbalanced against the other three.**
 
 ### Decisions taken along the way
 

@@ -352,21 +352,6 @@ header > div:nth-last-child(1 of :not(.am-navtoggle)) button {
   header > a:first-child img {
     height: 26px !important;
   }
-
-  /* Institutions' CTA reads "Talk to Us About Our Workshop" — 217px of nowrap
-     text. The header cannot offer that next to the logo and a 44px toggle: it
-     is ~128px short at 320px, and no amount of tightening recovers that. The
-     mobile drawer already carries a copy — site-mobile-nav.js reads the CTA out
-     of the DOM, so `display:none` here does not remove it from the drawer — so
-     drop it from the bar rather than clip it. This is audit item A7, and it is
-     deliberately scoped to the long-label CTA: every other page fits.
-
-     `!important` is required — site-header.js emits the wrapper with an inline
-     style="display:flex", which outranks a plain class rule. Kept as its own
-     rule so an unsupported :has() cannot invalidate anything else here. */
-  .am-hdr-cta-wrap:has(a.cta-lift) {
-    display: none !important;
-  }
 }
 
 /* Below ~360px the short "Get Matched" CTA is the last 16px too wide. Buy that
