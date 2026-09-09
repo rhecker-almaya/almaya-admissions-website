@@ -108,6 +108,7 @@
 }
 .am-btn--primary:hover {
   background: var(--accent-cta-hover);
+  color: var(--ivory);
 }
 
 /* on dark grounds (forest hero bands, footers) */
@@ -118,6 +119,7 @@
 }
 .am-btn--secondary:hover {
   background: rgba(247, 243, 234, 0.1);
+  color: var(--ivory);
 }
 
 /* on light grounds (ivory sections) */
