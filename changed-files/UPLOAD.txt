@@ -1,0 +1,9 @@
+Files changed in this round. Drop each into the repo at the same path (folders shown):
+
+- index.html
+- README.md
+- DIRECT-BOOKING.md  (new)
+- _ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/colors.css
+- all 11 "* Profile.dc.html" files
+
+Easiest: unzip, open the unzipped folder, select everything inside it, drag onto the repo's main page on github.com ("Add file > Upload files"). GitHub keeps the folder path for colors.css. Commit to main; Netlify redeploys automatically.
