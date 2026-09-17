@@ -39,7 +39,7 @@ To deploy: drag this folder into Netlify, or connect this repo to Netlify with
 | `site-header.js` | **The site header, shared by all 18 pages.** Defines a `<site-header>` element; edit the nav links, logo, or CTA here and every page changes |
 | `site-mobile.css`, `site-mobile-nav.js` | Shared mobile nav + responsive overrides |
 | `booking-modal.js` | Shared "Get Matched" consultation modal. Any link whose `href` is the booking URL opens it in an overlay instead of navigating |
-| `wise-booking.js` | Custom booking widget on advisor profiles — talks to the Wise API. **See `BOOKING.md` before touching this.** |
+| `wise-booking.js` | Direct-booking widget (Wise API). **Not mounted on any page right now** — profiles send visitors to "Get matched now" instead. See `DIRECT-BOOKING.md` to re-enable, and `BOOKING.md` for the API. |
 | `image-slot.js` | Drag-and-drop image placeholder component |
 | `assets/` | Logos, advisor headshots (`assets/experts/`), team photos, school logos, textures, OG preview image |
 | `_redirects` | Netlify redirect rules |
@@ -98,10 +98,12 @@ padding 44–64px. Flat color fields — no gradients, no textures behind text.
 
 ## Booking
 
-Advisor profile pages embed a custom booking widget (`wise-booking.js`) that
-reads live session data from the Wise public API and books in Almaya's own UI.
+Every CTA on the site — including the bottom of each advisor profile ("Want to
+work with <Name>?" → "Get matched now") — opens the shared free-consultation
+modal. Direct per-advisor booking is parked; `DIRECT-BOOKING.md` has the Wise
+ids and the exact markup to bring it back for one advisor at a time.
 
-**Read `BOOKING.md`.** It documents the required API headers, the slot-offset
+**Read `BOOKING.md`** before touching `wise-booking.js`. It documents the required API headers, the slot-offset
 decoding, why instructor id comes from the availability response and not the
 course owner, and the `data-payments="on"` flag that switches the last step from
 "email info@almayaadmissions.com" to real Stripe checkout. Online payments are
