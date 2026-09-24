@@ -96,6 +96,14 @@ Rules that matter if you edit these files:
 Radii 4px (buttons/inputs/cards) to 8–12px (image + feature cards). Section
 padding 44–64px. Flat color fields — no gradients, no textures behind text.
 
+## Meta Pixel (tracking)
+
+Pixel ID `1608113310765242`. The official snippet sits in the `<head>` of
+every page (before `</head>`, outside `<x-dc>`) so it fires before anything
+else renders. **When you add a new page, paste the same snippet into its
+`<head>`.** As a backup, `site-header.js` loads the pixel if a page forgot it
+(it checks `window.fbq` first, so pages never count twice).
+
 ## Booking
 
 Every CTA on the site — including the bottom of each advisor profile ("Want to

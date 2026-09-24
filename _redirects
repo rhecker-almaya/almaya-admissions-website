@@ -1,3 +1,6 @@
+/get-started  /Landing%20Page%20v2.dc.html  200
+/thank-you  /Booking%20Confirmed.dc.html  200
+/landing  /get-started  301
 /Free%20Consultation.dc.html  /  301!
 /LandingPage.dc.html  /  301!
 /  /index.html  200

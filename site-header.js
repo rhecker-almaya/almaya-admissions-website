@@ -37,6 +37,21 @@
   if (window.__amSiteHeader) return;
   window.__amSiteHeader = true;
 
+  // Meta Pixel safety net: every page already has the pixel in its <head>.
+  // If a new page is added without it, the shared header loads it here.
+  // `window.fbq` exists when the <head> copy ran, so this never double-counts.
+  if (!window.fbq) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', '1608113310765242');
+    window.fbq('track', 'PageView');
+  }
+
   const NAV = [
     { key: "why", href: "Why Almaya.dc.html", label: "Why Almaya" },
     { key: "how", href: "How It Works.dc.html", label: "How It Works" },
@@ -72,7 +87,7 @@ site-header{display:contents}
   };
 
   const NAV_LINK =
-    "color:var(--text-muted-inverse);font-size:18px;white-space:nowrap";
+    "color:var(--text-muted-inverse);font-size:15px;white-space:nowrap";
   // --copper-300, not --copper: the base copper is 1.7:1 on the header green,
   // i.e. the "you are here" link was 2.5x *less* legible than the ones that
   // aren't selected (--text-muted-inverse, 4.3:1). The tint reads at 4.9:1.
