@@ -92,7 +92,7 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--copper);margin-bottom:16px">Our Network</div>
 <h1 style="font-family:var(--font-serif-display);font-weight:400;font-size:clamp(2.1rem,3.8vw,3.2rem);color:var(--ivory);line-height:1.22;margin:0">Browse Our Advisor Network</h1>
 <p style="color:var(--text-muted-inverse);font-size:16px;line-height:1.7;margin:18px auto 0;max-width:560px">Every Almaya advisor is personally vetted for coaching ability, communication, and student fit. Compare advisors by price, specialty, and experience — or get personally matched for free.</p>
-<div style="margin-top:28px"><a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a></div>
+<div style="margin-top:28px"><a href="https://api.leadconnectorhq.com/widget/booking/waXfk5QQ8VhoYMOXXoRN" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a></div>
 </div>
 </section>
 
@@ -146,7 +146,7 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <div style="background:var(--forest-900);border-radius:12px;padding:40px;text-align:center">
 <h3 style="font-family:var(--font-serif-display);font-size:24px;color:var(--ivory);margin:0 0 10px">Not sure who fits?</h3>
 <p style="color:var(--text-muted-inverse);font-size:15.5px;line-height:1.6;margin:0 0 22px">Hop on a complimentary call with one of our founders, and they'll pair you with the right advisor.</p>
-<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--md">Get Matched — It's Free</a>
+<a href="https://api.leadconnectorhq.com/widget/booking/waXfk5QQ8VhoYMOXXoRN" class="am-btn am-btn--primary am-btn--md">Get Matched — It's Free</a>
 </div>
 </div>
 
@@ -191,11 +191,19 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 </div>
 <div style="text-align:center;margin-top:36px">
 <h3 style="font-family:var(--font-serif-display);font-size:22px;color:var(--forest-900);margin:0 0 18px">Still deciding? Get matched for free.</h3>
-<a href="https://learn.almayaadmissions.com/book/free-consultation" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
+<a href="https://api.leadconnectorhq.com/widget/booking/waXfk5QQ8VhoYMOXXoRN" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
 </div>
 </section>
 
 
+<section id="book" data-screen-label="Book a consultation" style="background: var(--ivory); padding: 88px 24px; scroll-margin-top: 72px">
+  <div style="max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+    <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper)">Free · 20–30 minutes</div>
+    <h2 style="font-family: var(--font-serif-display); font-weight: 500; font-size: clamp(34px, 5vw, 52px); line-height: 1.05; color: var(--forest-900); margin: 0; text-wrap: balance">Book your free <em>consultation</em></h2>
+    <p style="font-size: 17px; line-height: 1.6; color: var(--text-muted); margin: 0; max-width: 540px; text-wrap: pretty">Talk with Razi or Eitan, our co-founders, about your student and goals. We'll personally match you with the right advisors.</p>
+    <div data-am-inline-booking="" style="width: 100%; margin-top: 22px; min-height: 720px; background: #fff; border: 1px solid var(--border-subtle); border-radius: 8px; box-shadow: var(--shadow-card); overflow: hidden"></div>
+  </div>
+</section>
 <footer class="site-footer" style="background:var(--copper-100);padding:14px 48px">
 <div style="max-width:1160px;margin:0 auto">
 <div class="footer-top" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:14px;border-bottom:1px solid rgba(59,45,31,0.14)">
@@ -208,7 +216,7 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/users.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">500+ families supported</span></div>
 <div style="display:flex;gap:8px;align-items:center"><img src="https://unpkg.com/lucide-static@0.462.0/icons/star.svg" style="width:16px;height:16px"><span style="color:var(--forest-900);font-size:14px">5/5 average rating</span></div>
 </div>
-<a href="https://learn.almayaadmissions.com/book/free-consultation" style="color:var(--forest-900);font-size:14px;font-weight:600">Get Matched — It's Free →</a>
+<a href="https://api.leadconnectorhq.com/widget/booking/waXfk5QQ8VhoYMOXXoRN" style="color:var(--forest-900);font-size:14px;font-weight:600">Get Matched — It's Free →</a>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;flex-wrap:wrap;gap:12px">
 <div style="font-size:12px;color:var(--text-muted)">© Almaya Admissions. All rights reserved.</div>
@@ -236,12 +244,11 @@ class Component extends DCLogic {
 
   tutors = [
     { name: 'Arjun Jaswal', href: './Arjun Jaswal Profile.dc.html', school: 'Cornell', photo: './assets/experts/arjun-jaswal.jpeg', tierKey: 't1', rate: 90, specialty: 'Transfer Applications & Essays' },
-    { name: 'Neva Hidajat', href: './Neva Hidajat Profile.dc.html', school: 'Stanford', photo: './assets/experts/neva-hidajat.jpg', tierKey: 't1', rate: 85, specialty: 'Personal Statements & Supplements' },
-    { name: 'Jacob Feit Mann', href: './Jacob Feit Mann Profile.dc.html', school: 'Yale', photo: './assets/experts/jacob-feit-mann.jpeg', tierKey: 't1', rate: 100, specialty: 'STEM Applicants & Essays' },
-    { name: 'Jonathan Mizrahi', href: './Jonathan Mizrahi Profile.dc.html', bookHref: './Jon Booking.dc.html', school: 'NYU', photo: './assets/experts/jonathan-mizrahi.jpg', tierKey: 't1', rate: 80, specialty: 'Storytelling & Screenwriting Craft' },
-    { name: 'Arianna Zarka', href: './Arianna Zarka Profile.dc.html', school: 'Cornell', photo: './assets/experts/arianna-zarka.jpeg', tierKey: 't2', rate: 150, specialty: 'Essay Coaching & Storytelling' },
+    { name: 'Neva Hidajat', href: './Neva Hidajat Profile.dc.html', school: 'Stanford', photo: './assets/experts/neva-hidajat.jpg', tierKey: 't1', rate: 95, specialty: 'Personal Statements & Supplements' },
+    { name: 'Jonathan Mizrahi', href: './Jonathan Mizrahi Profile.dc.html', bookHref: './Jon Booking.dc.html', school: 'NYU', photo: './assets/experts/jonathan-mizrahi.jpg', tierKey: 't1', rate: 90, specialty: 'Storytelling & Screenwriting Craft' },
+    { name: 'Arianna Zarka', href: './Arianna Zarka Profile.dc.html', school: 'Cornell', photo: './assets/experts/arianna-zarka.jpeg', tierKey: 't3', rate: 200, specialty: 'Essay Coaching & Storytelling' },
     { name: 'Samantha Lofman', href: './Samantha Lofman Profile.dc.html', school: 'Dartmouth', photo: './assets/experts/samantha-lofman.jpg', tierKey: 't2', rate: 120, specialty: 'Creative Writing & Storytelling' },
-    { name: 'Joseph Schlesinger', href: './Joseph Schlesinger Profile.dc.html', school: 'NYU', photo: './assets/experts/joseph-schlesinger.jpeg', tierKey: 't2', rate: 100, specialty: 'Writing & Editing Craft' },
+    { name: 'Joseph Schlesinger', href: './Joseph Schlesinger Profile.dc.html', school: 'NYU', photo: './assets/experts/joseph-schlesinger.jpeg', tierKey: 't2', rate: 105, specialty: 'Writing & Editing Craft' },
     { name: 'Gabriel Nagel', href: './Gabriel Nagel Profile.dc.html', school: 'Stanford', photo: './assets/experts/gabriel.png', tierKey: 't2', rate: 120, specialty: 'Essays & Passion Projects' },
     { name: 'Sarah Rosen', href: './Sarah Rosen Profile.dc.html', school: 'Yale', photo: './assets/experts/sarah-rosen.jpeg', tierKey: 't3', rate: 300, specialty: 'Application Strategy & Positioning' },
     { name: 'Eitan Ginsburg', href: './Eitan Ginsburg Profile.dc.html', school: 'NYU', photo: './assets/experts/eitan.png', tierKey: 't4', rate: 540, specialty: 'Storytelling & College Essays' },

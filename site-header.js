@@ -65,7 +65,7 @@
   ];
 
   const BOOKING_URL =
-    "https://learn.almayaadmissions.com/book/free-consultation";
+    "https://api.leadconnectorhq.com/widget/booking/waXfk5QQ8VhoYMOXXoRN";
 
   // The CTA's appearance lives in site-button.css (`.am-btn`), which every page
   // links from its <helmet> — this file used to carry a hand-copied duplicate of

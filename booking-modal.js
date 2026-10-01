@@ -154,7 +154,45 @@
     setTimeout(() => { window.location.href = THANK_YOU + (qs ? '?' + qs : ''); }, 400);
   });
 
+  // Pages with an inline booking section at the bottom: CTAs smooth-scroll
+  // there instead of opening the overlay. The iframe is injected into the
+  // empty container (outside React's children) the first time it nears view.
+  const inlineHost = () => document.querySelector('[data-am-inline-booking]');
+  const fillInline = host => {
+    if (!host || host.querySelector('iframe')) return;
+    loadEmbedJs();
+    const f = document.createElement('iframe');
+    f.src = BOOKING_URL;
+    f.id = 'waXfk5QQ8VhoYMOXXoRN_inline_' + Date.now();
+    f.title = 'Free consultation booking';
+    f.setAttribute('allow', 'payment');
+    f.setAttribute('scrolling', 'no');
+    f.style.cssText = 'display:block;width:100%;min-height:720px;border:0;overflow:hidden';
+    host.appendChild(f);
+  };
+  const watchInline = () => {
+    const host = inlineHost();
+    if (!host) return false;
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { fillInline(host); io.disconnect(); } }, { rootMargin: '1200px 0px' });
+      io.observe(host);
+    } else fillInline(host);
+    return true;
+  };
+  let tries = 0;
+  const poll = () => { if (!watchInline() && tries++ < 40) setTimeout(poll, 250); };
+  poll();
+  const scrollToInline = () => {
+    const host = inlineHost();
+    if (!host) return false;
+    fillInline(host);
+    const sec = host.closest('section') || host;
+    window.scrollTo({ top: sec.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+    return true;
+  };
+
   const open = () => {
+    if (scrollToInline()) return;
     loadEmbedJs();
     build();
     if (!frame.src) frame.src = BOOKING_URL;
@@ -191,4 +229,39 @@
 
   // exposed so page scripts can trigger it directly if ever needed
   window.openBookingModal = open;
+})();
+
+
+// Back-to-top button (every page that loads this file, desktop + mobile)
+(() => {
+  if (window.__amTopBtn) return; window.__amTopBtn = true;
+  const mount = () => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'am-top-btn';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>';
+    btn.style.cssText =
+      'position:fixed;right:24px;bottom:24px;z-index:1500;width:48px;height:48px;border-radius:50%;' +
+      'display:flex;align-items:center;justify-content:center;cursor:pointer;' +
+      'background:var(--forest-900,#17392F);color:var(--ivory,#F7F3EA);border:1px solid rgba(247,243,234,0.25);' +
+      'box-shadow:0 8px 24px rgba(15,38,31,0.25);opacity:0;transform:translateY(10px);pointer-events:none;' +
+      'transition:opacity .25s ease,transform .25s ease,background .2s ease';
+    btn.onmouseenter = () => { btn.style.background = 'var(--copper,#B85C3D)'; };
+    btn.onmouseleave = () => { btn.style.background = 'var(--forest-900,#17392F)'; };
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    const css = document.createElement('style');
+    css.textContent = '@media (max-width:640px){.am-top-btn{right:16px!important;bottom:16px!important;width:44px!important;height:44px!important}}';
+    document.head.appendChild(css);
+    document.body.appendChild(btn);
+    const update = () => {
+      const show = window.scrollY > window.innerHeight * 0.8 && !document.querySelector('.am-booking.is-open');
+      btn.style.opacity = show ? '1' : '0';
+      btn.style.transform = show ? 'none' : 'translateY(10px)';
+      btn.style.pointerEvents = show ? 'auto' : 'none';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  };
+  if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
 })();
