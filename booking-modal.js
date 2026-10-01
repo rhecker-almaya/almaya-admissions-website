@@ -1,3 +1,10 @@
+// Some pages set html,body{height:100%} + overflow-x:hidden, which makes BODY the
+// scroll container instead of the window. Always scroll whichever one is real.
+window.__amScroller = () => {
+  const bd = document.body;
+  return (bd && bd.scrollHeight > bd.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(bd).overflowY))
+    ? bd : (document.scrollingElement || document.documentElement);
+};
 // Almaya — shared "Get Matched" booking modal.
 //
 // Replaces the old Free Consultation page. Any link pointing at the booking URL
@@ -26,7 +33,13 @@
 
   const isTrigger = a => {
     if (!a) return false;
+    if (a.tagName === 'BUTTON') return a.hasAttribute('data-booking');
     if (a.hasAttribute('data-booking')) return true;
+    const raw = a.getAttribute('href') || '';
+    if (raw === '#book' || raw === '#booking' || raw === '#consultation') return true;
+    if (/leadconnectorhq\.com\/widget\/booking\//.test(a.href) || /calendly\.com/.test(a.href)) return true;
+    // text fallback: any "Get matched" / "free consultation" CTA opens the calendar
+    if ((!raw || raw === '#') && /get matched|free consultation|book a time/i.test(a.textContent || '')) return true;
     // compare resolved absolute URLs so relative/absolute forms both match
     return a.href === BOOKING_URL || a.href === BOOKING_URL + '/' || a.href.indexOf('learn.almayaadmissions.com/book/free-consultation') !== -1;
   };
@@ -48,7 +61,7 @@
       '@keyframes amBkSpin{to{transform:rotate(360deg)}}' +
       '.am-booking-panel{transform:translateY(14px);transition:transform .3s ease}' +
       '.am-booking.is-open .am-booking-panel{transform:none}' +
-      '@media (max-width:640px){.am-booking{padding:0!important}.am-booking-panel{height:100%!important;max-width:none!important;border-radius:0!important}.am-bk-faces{display:none!important}.am-bk-head{padding:16px 16px 14px!important}.am-bk-title{font-size:24px!important}}';
+      '@media (max-width:640px){.am-booking{padding:0!important}.am-booking-panel{height:100%!important;max-width:none!important;border-radius:0!important}.am-bk-faces{display:none!important}.am-bk-head{padding:16px 16px 14px!important}.am-bk-title{font-size:24px!important}.am-bk-foot{display:none!important}}';
     document.head.appendChild(css);
 
     const panel = document.createElement('div');
@@ -90,7 +103,7 @@
     head.appendChild(closeBtn);
 
     const body = document.createElement('div');
-    body.style.cssText = 'position:relative;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--ivory,#F7F3EA)';
+    body.style.cssText = 'position:relative;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--ivory,#F7F3EA);padding:18px';
     const loader = document.createElement('div');
     loader.style.cssText =
       'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;' +
@@ -105,13 +118,21 @@
     frame.setAttribute('title', 'Free consultation booking');
     frame.setAttribute('allowfullscreen', '');
     frame.setAttribute('allow', 'payment');
-    frame.style.cssText = 'position:relative;display:block;width:100%;height:100%;min-height:100%;border:0;background:transparent';
+    frame.style.cssText = 'position:relative;display:block;width:100%;height:100%;min-height:100%;border:1px solid rgba(23,57,47,0.12);border-radius:8px;background:#fff;box-shadow:0 6px 24px rgba(23,57,47,0.08)';
     frame.addEventListener('load', () => { loader.style.display = 'none'; });
 
     body.appendChild(loader);
     body.appendChild(frame);
+    const foot = document.createElement('div');
+    foot.className = 'am-bk-foot';
+    foot.style.cssText =
+      'flex-shrink:0;display:flex;justify-content:center;flex-wrap:wrap;gap:8px 28px;padding:14px 20px;' +
+      'border-top:1px solid rgba(23,57,47,0.1);background:var(--ivory,#F7F3EA);font-size:13px;color:var(--forest-900,#17392F)';
+    foot.innerHTML = ['No cost, no obligation', 'Personally matched advisors', 'Confirmation sent by email']
+      .map(t => '<span style="display:inline-flex;align-items:center;gap:8px"><span style="color:var(--copper,#B85C3D)">✓</span>' + t + '</span>').join('');
     panel.appendChild(head);
     panel.appendChild(body);
+    panel.appendChild(foot);
     overlay.appendChild(panel);
     document.body.appendChild(overlay);
 
@@ -154,10 +175,10 @@
     setTimeout(() => { window.location.href = THANK_YOU + (qs ? '?' + qs : ''); }, 400);
   });
 
-  // Pages with an inline booking section at the bottom: CTAs smooth-scroll
-  // there instead of opening the overlay. The iframe is injected into the
-  // empty container (outside React's children) the first time it nears view.
-  const inlineHost = () => document.querySelector('[data-am-inline-booking]');
+  // Pages with a booking section at the bottom: CTAs smooth-scroll there.
+  // The iframe goes into the empty container (React renders no children
+  // there, so re-renders leave it alone) the first time it nears view.
+  const inlineHost = () => document.querySelector('[data-am-inline-booking], [data-am-reveal-booking]');
   const fillInline = host => {
     if (!host || host.querySelector('iframe')) return;
     loadEmbedJs();
@@ -166,41 +187,37 @@
     f.id = 'waXfk5QQ8VhoYMOXXoRN_inline_' + Date.now();
     f.title = 'Free consultation booking';
     f.setAttribute('allow', 'payment');
-    f.setAttribute('scrolling', 'no');
-    f.style.cssText = 'display:block;width:100%;min-height:720px;border:0;overflow:hidden';
+    f.style.cssText = 'display:block;width:100%;height:760px;border:0';
     host.appendChild(f);
   };
-  const watchInline = () => {
-    const host = inlineHost();
-    if (!host) return false;
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { fillInline(host); io.disconnect(); } }, { rootMargin: '1200px 0px' });
-      io.observe(host);
-    } else fillInline(host);
-    return true;
-  };
-  let tries = 0;
-  const poll = () => { if (!watchInline() && tries++ < 40) setTimeout(poll, 250); };
-  poll();
+  // The calendar stays hidden until the visitor clicks "Pick a time" in the section.
+  const revealInline = () => openModal();
+  document.addEventListener('click', e => {
+    const t = e.target.closest && e.target.closest('[data-am-reveal-booking]');
+    if (!t) return;
+    e.preventDefault();
+    revealInline();
+  });
+
   const scrollToInline = () => {
     const host = inlineHost();
     if (!host) return false;
-    fillInline(host);
     const sec = host.closest('section') || host;
-    window.scrollTo({ top: sec.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+    const s = window.__amScroller();
+    s.scrollTo({ top: s.scrollTop + sec.getBoundingClientRect().top - 72, behavior: 'smooth' });
     return true;
   };
 
-  const open = () => {
-    if (scrollToInline()) return;
+  const open = () => { if (!scrollToInline()) openModal(); };
+  const openModal = () => {
     loadEmbedJs();
     build();
     if (!frame.src) frame.src = BOOKING_URL;
     lastFocus = document.activeElement;
     overlay.style.display = 'flex';
     requestAnimationFrame(() => { overlay.style.opacity = '1'; overlay.classList.add('is-open'); });
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+    document.documentElement.style.setProperty('overflow', 'hidden', 'important');
+    document.body.style.setProperty('overflow', 'hidden', 'important');
     closeBtn.focus();
   };
 
@@ -209,15 +226,15 @@
     overlay.style.display = 'none';
     overlay.style.opacity = '0';
     overlay.classList.remove('is-open');
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
+    document.documentElement.style.removeProperty('overflow');
+    document.body.style.removeProperty('overflow');
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   };
 
   document.addEventListener('click', e => {
     // let ctrl/cmd/middle-click keep their native "open in new tab" behavior
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    const a = e.target.closest && e.target.closest('a');
+    const a = e.target.closest && (e.target.closest('a') || e.target.closest('button[data-booking]'));
     if (!isTrigger(a)) return;
     e.preventDefault();
     open();
@@ -249,18 +266,18 @@
       'transition:opacity .25s ease,transform .25s ease,background .2s ease';
     btn.onmouseenter = () => { btn.style.background = 'var(--copper,#B85C3D)'; };
     btn.onmouseleave = () => { btn.style.background = 'var(--forest-900,#17392F)'; };
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    btn.addEventListener('click', () => window.__amScroller().scrollTo({ top: 0, behavior: 'smooth' }));
     const css = document.createElement('style');
     css.textContent = '@media (max-width:640px){.am-top-btn{right:16px!important;bottom:16px!important;width:44px!important;height:44px!important}}';
     document.head.appendChild(css);
     document.body.appendChild(btn);
     const update = () => {
-      const show = window.scrollY > window.innerHeight * 0.8 && !document.querySelector('.am-booking.is-open');
+      const show = window.__amScroller().scrollTop > window.innerHeight * 0.8 && !document.querySelector('.am-booking.is-open');
       btn.style.opacity = show ? '1' : '0';
       btn.style.transform = show ? 'none' : 'translateY(10px)';
       btn.style.pointerEvents = show ? 'auto' : 'none';
     };
-    window.addEventListener('scroll', update, { passive: true });
+    document.addEventListener('scroll', update, { capture: true, passive: true });
     update();
   };
   if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);

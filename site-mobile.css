@@ -4,7 +4,12 @@
    spaced form ("font-size: 13px", "repeat(4, 1fr)") that the DOM carries. */
 html,
 body {
-  overflow-x: hidden;
+  /* clip (not hidden) + auto height keep the WINDOW as the page scroller; hidden + height:100%
+     turned body into a nested scroller that ignored scrollTo, breaking CTA scroll + back-to-top */
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+  height: auto !important;
+  min-height: 100%;
   -webkit-text-size-adjust: 100%;
 }
 img,
