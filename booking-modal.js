@@ -127,7 +127,7 @@ window.__amScroller = () => {
     const foot = document.createElement('div');
     foot.className = 'am-bk-foot';
     foot.style.cssText =
-      'flex-shrink:0;display:flex;justify-content:center;flex-wrap:wrap;gap:8px 28px;padding:14px 20px;' +
+      'flex-shrink:0;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 24px;padding:8px 20px;' +
       'border-top:1px solid rgba(23,57,47,0.1);background:var(--ivory,#F7F3EA);font-size:13px;color:var(--forest-900,#17392F)';
     foot.innerHTML = ['No cost, no obligation', 'Personally matched advisors', 'Confirmation sent by email']
       .map(t => '<span style="display:inline-flex;align-items:center;gap:8px"><span style="color:var(--copper,#B85C3D)">✓</span>' + t + '</span>').join('');
@@ -135,7 +135,7 @@ window.__amScroller = () => {
     panel.appendChild(body);
     panel.appendChild(foot);
     const fb = document.createElement('div');
-    fb.style.cssText = 'flex-shrink:0;padding:0 20px 12px;text-align:center;font-size:12px;color:var(--text-muted,#6b6b6b);background:var(--ivory,#F7F3EA)';
+    fb.style.cssText = 'flex-shrink:0;padding:0 20px 8px;text-align:center;font-size:12px;color:var(--text-muted,#6b6b6b);background:var(--ivory,#F7F3EA)';
     fb.innerHTML = 'Having trouble? <a href="' + BOOKING_URL + '" target="_blank" rel="noopener" style="color:var(--copper-600,#9E4A2F);text-decoration:underline">Open the booking page</a>';
     panel.appendChild(fb);
     overlay.appendChild(panel);
