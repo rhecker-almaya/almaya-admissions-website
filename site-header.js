@@ -51,6 +51,11 @@
     window.fbq('init', '1608113310765242');
     window.fbq('track', 'PageView');
   }
+  // OpenAI pixel safety net: only loads if the page's <head> copy is missing.
+  if (!window.oaiq) {
+    !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
+    window.oaiq("init",{pixelId:"4RHADdKze5Ch2eLcG44MdZ",debug:true});
+  }
 
   const NAV = [
     { key: "why", href: "Why Almaya.dc.html", label: "Why Almaya" },
