@@ -214,7 +214,8 @@ window.__amScroller = () => {
     return true;
   };
 
-  const open = () => { if (!scrollToInline()) openModal(); };
+  // Every CTA opens the pop-up directly (no scrolling to the bottom section).
+  const open = () => openModal();
   let trigger = null;
   const openModal = () => {
     loadEmbedJs();
@@ -247,7 +248,7 @@ window.__amScroller = () => {
     e.preventDefault();
     // data-am-popup: open the calendar pop-up directly instead of scrolling to the bottom section
     trigger = a;
-    if (a.hasAttribute('data-am-popup')) openModal(); else open();
+    openModal();
   });
 
   document.addEventListener('keydown', e => {
@@ -260,6 +261,26 @@ window.__amScroller = () => {
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
+
+  // Speed: preconnect to GHL, then load the calendar in the hidden pop-up shortly
+  // after the page loads, so it is already rendered when someone clicks.
+  // Hovering/touching any CTA starts the load immediately if it hasn't begun.
+  const warm = () => {
+    if (window.__amWarm) return; window.__amWarm = true;
+    loadEmbedJs(); build();
+    if (!frame.src) frame.src = BOOKING_URL;
+  };
+  ['https://api.leadconnectorhq.com','https://link.msgsndr.com','https://backend.leadconnectorhq.com','https://stcdn.leadconnectorhq.com'].forEach(h => {
+    const l = document.createElement('link'); l.rel = 'preconnect'; l.href = h; l.crossOrigin = ''; document.head.appendChild(l);
+  });
+  const schedule = () => setTimeout(() => (window.requestIdleCallback || (f => f()))(warm, { timeout: 1500 }), 1200);
+  if (document.readyState === 'complete') schedule(); else window.addEventListener('load', schedule);
+  const warmOnIntent = e => {
+    const a = e.target.closest && (e.target.closest('a') || e.target.closest('button[data-booking]'));
+    if (isTrigger(a) && document.body) warm();
+  };
+  document.addEventListener('pointerover', warmOnIntent, { passive: true });
+  document.addEventListener('touchstart', warmOnIntent, { passive: true });
 
   // exposed so page scripts can trigger it directly if ever needed
   window.openBookingModal = open;
