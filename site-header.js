@@ -37,25 +37,7 @@
   if (window.__amSiteHeader) return;
   window.__amSiteHeader = true;
 
-  // Meta Pixel safety net: every page already has the pixel in its <head>.
-  // If a new page is added without it, the shared header loads it here.
-  // `window.fbq` exists when the <head> copy ran, so this never double-counts.
-  if (!window.fbq) {
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    window.fbq('init', '1608113310765242');
-    window.fbq('track', 'PageView');
-  }
-  // OpenAI pixel safety net: only loads if the page's <head> copy is missing.
-  if (!window.oaiq) {
-    !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
-    window.oaiq("init",{pixelId:"4RHADdKze5Ch2eLcG44MdZ",debug:true});
-  }
+  // Pixels moved to site-tracking.js (loaded in every page <head>).
 
   const NAV = [
     { key: "why", href: "Why Almaya.dc.html", label: "Why Almaya" },
