@@ -663,7 +663,8 @@
       class Component extends DCLogic {
         state = { b: null };
         componentDidMount() {
-          const q = new URLSearchParams(location.search);
+          let saved = ''; try { saved = sessionStorage.getItem('am_booking_qs') || ''; } catch (e) {}
+          const q = new URLSearchParams(location.search || saved);
           const g = (...k) => { for (const x of k) { const v = q.get(x); if (v) return v.trim(); } return ''; };
           const name = g('first_name', 'firstName', 'contact_first_name', 'name', 'full_name').split(' ')[0];
           const raw = g('appointment_start_time', 'start_time', 'startTime', 'start', 'datetime', 'date', 'time');

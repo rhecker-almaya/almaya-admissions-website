@@ -177,6 +177,7 @@ window.__amScroller = () => {
     pick('timezone', 'timezone', 'timeZone', 'selectedTimezone');
     pick('meeting_link', 'meetingLink', 'address', 'location', 'appointment.address');
     const qs = q.toString();
+    try { sessionStorage.setItem('am_booking_pending', String(Date.now())); } catch (err) {}
     setTimeout(() => { window.location.href = THANK_YOU + (qs ? '?' + qs : ''); }, 400);
   });
 
