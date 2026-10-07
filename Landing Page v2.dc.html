@@ -600,7 +600,7 @@
           </div>
         <div class="hero-copy" style="display: flex; flex-direction: column; gap: 22px">
           <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sand); margin-bottom: -6px">Expert guidance. Personally matched.</div>
-          <h1 style="font-family: var(--font-serif-display); font-weight: 700; font-size: clamp(42px, 5.2vw, 74px); color: var(--ivory); margin: 0 0 18px; padding-bottom: 8px; line-height: 1.1; text-wrap: balance">Expert College Application Guidance Is <em style="color: #E07A4F; font-weight: 600">One Call Away.</em></h1>
+          <h1 style="font-family: var(--font-serif-display); font-weight: 700; font-size: clamp(42px, 5.2vw, 74px); color: var(--ivory); margin: 0 0 18px; padding-bottom: 8px; line-height: 1.1; text-wrap: balance" aria-label="Affordable College Application Guidance Is One Call Away.">Affordable College Application Guidance Is <em style="color: #E07A4F; font-weight: 600">One Call Away.</em></h1>
           <p style="margin: 0; max-width: 560px; color: var(--text-muted-inverse); font-size: 19px; line-height: 1.6; text-wrap: pretty">Almaya matches you with a <b style="color: var(--ivory); font-weight: 600">rigorously vetted</b> college admissions advisor based on your goals, your student, and your budget, to support your child's elite college dream.</p>
           <div class="hero-stars" style="order: 5; font-size: 14px; color: var(--text-muted-inverse)"><span style="color: #E07A4F; letter-spacing: 2px">★★★★★</span>&nbsp; 5/5 average rating from 500+ families supported</div>
           <div class="hero-cta" style="order: 4; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 4px">
@@ -1840,7 +1840,31 @@
           document.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
           window.addEventListener('resize', this.onScroll);
         }
+        typerRef = React.createRef();
+        caretRef = React.createRef();
+        startTyper() {
+          const el = this.typerRef.current, caret = this.caretRef.current;
+          if (!el) return;
+          if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { if (caret) caret.style.display = 'none'; return; }
+          const words = ['Affordable', 'Expert', 'Vetted'];
+          let w = 0, n = words[0].length, deleting = true;
+          const tick = () => {
+            const word = words[w];
+            let delay;
+            if (deleting) {
+              n--; el.textContent = word.slice(0, n);
+              if (n === 0) { deleting = false; w = (w + 1) % words.length; delay = 350; } else delay = 45;
+            } else {
+              n++; el.textContent = words[w].slice(0, n);
+              if (n === words[w].length) { deleting = true; delay = 2000; } else delay = 95;
+            }
+            this.typerTimer = setTimeout(tick, delay);
+          };
+          this.typerTimer = setTimeout(tick, 2200);
+          if (caret) { let on = true; this.caretTimer = setInterval(() => { on = !on; caret.style.opacity = on ? '1' : '0'; }, 530); }
+        }
         componentWillUnmount() {
+          clearTimeout(this.typerTimer); clearInterval(this.caretTimer);
           clearInterval(this.cdTimer);
           document.removeEventListener('click', this.onAnchor);
           if (this.onScroll) { document.removeEventListener('scroll', this.onScroll, { capture: true }); window.removeEventListener('resize', this.onScroll); }
@@ -1854,6 +1878,7 @@
           const bodies = ['A free 20–30 minute conversation with one of our founders.', 'A few hours of senior strategy, or 20+ hours of essay help on a budget. We figure it out together.', 'We recommend the best fits. You meet your options and choose who feels right.', 'Book and pay securely through Almaya, then meet one-on-one online.'];
           const i = this.state.activeStep;
           return {
+            typerRef: this.typerRef, caretRef: this.caretRef,
             step0Ref: this.step0Ref, step1Ref: this.step1Ref, step2Ref: this.step2Ref, step3Ref: this.step3Ref, statsRef, stat100, stat500, statRating, stepGridRef,
             stickyPanelRef: this.stickyPanelRef, stickyKickerRef: this.stickyKickerRef, stickyTitleRef: this.stickyTitleRef, stickyBodyRef: this.stickyBodyRef,
             stickyKicker: kickers[i], stickyTitle: titles[i], stickyBody: bodies[i],
