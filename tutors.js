@@ -92,7 +92,7 @@
     name: "Jonathan Mizrahi",
     photo: "./assets/experts/jonathan-mizrahi.jpg",
     tier: "t1",
-    rate: 95,
+    rate: 100,
     school: "NYU",
     specialty: "Storytelling & Screenwriting Craft",
     bookHref: "./Jon Booking.dc.html",
