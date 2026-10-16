@@ -11,7 +11,7 @@
 //
 // Fields: tier is t1 Advisor · t2 Senior Advisor · t3 Lead Advisor · t4 Principal Advisor.
 // Text fields may contain simple HTML (<em>, <a>) and entities (&amp;).
-// Optional: bookHref (own booking page), testimonials, band {label,text}, marquee {label,text}.
+// Optional: bookHref (own booking page), mentor, testimonials, wins {label, schools:[{logo,name}]}, band {label,text}, marquee {label,text}. photo "" shows initials.
 (() => {
   if (window.AM_TUTORS) return;
 
@@ -389,6 +389,75 @@
     ]
   },
   {
+    slug: "daniel-meadvin",
+    name: "Daniel Meadvin",
+    photo: "./assets/experts/daniel-meadvin.png",
+    tier: "t3",
+    rate: 350,
+    school: "Columbia",
+    specialty: "College Essays & Writing",
+    heroSchool: "Columbia University",
+    schools: [
+      {
+        logo: "./assets/logos/columbia-shield.png",
+        h: 64,
+        name: "Columbia University",
+        sub: "Undergraduate"
+      }
+    ],
+    about: {
+      title: "About Daniel",
+      subtitle: "Your college essay &amp; writing coach",
+      paras: [
+        "Daniel Meadvin is a graduate of Columbia University with seven years of experience tutoring writing and an instructor at the Tikvah Fund. During his time at Columbia, Daniel was Editor-in-Chief of the Columbia Current and a Teaching Assistant for the popular Introduction to Linguistics course.",
+        "When not writing, Daniel can be found cooking, reading the latest on LLM and AI developments, or playing chess with friends."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Daniel's expertise really shows up",
+      paras: [
+        "He has always been a passionate writer, and his admissions officer called his own college application essays \"some of the best prose\" of that cycle.",
+        "Daniel works with students especially on quick timelines who need to turn around essays and applications quickly. He's helped dozens of students produce essays which have gotten into top schools across the country, and has worked for the college consulting firm League Bound Consulting in the past."
+      ]
+    },
+    wins: {
+      label: "Has helped students get into",
+      schools: [
+        { logo: "./assets/logos/yale-shield.png", name: "Yale" },
+        { logo: "./assets/logos/penn-shield.png", name: "Penn" },
+        { logo: "./assets/logos/columbia-shield.png", name: "Columbia" },
+        { logo: "./assets/logos/nyu-shield.png", name: "NYU" }
+      ]
+    },
+    testimonials: [
+      {
+        quote: "\"Daniel was instrumental in helping me craft exceptional college application essays. His guidance in choosing a meaningful topic showcased both my academic passion and personal identity, making my essays stand out. I am truly grateful for Daniel's dedication and highly recommend him to anyone seeking to elevate their writing and improve their chances of success in the college application process.\"",
+        by: "— Michael S., Yale University"
+      },
+      {
+        quote: "\"I cannot recommend an editor more than Daniel. He aids and improves every step of the writing process—from brainstorming to outlining to final touches and everything in between. He has a rare ability to help me transform something I am not content with into something I am really proud of, always while allowing my voice as a writer to shine through. Anybody working on writing with Daniel is in the very best hands.\"",
+        by: "— Davida K., University of Pennsylvania"
+      },
+      {
+        quote: "\"Daniel helped me organize my thoughts into a coherent story to describe myself in my college applications. He brainstormed with me and extracted ideas from my head that I hadn't realized would be valuable additions to an essay. Most importantly, he pushed me to write an extraordinary essay even when I was ready to settle for a decent one. Excited to have been admitted to my first choice university!\"",
+        by: "— Joey F., New York University"
+      },
+      {
+        quote: "\"You can always count on Daniel to transform your essay into A+ material. Whether you need help thinking of a thesis, navigating the structure, or editing the language in your paper, Daniel is the perfect guide.\"",
+        by: "— Samantha B., Columbia University"
+      },
+      {
+        quote: "\"Working with Daniel made the overwhelming and intimidating application process much more productive. Daniel's feedback and guidance improved my writing and grew my confidence. His patience, efficiency, attention to detail, and exceptional writing skills were clear to see and so appreciated. He's the best!\"",
+        by: "— Ori S., New York University"
+      },
+      {
+        quote: "\"I worked with Daniel on a final research paper for my advanced writing seminar. Daniel helped me from start to finish: organizing my research; developing a compelling thesis and supplementary arguments; writing the prose and polishing it for style. The paper turned out excellent—and I couldn't have been prouder to submit the work I produced with Daniel's help.\"",
+        by: "— Gabrielle C., New York University"
+      }
+    ]
+  },
+  {
     slug: "razi-hecker",
     name: "Razi Hecker",
     photo: "./assets/experts/razi.png",
@@ -462,13 +531,22 @@
 
   const testimonialsHtml = list => {
     if (!list || !list.length) return '';
-    const head = `<h2 style="${st(H2.replace('margin:0 0 6px', 'margin:36px 0 12px'))}">What families say</h2>`;
+    const head = `<h2 style="${st(H2.replace('margin:0 0 6px', 'margin:36px 0 12px'))}">What Families Say</h2>`;
     if (list.length === 1) {
       const q = list[0];
       return head + `<div style="${st('background:var(--bg-band);border-radius:8px;padding:26px 28px;font-family:var(--font-serif-display);font-style:italic;font-size:18px;color:var(--forest-900)')}">${q.quote}</div>` +
         (q.by ? `<div style="${st('font-size:13px;color:var(--text-muted);margin-top:8px')}">${q.by}</div>` : '');
     }
-    return head + `<div style="${st('display:flex;flex-direction:column;gap:16px')}">${list.map(q => `<div style="${st('background:var(--bg-band);border-radius:8px;padding:22px 24px')}"><div style="${st('font-family:var(--font-serif-display);font-style:italic;font-size:17px;color:var(--forest-900);margin-bottom:8px')}">${q.quote}</div>${q.by ? `<div style="${st('font-size:13px;color:var(--text-muted)')}">${q.by}</div>` : ''}</div>`).join('')}</div>`;
+    if (list.length > 3) {
+      const btn = (dir, label) => `<button type="button" aria-label="${label}" onclick="var r=this.closest('[data-tcar]').querySelector('[data-tcar-row]');r.scrollBy({left:${dir}*r.clientWidth,behavior:'smooth'})" style="${st('width:40px;height:40px;border-radius:50%;border:1px solid var(--border-subtle);background:var(--white);color:var(--forest-900);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center')}">${dir < 0 ? '&larr;' : '&rarr;'}</button>`;
+      return `<div data-tcar style="${st('position:relative')}"><div style="${st('display:flex;align-items:flex-end;justify-content:space-between;gap:16px')}">${head}<div style="${st('display:flex;gap:8px;margin-bottom:12px')}">${btn(-1, 'Previous testimonials')}${btn(1, 'Next testimonials')}</div></div><div data-tcar-row class="am-tcar" style="${st('display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px')}">${list.map(q => `<div style="${st('flex:0 0 calc((100% - 32px) / 3);min-width:260px;scroll-snap-align:start;background:var(--bg-band);border-radius:8px;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px')}"><div style="${st('font-family:var(--font-serif-display);font-style:italic;font-size:17px;color:var(--forest-900)')}">${q.quote}</div>${q.by ? `<div style="${st('font-size:13px;color:var(--text-muted)')}">${q.by}</div>` : ''}</div>`).join('')}</div></div>`;
+    }
+    return head + `<div style="${st(list.length > 2 ? 'display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px' : 'display:flex;flex-direction:column;gap:16px')}">${list.map(q => `<div style="${st('background:var(--bg-band);border-radius:8px;padding:22px 24px')}"><div style="${st('font-family:var(--font-serif-display);font-style:italic;font-size:17px;color:var(--forest-900);margin-bottom:8px')}">${q.quote}</div>${q.by ? `<div style="${st('font-size:13px;color:var(--text-muted)')}">${q.by}</div>` : ''}</div>`).join('')}</div>`;
+  };
+
+  const winsHtml = w => {
+    if (!w) return '';
+    return `<h2 style="${st(H2.replace('margin:0 0 6px', 'margin:40px 0 16px'))}">${w.label}</h2><div style="${st('display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px')}">${w.schools.map(s => `<div style="${st('background:var(--white);border:1px solid var(--border-subtle);border-radius:8px;padding:16px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;box-shadow:var(--shadow-card);min-height:104px')}">${s.logo ? `<img src="${s.logo}" alt="" style="${st('height:48px')}">` : `<div style="${st('font-family:var(--font-serif-display);font-size:30px;font-weight:600;color:var(--forest-900);line-height:48px')}">${s.name}</div>`}${s.logo ? `<div style="${st('font-size:15px;font-weight:500')}">${s.name}</div>` : ''}</div>`).join('')}</div>`;
   };
 
   const bandHtml = t => {
@@ -484,22 +562,21 @@
     const tier = window.AM_TIERS[t.tier];
     const first = t.name.split(' ')[0];
     return `<div style="${st('position:relative;background:var(--forest-900);padding:40px 48px;display:flex;gap:28px;align-items:center;flex-wrap:wrap')}">
-<img src="${t.photo}" alt="${t.name}" style="${st('width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--sand);flex-shrink:0')}">
+${t.photo ? `<img src="${t.photo}" alt="${t.name}" style="${st('width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--sand);flex-shrink:0')}">` : `<div aria-hidden="true" style="${st('width:140px;height:140px;border-radius:50%;border:3px solid var(--sand);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--forest-800);color:var(--ivory);font-family:var(--font-serif-display);font-size:48px')}">${t.name.split(' ').map(w => w[0]).join('')}</div>`}
 <div><h1 style="${st('font-family:var(--font-serif-display);font-size:clamp(2rem,3vw,3rem);color:var(--ivory);font-weight:500;margin:0')}">${t.name}</h1>
 <div style="${st('display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap')}"><span style="${st(tier.hero + ';color:var(--ivory);font-size:13px;font-weight:500;padding:6px 16px;border-radius:999px')}">${tier.label}</span><span style="${st('font-family:var(--font-serif-display);font-size:18px;color:var(--ivory)')}">$${t.rate}/hr</span></div>
 <div style="${st('color:var(--sand);font-size:14px;margin-top:10px')}">${t.heroSchool}</div></div></div>
 <div style="${st('max-width:1120px;margin:0 auto;padding:48px 40px 80px')}">${schoolsHtml(t.schools)}
-<div style="${st('display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px')}">${colHtml(t.about)}${colHtml(t.mentor)}</div>${testimonialsHtml(t.testimonials)}</div>
+<div style="${st('display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px')}">${colHtml(t.about)}${t.mentor ? colHtml(t.mentor) : ''}</div>${winsHtml(t.wins)}${testimonialsHtml(t.testimonials)}</div>
 ${bandHtml(t)}
-<div style="${st('text-align:center;padding:28px 40px 32px;border-top:1px solid var(--border-subtle)')}"><h2 style="${st('font-family:var(--font-serif-display);font-size:26px;color:var(--forest-900);margin:0 0 4px')}">Want to work with ${first}?</h2><p style="${st('font-size:15px;color:var(--text-muted);margin:0 0 12px;max-width:460px;margin-left:auto;margin-right:auto')}">Tell us about your student and we'll personally match you with ${first} or another advisor who fits.</p><a href="${BOOKING_URL}" class="am-btn am-btn--primary am-btn--md">Get matched now</a></div>
-<div style="${st('background:var(--sand-100);padding:22px 48px;display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--text-muted);flex-wrap:wrap;gap:8px')}"><div>almayaadmissions.com — College Admissions Guidance, Personally Matched</div><div>info@almayaadmissions.com</div></div>`;
+<div style="${st('text-align:center;padding:28px 40px 32px;border-top:1px solid var(--border-subtle)')}"><h2 style="${st('font-family:var(--font-serif-display);font-size:26px;color:var(--forest-900);margin:0 0 4px')}">Want to work with ${first}?</h2><p style="${st('font-size:15px;color:var(--text-muted);margin:0 0 12px;max-width:460px;margin-left:auto;margin-right:auto')}">Tell us about your student and we'll personally match you with ${first} or another advisor who fits.</p><a href="${BOOKING_URL}" class="am-btn am-btn--primary am-btn--md">Get matched now</a></div>`;
   };
   window.AM_profileHtml = profileHtml;
 
   if (!document.getElementById('am-tutors-css')) {
     const s = document.createElement('style');
     s.id = 'am-tutors-css';
-    s.textContent = '@keyframes t30scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}';
+    s.textContent = '@keyframes t30scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}.am-tcar::-webkit-scrollbar{display:none}';
     (document.head || document.documentElement).appendChild(s);
   }
 
