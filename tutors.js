@@ -11,7 +11,7 @@
 //
 // Fields: tier is t1 Advisor · t2 Senior Advisor · t3 Lead Advisor · t4 Principal Advisor.
 // Text fields may contain simple HTML (<em>, <a>) and entities (&amp;).
-// focus: "College Guidance/Essays" (default), "SAT", or an array of both — shown at the top of the profile and used by the Tutors page filter.
+// focus: "College Guidance/Essays" (default), "SAT", "APs", or an array — shown at the top of the profile and used by the Tutors page filter.
 // Optional: bookHref (own booking page), mentor, testimonials, wins {label, schools:[{logo,name}]}, band {label,text}, marquee {label,text}. photo "" shows initials.
 (() => {
   if (window.AM_TUTORS) return;
@@ -162,9 +162,9 @@
       schools: [
         { logo: "./assets/logos/harvard-shield.png", name: "Harvard" },
         { logo: "./assets/logos/columbia-shield.png", name: "Columbia" },
-        { name: "MIT" },
-        { name: "Cambridge" },
-        { name: "Brown" }
+        { logo: "./assets/logos/mit.png", name: "MIT" },
+        { logo: "./assets/logos/cambridge-shield.png", name: "Cambridge" },
+        { logo: "./assets/logos/brown-shield.png", name: "Brown" }
       ]
     }
   },
@@ -688,6 +688,45 @@
         by: "— Recent SAT student"
       }
     ]
+  },
+  {
+    slug: "benji-r",
+    name: "Benji R.",
+    photo: "./assets/experts/benjamin-reich.png",
+    tier: "t2",
+    rate: 130,
+    focus: "APs",
+    school: "NYU",
+    specialty: "AP French &amp; AP Humanities",
+    heroSchool: "New York University · BA, Cum Laude",
+    schools: [
+      {
+        logo: "./assets/logos/nyu-shield.png",
+        h: 64,
+        name: "New York University",
+        sub: "BA, Global Liberal Studies &amp; History, Cum Laude"
+      }
+    ],
+    about: {
+      title: "About Benji",
+      subtitle: "Your AP tutor",
+      paras: [
+        "Hi, I'm Benji. I'm a multilingual educator and writer with over 10 years of private language instruction and academic mentoring. I graduated cum laude from New York University with a double major in Global Liberal Studies and History, and I also hold an MBA.",
+        "I'm fluent in English, French, Spanish, Portuguese, and Dutch, and I use comparisons across languages to help students lock in verb patterns, idioms, and natural conversation."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Tutor",
+      subtitle: "What Benji covers",
+      paras: [
+        "<strong>AP French Language &amp; Culture.</strong> Full exam prep at every level from beginner to advanced (CEFR A1–C2): conversation, advanced grammar, phonetics, and reading comprehension. Benji scored a 5 on the AP French exam himself, and also preps students for the DELF.",
+        "<strong>AP History &amp; Humanities.</strong> Global history, cultural studies, and political science, with a focus on essay writing, thesis development, and primary and secondary source analysis, drawing on his history training at NYU and research work at UN Watch in Geneva."
+      ]
+    },
+    band: {
+      label: "Credentials",
+      text: "AP French: 5/5 · DELF Certified · Fluent in five languages"
+    }
   },
   {
     slug: "razi-hecker",
