@@ -93,6 +93,11 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 
 <div style="max-width:1080px;margin:32px auto 0;padding:0 32px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center">
 <div class="tier-seg" style="display:flex;gap:4px;background:var(--sand-100);border:1px solid var(--border-subtle);border-radius:20px;padding:4px;overflow-x:auto">
+<sc-for list="{{ focusOptions }}" as="opt" hint-placeholder-count="3">
+<a onClick="{{ opt.onClick }}" style="font-size:13px;font-weight:500;padding:7px 16px;border-radius:16px;white-space:nowrap;cursor:pointer;background:{{ opt.bg }};color:{{ opt.color }}">{{ opt.label }}</a>
+</sc-for>
+</div>
+<div class="tier-seg" style="display:flex;gap:4px;background:var(--sand-100);border:1px solid var(--border-subtle);border-radius:20px;padding:4px;overflow-x:auto">
 <sc-for list="{{ tierOptions }}" as="opt" hint-placeholder-count="5">
 <a onClick="{{ opt.onClick }}" style="font-size:13px;font-weight:500;padding:7px 16px;border-radius:16px;white-space:nowrap;cursor:pointer;background:{{ opt.bg }};color:{{ opt.color }}">{{ opt.label }}</a>
 </sc-for>
@@ -112,6 +117,7 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
 <sc-for list="{{ tutorList }}" as="t" hint-placeholder-count="8">
 <div class="tcard">
+<span style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--copper-600)">{{ t.focusLabel }}</span>
 <span style="font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:{{ t.badgeColor }};background:{{ t.badgeBg }};padding:4px 10px;border-radius:20px">{{ t.tierLabel }}</span>
 <sc-if value="{{ t.hasPhoto }}" hint-placeholder-val="{{ true }}">
 <img src="{{ t.photo }}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-top:6px">
@@ -176,10 +182,6 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <p style="font-size:13px;color:var(--text-muted);line-height:1.6;text-align:center;margin:0">Only the top slice advance into our network, matched by specialty, tier, and school background.</p>
 </div>
 </div>
-<div style="text-align:center;margin-top:36px">
-<h3 style="font-family:var(--font-serif-display);font-size:22px;color:var(--forest-900);margin:0 0 18px">Still deciding? Get matched for free.</h3>
-<a href="https://api.leadconnectorhq.com/widget/booking/waXfk5QQ8VhoYMOXXoRN" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a>
-</div>
 </section>
 
 
@@ -189,7 +191,7 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
 class Component extends DCLogic {
   vetGridRef = React.createRef();
-  state = { tierFilter: 'all', minPrice: 80, maxPrice: 540 };
+  state = { focusFilter: 'all', tierFilter: 'all', minPrice: 80, maxPrice: 540 };
 
   // Advisor data lives in tutors.js (shared with every profile page).
   get tierMeta() { return window.AM_TIERS || {}; }
@@ -213,15 +215,16 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const { tierFilter, minPrice, maxPrice } = this.state;
+    const { focusFilter, tierFilter, minPrice, maxPrice } = this.state;
     const lo = Math.min(minPrice, maxPrice), hi = Math.max(minPrice, maxPrice);
     const filtered = this.tutors.filter(t =>
+      (focusFilter === 'all' || [].concat(t.focus || 'College Guidance/Essays').includes(focusFilter)) &&
       (tierFilter === 'all' || t.tierKey === tierFilter) &&
       t.rate >= lo && t.rate <= hi
     );
     const tutorList = filtered.map(t => {
       const meta = this.tierMeta[t.tierKey];
-      return { ...t, rate: t.rate.toString(), hasPhoto: !!t.photo, firstName: t.name.split(' ')[0], bookHref: t.bookHref || t.href, tierLabel: meta.label, badgeColor: meta.color, badgeBg: meta.bg };
+      return { ...t, rate: t.rate.toString(), hasPhoto: !!t.photo, firstName: t.name.split(' ')[0], bookHref: t.bookHref || t.href, focusLabel: [].concat(t.focus || 'College Guidance/Essays').join(' · '), tierLabel: meta.label, badgeColor: meta.color, badgeBg: meta.bg };
     });
     const tiers = [
       { key: 'all', label: 'All' },
@@ -236,11 +239,22 @@ class Component extends DCLogic {
       color: tierFilter === t.key ? 'var(--ivory)' : 'var(--forest-900)',
       onClick: () => this.setState({ tierFilter: t.key }),
     }));
+    const focusOptions = [
+      { key: 'all', label: 'All Subjects' },
+      { key: 'College Guidance/Essays', label: 'College Guidance/Essays' },
+      { key: 'SAT', label: 'SAT' },
+    ].map(f => ({
+      label: f.label,
+      bg: focusFilter === f.key ? 'var(--forest-900)' : 'transparent',
+      color: focusFilter === f.key ? 'var(--ivory)' : 'var(--forest-900)',
+      onClick: () => this.setState({ focusFilter: f.key }),
+    }));
     const priceRangeLabel = hi >= 540 ? `$${lo}–$540+/hr` : `$${lo}–$${hi}/hr`;
     return {
       vetGridRef: this.vetGridRef,
       tutorList,
       tierOptions,
+      focusOptions,
       minPrice: lo,
       maxPrice: hi,
       minPct: ((lo - 80) / (540 - 80)) * 100,

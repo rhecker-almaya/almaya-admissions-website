@@ -11,11 +11,163 @@
 //
 // Fields: tier is t1 Advisor · t2 Senior Advisor · t3 Lead Advisor · t4 Principal Advisor.
 // Text fields may contain simple HTML (<em>, <a>) and entities (&amp;).
+// focus: "College Guidance/Essays" (default), "SAT", or an array of both — shown at the top of the profile and used by the Tutors page filter.
 // Optional: bookHref (own booking page), mentor, testimonials, wins {label, schools:[{logo,name}]}, band {label,text}, marquee {label,text}. photo "" shows initials.
 (() => {
   if (window.AM_TUTORS) return;
 
   window.AM_TUTORS = [
+  {
+    slug: "josh-w",
+    name: "Josh W.",
+    photo: "./assets/experts/josh-w.png",
+    tier: "t3",
+    rate: 350,
+    focus: "College Guidance/Essays",
+    school: "Penn",
+    specialty: "Ivy League Essays & Strategy",
+    heroSchool: "University of Pennsylvania · Summa Cum Laude",
+    schools: [
+      {
+        logo: "./assets/logos/penn-shield.png",
+        h: 64,
+        name: "University of Pennsylvania",
+        sub: "Summa Cum Laude"
+      }
+    ],
+    about: {
+      title: "About Josh",
+      subtitle: "Your college essay &amp; admissions strategist",
+      paras: [
+        "Hi, I'm Josh. I'm a summa cum laude graduate of the University of Pennsylvania with a career in federal investigations at the U.S. Departments of State, Commerce, and the military, bringing elite academic training and real-world strategic communication to your application.",
+        "In the age of AI-generated essays, admissions officers are starving for authenticity. At Penn, I was formally trained in Metacognitive Reflective Writing, and I guide students through a process of self-reflection to distill the values, curiosities, and critical thinking that define who they are."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Josh's expertise really shows up",
+      paras: [
+        "Josh spent a year and a half tutoring in Penn's writing center and has advised tens of high school students on their college essays, along with countless graduate school personal statements. His students include winning finalists and semi-finalists for the John Locke essay competition, and several have earned substantial scholarships.",
+        "<em>Stop trying to write what you think admissions officers want to hear. Wow them with who you really are.</em>"
+      ]
+    },
+    wins: {
+      label: "Has helped students get into",
+      schools: [
+        { logo: "./assets/logos/harvard-shield.png", name: "Harvard" },
+        { logo: "./assets/logos/yale-shield.png", name: "Yale" },
+        { logo: "./assets/logos/penn-shield.png", name: "Penn" },
+        { logo: "./assets/logos/columbia-shield.png", name: "Columbia" },
+        { logo: "./assets/logos/cornell-3.png", name: "Cornell" },
+        { logo: "./assets/logos/stanford-shield.png", name: "Stanford" }
+      ]
+    },
+    testimonials: [
+      {
+        quote: "<span style=\"font-style: normal; font-weight: 600; display: block; margin-bottom: 6px;\">Incredibly Improved My Essay!</span>\"Each session, the structure and coherence of my college essay improved significantly, and Josh assisted me in putting the pieces together to create a coherent and compelling story. Besides being so professional, efficient, and strategic, his passion makes me truly comfortable with each session! Josh is the one who knows exactly what students want; as an international student who struggled to effectively deliver what I wanted to say, I learned a lot about useful writing strategies after only three sessions with Josh! I'm delighted to have met him.\""
+      },
+      {
+        quote: "<span style=\"font-style: normal; font-weight: 600; display: block; margin-bottom: 6px;\">Well-spoken and overall excellent tutor!</span>\"Josh helped me completely reorganize my essay into a more readable, fluid paper that sufficiently communicated my thoughts. He condensed my 2000 word paper by about 500 words along with sharping my persuasive tone and thoroughly reading my work taking out the unnecessary pieces that really pulled my paper into a honed argument. He's very patient and quite responsive. If you ever need advice, Josh is your man!\"",
+        by: "— Ian"
+      }
+    ]
+  },
+  {
+    slug: "silvana",
+    name: "Silvana P.",
+    photo: "./assets/experts/silvana.png",
+    tier: "t3",
+    rate: 300,
+    focus: "College Guidance/Essays",
+    school: "Princeton",
+    specialty: "Essays & Application Strategy",
+    heroSchool: "Princeton University",
+    schools: [
+      {
+        name: "Princeton University",
+        sub: "B.A., Neuroscience"
+      }
+    ],
+    about: {
+      title: "About Silvana",
+      subtitle: "Your college essay &amp; admissions specialist",
+      paras: [
+        "Hi, I'm Silvana. I'm a Princeton graduate (B.A. in Neuroscience) and college admissions specialist with over six years of experience in college counseling, essay coaching, and application strategy. I previously served as a lead college consultant for a national advising organization, where I mentored hundreds of students and gained firsthand insight into how admissions committees evaluate applications.",
+        "I specialize in Common App personal statements, UC PIQs, and supplemental essays that reflect each student's authentic voice, intellectual curiosity, and growth."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Silvana's expertise really shows up",
+      paras: [
+        "Whether a student is starting from a blank page or refining a final draft, she helps them find their strongest stories and connect each piece of the application into a cohesive, memorable whole. Her students have been admitted to the Ivy League and other top colleges.",
+        "Beyond essays, she offers full college counseling: college list development, interview preparation, scholarship advising, and complete application review."
+      ]
+    },
+    wins: {
+      label: "Has helped students get into",
+      schools: [
+        { logo: "./assets/logos/harvard-shield.png", name: "Harvard" },
+        { logo: "./assets/logos/yale-shield.png", name: "Yale" },
+        { logo: "./assets/logos/stanford-shield.png", name: "Stanford" },
+        { logo: "./assets/logos/columbia-shield.png", name: "Columbia" },
+        { logo: "./assets/logos/cornell-3.png", name: "Cornell" },
+        { logo: "./assets/logos/dartmouth-shield.png", name: "Dartmouth" }
+      ]
+    },
+    testimonials: [
+      {
+        quote: "<span style=\"font-style: normal; font-weight: 600; display: block; margin-bottom: 6px;\">Amazing with College Essays!</span>\"Simply stated, Silvana is fabulous! My daughter is a high school senior applying to selective colleges. We hired a private counselor to proof her essays but when my daughter got pneumonia, she missed all the deadlines for proofreading services. I found Silvana online and I'm so pleased with the results. She provided very quick, insightful feedback that elevated my daughter's essay style. We will be working with Silvana again!\"",
+        by: "— Heather"
+      },
+      {
+        quote: "<span style=\"font-style: normal; font-weight: 600; display: block; margin-bottom: 6px;\">Fantastic College Essay Coach</span>\"My son was behind on drafting a number of college admissions essays for Early Decision and Early Action deadlines. Silvana stepped in and has helped guide him to getting to done on a number of essays in a short period of time. Silvana has deep knowledge of all the supplemental essays for each college my son is applying to, ranging from Ivy League to large public schools, and knows what each college is looking for in each supplemental essay. She has deftly guided my son in addressing the essay prompts in his own voice, and with great hooks, content and clear writing. I would give Silvana more than 5 stars if I could!\"",
+        by: "— Michelle"
+      }
+    ]
+  },
+  {
+    slug: "tess-g",
+    name: "Tess G.",
+    photo: "./assets/experts/tess-g.png",
+    tier: "t3",
+    rate: 235,
+    focus: "College Guidance/Essays",
+    school: "Brown",
+    specialty: "College Essays & Positioning",
+    heroSchool: "Brown University",
+    schools: [
+      {
+        name: "Brown University",
+        sub: "B.A., International Relations and Affairs (2016–2020)<br>Honors in International Relations, Magna Cum Laude"
+      }
+    ],
+    about: {
+      title: "About Tess",
+      subtitle: "Your college essay &amp; storytelling mentor",
+      paras: [
+        "Tess brings a writer's eye to the college essay. As an undergraduate, she took creative writing coursework alongside a full sequence of writing-intensive courses, work that culminated in an honors thesis and sharpened the editorial instinct she now applies to student essays."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Tess's expertise really shows up",
+      paras: [
+        "Tess currently works in marketing, where she is responsible for campaigns, product positioning, and launches, experience that shapes how she helps students position their own stories with clarity and impact.",
+        "On the side, she works as a college admissions counselor, and her students have gone on to Harvard, Harvard Business School, Columbia, MIT Sloan, the University of Cambridge, Brown, and many more."
+      ]
+    },
+    wins: {
+      label: "Students accepted to",
+      schools: [
+        { logo: "./assets/logos/harvard-shield.png", name: "Harvard" },
+        { logo: "./assets/logos/columbia-shield.png", name: "Columbia" },
+        { name: "MIT" },
+        { name: "Cambridge" },
+        { name: "Brown" }
+      ]
+    }
+  },
   {
     slug: "arjun-jaswal",
     name: "Arjun Jaswal",
@@ -126,7 +278,7 @@
     name: "Arianna Zarka",
     photo: "./assets/experts/arianna-zarka.jpeg",
     tier: "t3",
-    rate: 200,
+    rate: 215,
     school: "Cornell",
     specialty: "Essay Coaching & Storytelling",
     heroSchool: "Cornell University · Cornell Law School",
@@ -166,7 +318,7 @@
     name: "Samantha Lofman",
     photo: "./assets/experts/samantha-lofman.jpg",
     tier: "t2",
-    rate: 120,
+    rate: 175,
     school: "Dartmouth",
     specialty: "Creative Writing & Storytelling",
     heroSchool: "Dartmouth College",
@@ -255,7 +407,8 @@
     name: "Gabriel Nagel",
     photo: "./assets/experts/gabriel.png",
     tier: "t2",
-    rate: 150,
+    focus: ["College Guidance/Essays", "SAT"],
+    rate: 175,
     school: "Stanford",
     specialty: "Essays & Passion Projects",
     heroSchool: "Stanford University",
@@ -458,6 +611,85 @@
     ]
   },
   {
+    slug: "anna-nacasch",
+    name: "Anna Nacasch",
+    photo: "./assets/experts/anna-nacasch.png",
+    tier: "t3",
+    rate: 225,
+    focus: "College Guidance/Essays",
+    school: "Penn",
+    specialty: "College Essays & Storytelling",
+    heroSchool: "University of Pennsylvania",
+    schools: [
+      {
+        logo: "./assets/logos/penn-shield.png",
+        h: 64,
+        name: "University of Pennsylvania",
+        sub: "English &amp; Creative Writing, Honors thesis"
+      }
+    ],
+    about: {
+      title: "About Anna",
+      subtitle: "Your college essay &amp; storytelling mentor",
+      paras: [
+        "I’m a University of Pennsylvania graduate, where I studied English and Creative Writing. In college, I worked at a well-known film production company reading and giving notes on multiple full-length screenplays a day, and was a contributor at Her Campus Media at Penn. Early on, I learned to quickly identify what pulls a reader in and what loses them.",
+        "I love to edit and revise; friends and colleagues come to me when they need an email to land or a message to feel exactly right. Outside of work, I write a blog of personal essays that has caught the attention of journalists and talent agents. But essays are where my heart is.",
+        "There’s something special about the college essay which deserves real care and attention. Having lived the experience myself and tutored high school students across subjects, I would love to help you thread together a piece that captures your one-of-a-kind voice, experience and accomplishments."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Anna's expertise really shows up",
+      paras: [
+        "Anna spent 5+ years in marketing for major companies across the US and Europe, where much of her work was communicating with internal stakeholders and consumers. She was a piano teacher and high school tutor for years, and especially loves helping students bring their ideas to life in essays.",
+        "She helped her brother with his essays; he now studies computer science and psychology at Tulane. She also helped a friend with her essays for Sciences Po, the highly selective university in Paris, where she was accepted to a Master's program in journalism."
+      ]
+    },
+    testimonials: [
+      {
+        quote: "\"Anna was my lifeline as a high schooler juggling an intense schedule and expectations. We built a deep relationship over sessions where she always showed up with patience, a great sense of humor and deep knowledge on the subjects we worked on together. Most importantly, both my confidence and work were improved with Anna's expertise and support.\"",
+        by: "— Beloria Levy"
+      }
+    ]
+  },
+  {
+    slug: "ari-morrison",
+    name: "Ari Morrison",
+    photo: "./assets/experts/ari-morrison.png",
+    tier: "t2",
+    rate: 150,
+    focus: "SAT",
+    school: "Rutgers",
+    specialty: "SAT Math & Reading/Writing",
+    heroSchool: "Rutgers University",
+    schools: [
+      {
+        name: "Rutgers University",
+        sub: "BS, Statistics, Magna Cum Laude"
+      }
+    ],
+    about: {
+      title: "About Ari",
+      subtitle: "Your SAT tutor",
+      paras: [
+        "I’m Ari Morrison, a top 1% SAT scorer, SAT tutor, and creator of PatternSAT, a practice platform used by hundreds of students. I have been tutoring for over 5 years and graduated Magna Cum Laude with a degree in Statistics. I love working with students and helping them realize their potential during a stressful and exciting period of their lives."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Tutor",
+      subtitle: "Where Ari's expertise really shows up",
+      paras: [
+        "Ari has spent five years tutoring math from elementary school through Calculus, along with economics and both sections of the SAT. Students practice on PatternSAT between sessions, which tracks their progress and shows exactly which areas need work, and he assigns personalized homework and follows up after each one."
+      ]
+    },
+    testimonials: [
+      {
+        quote: "\"Ari is an amazing tutor and I highly recommend! I contacted him six weeks before my SAT date with a math score of 440. He immediately offered me an appointment and was very helpful and encouraging. He explains math concepts extremely well in a way that is easy to understand. His website was also very helpful in terms of doing practice questions and tracking my progress and the areas I needed to work on. He was very accessible by phone and was happy to explain or answer questions at any time. He provided personalized homework and contacted me with updates right after I finished each one. After just three sessions with him, and using his website, I got a 620 in my SAT math! If you want to do well, use Mr. Morrison!\"",
+        by: "— Recent SAT student"
+      }
+    ]
+  },
+  {
     slug: "razi-hecker",
     name: "Razi Hecker",
     photo: "./assets/experts/razi.png",
@@ -520,7 +752,7 @@
     if (list.length === 1) {
       const s = list[0];
       return `<div style="${st('display:flex;justify-content:center;margin-bottom:40px')}"><div style="${st('display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;max-width:280px')}">
-<img src="${s.logo}" alt="" style="${st('height:' + s.h + 'px')}"><div style="${st('font-size:16px;font-weight:500')}">${s.name}</div>${s.sub ? `<div style="${st('font-size:13px;color:var(--text-muted)')}">${s.sub}</div>` : ''}</div></div>`;
+${s.logo ? `<img src="${s.logo}" alt="" style="${st('height:' + s.h + 'px')}">` : ''}<div style="${st('font-size:16px;font-weight:500')}">${s.name}</div>${s.sub ? `<div style="${st('font-size:13px;color:var(--text-muted)')}">${s.sub}</div>` : ''}</div></div>`;
     }
     const three = list.length > 2;
     return `<div style="${st('display:grid;grid-template-columns:repeat(auto-fit,minmax(' + (three ? 160 : 180) + 'px,1fr));gap:18px;margin-bottom:40px;max-width:' + (three ? 640 : 460) + 'px;margin-left:auto;margin-right:auto')}">${list.map(s => `
@@ -563,7 +795,7 @@
     const first = t.name.split(' ')[0];
     return `<div style="${st('position:relative;background:var(--forest-900);padding:40px 48px;display:flex;gap:28px;align-items:center;flex-wrap:wrap')}">
 ${t.photo ? `<img src="${t.photo}" alt="${t.name}" style="${st('width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--sand);flex-shrink:0')}">` : `<div aria-hidden="true" style="${st('width:140px;height:140px;border-radius:50%;border:3px solid var(--sand);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--forest-800);color:var(--ivory);font-family:var(--font-serif-display);font-size:48px')}">${t.name.split(' ').map(w => w[0]).join('')}</div>`}
-<div><h1 style="${st('font-family:var(--font-serif-display);font-size:clamp(2rem,3vw,3rem);color:var(--ivory);font-weight:500;margin:0')}">${t.name}</h1>
+<div><div style="${st('font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);margin-bottom:8px')}">${[].concat(t.focus || 'College Guidance/Essays').join(' · ')}</div><h1 style="${st('font-family:var(--font-serif-display);font-size:clamp(2rem,3vw,3rem);color:var(--ivory);font-weight:500;margin:0')}">${t.name}</h1>
 <div style="${st('display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap')}"><span style="${st(tier.hero + ';color:var(--ivory);font-size:13px;font-weight:500;padding:6px 16px;border-radius:999px')}">${tier.label}</span><span style="${st('font-family:var(--font-serif-display);font-size:18px;color:var(--ivory)')}">$${t.rate}/hr</span></div>
 <div style="${st('color:var(--sand);font-size:14px;margin-top:10px')}">${t.heroSchool}</div></div></div>
 <div style="${st('max-width:1120px;margin:0 auto;padding:48px 40px 80px')}">${schoolsHtml(t.schools)}
