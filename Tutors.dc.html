@@ -26,7 +26,7 @@
 <meta name="twitter:title" content="Our Advisors | Almaya Admissions">
 <meta name="twitter:description" content="The first college application marketplace built to find your trained mentor at a budget that works for you">
 <meta name="twitter:image" content="https://almayaadmissions.com/assets/og-preview.jpg">
-<link rel="stylesheet" href="site-mobile.css"><link rel="stylesheet" href="site-button.css">
+<link rel="stylesheet" href="site.css">
 <script src="site-mobile-nav.js"></script>
 <script src="site-header.js"></script>
 <script src="site-footer.js"></script>
@@ -39,7 +39,6 @@
 <link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/tokens/base.css">
 <link rel="stylesheet" href="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/styles.css">
 <script src="_ds/almayya-design-system-fd8d1095-46c7-4c57-8c53-7c1d0ae8ae0d/_ds_bundle.js"></script>
-<script src="./image-slot.js"></script>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;max-width:100vw;background:var(--ivory)}
@@ -195,7 +194,7 @@ class Component extends DCLogic {
 
   // Advisor data lives in tutors.js (shared with every profile page).
   get tierMeta() { return window.AM_TIERS || {}; }
-  get tutors() { return (window.AM_TUTORS || []).map(x => ({ ...x, tierKey: x.tier, href: './' + x.name + ' Profile.dc.html' })); }
+  get tutors() { return (window.AM_TUTORS || []).map(x => ({ ...x, tierKey: x.tier, href: './Profile.dc.html?a=' + x.slug })); }
 
   componentDidMount() {
     if (!window.AM_TUTORS) { const w = setInterval(() => { if (window.AM_TUTORS) { clearInterval(w); this.forceUpdate(); } }, 50); }

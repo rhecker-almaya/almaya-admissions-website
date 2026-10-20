@@ -1,0 +1,27 @@
+Delete these from the live site (replaced or unused):
+
+Anna Nacasch Profile.dc.html
+Ari Morrison Profile.dc.html
+Arianna Zarka Profile.dc.html
+Arjun Jaswal Profile.dc.html
+Benji R. Profile.dc.html
+Daniel Meadvin Profile.dc.html
+Eitan Ginsburg Profile.dc.html
+Gabriel Nagel Profile.dc.html
+Jonathan Mizrahi Profile.dc.html
+Joseph Schlesinger Profile.dc.html
+Josh W. Profile.dc.html
+Neva Hidajat Profile.dc.html
+Razi Hecker Profile.dc.html
+Samantha Lofman Profile.dc.html
+Sarah Rosen Profile.dc.html
+Silvana P. Profile.dc.html
+Tess G. Profile.dc.html
+Landing Page.dc.html
+Jon Booking.dc.html
+site-mobile.css
+site-button.css
+image-slot.js
+wise-booking.js
+BOOKING.md
+DIRECT-BOOKING.md

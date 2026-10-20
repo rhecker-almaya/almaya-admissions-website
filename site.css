@@ -1,0 +1,592 @@
+/* site.css = former site-mobile.css + site-button.css (same order) */
+/* Almaya — shared mobile layer. Loaded first in every page's helmet so
+   page-specific rules that come later can still override it.
+   NOTE: styles are serialized by React, so attribute selectors must use the
+   spaced form ("font-size: 13px", "repeat(4, 1fr)") that the DOM carries. */
+html,
+body {
+  /* clip (not hidden) + auto height keep the WINDOW as the page scroller; hidden + height:100%
+     turned body into a nested scroller that ignored scrollTo, breaking CTA scroll + back-to-top */
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+  height: auto !important;
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+
+/* ---------- header: tablet / small-laptop tightening ----------
+   This MUST stay above the 900px block below. A ≤900px viewport is also
+   ≤1200px, so both blocks match `header` with equal specificity (0,0,1) and
+   both are !important — media queries add nothing to specificity, so the rule
+   that comes *later in the file* wins.
+
+   This block used to live near the bottom of the file, next to the other header
+   rules, which silently killed the `padding: 12px 16px` and `gap: 12px` in the
+   900px block: every viewport from 361px to 900px was rendering with the wider
+   tablet values (24px gutters, 16px gap) instead. Narrower breakpoints come
+   last, always. */
+@media (max-width: 1200px) {
+  header {
+    gap: 16px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .nav-links {
+    gap: 20px !important;
+  }
+  /* kept as separate rules, not a selector list — see the note above the
+     .am-hdr-cta-wrap rules further down */
+  .am-hdr-cta-wrap button {
+    font-size: 13px !important;
+    padding: 0 14px !important;
+  }
+  header > div:nth-last-child(1 of :not(.am-navtoggle)) button {
+    font-size: 13px !important;
+    padding: 0 14px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  /* ---- page gutters: use the full screen ---- */
+  header {
+    padding: 12px 16px !important;
+    gap: 12px !important;
+  }
+  section,
+  footer {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  section > div,
+  footer > div {
+    max-width: 100% !important;
+  }
+
+  /* ---- collapse multi-column grids to one column ---- */
+  [style*="grid-template-columns: repeat(2"]:not(.cmp-row),
+  [style*="grid-template-columns: repeat(3"]:not(.cmp-row),
+  [style*="grid-template-columns: repeat(4"]:not(.cmp-row),
+  [style*="grid-template-columns: repeat(auto-fit"],
+  [style*="grid-template-columns: 1fr 1fr"]:not(.cmp-row),
+  [style*="grid-template-columns: 0.7fr"],
+  [style*="grid-template-columns: 0.8fr"],
+  [style*="grid-template-columns: 0.9fr"],
+  [style*="grid-template-columns: 1.1fr"],
+  [style*="grid-template-columns: 1.15fr"],
+  [style*="grid-template-columns: 1.2fr"],
+  [style*="grid-template-columns: 1.3fr"]:not(.cmp-row),
+  [style*="grid-template-columns: 216px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---- headings never clip or run off screen ---- */
+  h1[style*="white-space: nowrap"],
+  h2[style*="white-space: nowrap"],
+  h3[style*="white-space: nowrap"],
+  p[style*="white-space: nowrap"],
+  div[style*="white-space: nowrap"]:not(.marquee-track) {
+    white-space: normal !important;
+  }
+  h1 {
+    font-size: clamp(1.85rem, 8.4vw, 2.5rem) !important;
+    line-height: 1.18 !important;
+  }
+  h2 {
+    font-size: clamp(1.45rem, 6.4vw, 2rem) !important;
+    line-height: 1.22 !important;
+  }
+  h3 {
+    font-size: 18px !important;
+  }
+  h1,
+  h2,
+  h3,
+  p,
+  div,
+  span,
+  a {
+    overflow-wrap: break-word;
+  }
+
+  /* ---- lift the smallest type to a readable size ---- */
+  [style*="font-size: 10px"],
+  [style*="font-size: 11px"],
+  [style*="font-size: 11.5px"],
+  [style*="font-size: 12px"],
+  [style*="font-size: 12.5px"] {
+    font-size: 13px !important;
+  }
+  [style*="font-size: 13px"],
+  [style*="font-size: 13.5px"] {
+    font-size: 14.5px !important;
+  }
+  [style*="font-size: 14px"],
+  [style*="font-size: 14.5px"] {
+    font-size: 15.5px !important;
+  }
+  p {
+    line-height: 1.65 !important;
+  }
+
+  /* ---- hero / banner bands ---- */
+  [style*="min-height: 520px"] {
+    min-height: 0 !important;
+    padding-top: 44px !important;
+    padding-bottom: 44px !important;
+  }
+  .hero-grid {
+    padding: 28px 18px 32px !important;
+  }
+  .hero-copy {
+    padding-left: 0 !important;
+  }
+
+  /* ---- tap targets ----
+     The `a[style*="height: 47px"]` / `a[style*="height: 52px"]` rules that
+     used to live here are gone. They keyed on the literal pixel string in a
+     hand-rolled anchor's inline style, so they resized those anchors and
+     silently missed the design-system <button> standing next to them — the
+     mobile half of FIXES.md A8. CTAs now carry `.am-btn` and their responsive
+     sizing lives with the rest of the button in site-button.css. */
+  button {
+    min-height: 44px;
+  }
+
+  /* ---- booking pop-up ---- */
+  [style*="z-index: 2000"] {
+    padding: 10px !important;
+  }
+  [style*="max-width: 920px"] {
+    height: 92vh !important;
+  }
+  /* The generic `button { min-height: 44px }` above overrides the button's
+     inline height:34px but not its width, leaving the close control 34w x 44h.
+     Matched via `.am-booking` (the overlay) as well as the button's own class:
+     the overlay class predates this rule, so the selector still bites if a
+     browser is holding a cached copy of booking-modal.js. Neither asset is
+     cache-busted, and a rule that needs both files fresh reproduces the exact
+     bug it fixes. */
+  .am-booking button,
+  .am-booking-close {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* ---- marquees ---- */
+  .marquee-track {
+    gap: 26px !important;
+  }
+  .marquee-track span {
+    font-size: 18px !important;
+  }
+  .marquee-track > div {
+    max-width: 78vw !important;
+  }
+
+  /* ---- comparison table stays legible ---- */
+  .cmp-row > div {
+    padding: 12px 10px !important;
+  }
+
+  /* ---- overflow hardening ---- */
+  [style*="min-width: 260px"],
+  [style*="min-width: 280px"],
+  [style*="min-width: 320px"] {
+    min-width: 0 !important;
+  }
+  [style*="max-width: 1160px"],
+  [style*="max-width: 1120px"],
+  [style*="max-width: 1100px"],
+  [style*="max-width: 1080px"],
+  [style*="max-width: 1060px"],
+  [style*="max-width: 1000px"],
+  [style*="max-width: 960px"],
+  [style*="max-width: 900px"],
+  [style*="max-width: 820px"],
+  [style*="max-width: 800px"],
+  [style*="max-width: 780px"],
+  [style*="max-width: 760px"],
+  [style*="max-width: 720px"],
+  [style*="max-width: 680px"],
+  [style*="max-width: 640px"],
+  [style*="max-width: 620px"],
+  [style*="max-width: 600px"] {
+    max-width: 100% !important;
+  }
+  img[style*="width: 140px"] {
+    width: 110px !important;
+    height: 110px !important;
+  }
+  section > *,
+  footer > * {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 560px) {
+  section,
+  footer {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  [style*="padding: 56px 48px"],
+  [style*="padding: 40px"],
+  [style*="padding: 32px"] {
+    padding: 26px 18px !important;
+  }
+}
+
+/* ---------- header: keep the CTA on one line ----------
+   These used to be written as `header > div:last-child`. site-mobile-nav.js
+   appends .am-navtoggle to <header>, so the CTA wrapper stops being :last-child
+   the moment the mobile nav mounts, and all three rules silently died.
+
+   `:last-child:not(.am-navtoggle)` does NOT fix that — :last-child is positional,
+   not filtered, so the compound selector matches nothing at all. The wrapper
+   carries .am-hdr-cta-wrap (site-header.js) precisely so these rules never have
+   to ask a positional question. See "A4 — correction" in FIXES.md.
+
+   The :nth-last-child(… of …) rules are a fallback for a browser holding a
+   cached site-header.js that predates the class — neither asset is versioned
+   (the A2.1 lesson). They are kept as SEPARATE rules on purpose: in a selector
+   list, one unsupported selector invalidates the entire list, which would take
+   the .am-hdr-cta-wrap rule down with it on browsers without `of` support. */
+header > a:first-child span {
+  white-space: nowrap;
+}
+.am-hdr-cta-wrap {
+  flex-shrink: 0;
+}
+header > div:nth-last-child(1 of :not(.am-navtoggle)) {
+  flex-shrink: 0;
+}
+.am-hdr-cta-wrap a,
+.am-hdr-cta-wrap button {
+  white-space: nowrap;
+}
+header > div:nth-last-child(1 of :not(.am-navtoggle)) a,
+header > div:nth-last-child(1 of :not(.am-navtoggle)) button {
+  white-space: nowrap;
+}
+/* The `@media (max-width: 1200px)` header block that used to sit here now lives
+   ABOVE the 900px block near the top of this file. It has to: down here it
+   out-ordered the 900px block's own header padding/gap and overrode it. Do not
+   move it back. */
+
+/* ---------- mobile nav (injected by site-mobile-nav.js) ---------- */
+.am-navtoggle {
+  display: none;
+}
+/* the drawer is injected into <body> on every page — keep it hidden outside the
+   mobile breakpoint, or its links render as stray text over the hero */
+.am-drawer {
+  display: none;
+}
+@media (max-width: 900px) {
+  /* pages hide .nav-links at 860px; match this layer's 900px so the two navs
+     never render at the same time */
+  .nav-links {
+    display: none !important;
+  }
+  .am-navtoggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(247, 243, 234, 0.45);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .am-navtoggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #f7f3ea;
+    box-shadow:
+      0 -6px 0 #f7f3ea,
+      0 6px 0 #f7f3ea;
+  }
+  .am-drawer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: #17392f;
+    border-top: 1px solid rgba(247, 243, 234, 0.18);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+    display: none;
+    flex-direction: column;
+    padding: 8px 0 14px;
+  }
+  .am-drawer.am-open {
+    display: flex;
+  }
+  .am-drawer a {
+    padding: 15px 20px;
+    color: #f7f3ea !important;
+    font-size: 17px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(247, 243, 234, 0.1);
+  }
+  .am-drawer a.am-cta {
+    margin: 14px 20px 0;
+    background: #b85c3d;
+    border: 0;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+  }
+  header > a:first-child span {
+    font-size: 19px !important;
+  }
+  header > a:first-child > div {
+    width: 34px !important;
+    height: 34px !important;
+    flex-shrink: 0;
+  }
+  header > a:first-child img {
+    height: 26px !important;
+  }
+}
+
+/* Below ~360px the short "Get Matched" CTA is the last 16px too wide. Buy that
+   back from padding rather than from the wordmark: ellipsizing the logo was
+   tried and erases most of "Almaya Admissions" (100 of 143px at 320px), which
+   is a far worse trade than a tighter gutter. */
+@media (max-width: 360px) {
+  header {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    gap: 8px !important;
+  }
+  .am-hdr-cta-wrap button {
+    padding: 0 10px !important;
+  }
+}
+
+/* ---------- scroll-reveal override ----------
+   Several pages hid content at opacity:0 and relied on a scroll observer to
+   add an "in" class. The runtime re-creates those nodes on re-render, which
+   strips the class and leaves whole sections blank. Content visibility is not
+   worth an entrance animation, so these are simply always visible. */
+.step-box,
+.svc-card,
+.why-point,
+.vet-step,
+.svc-headline,
+.svc-sub,
+.au-point,
+.au-crit,
+.math-item,
+.math-op,
+.hiw-step,
+.stage-card {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.worry-bubble {
+  opacity: 1 !important;
+  transform: translateY(0) rotate(var(--rot, 0deg)) scale(1) !important;
+}
+/* hover lifts still work — they set transform on :hover, which wins on
+   specificity over the rules above */
+.svc-card:hover,
+.stage-card:hover,
+.bubble:hover {
+  transform: translateY(-4px) !important;
+}
+.step-box:hover {
+  transform: none !important;
+}
+
+
+/* Almaya — the CTA button, as one shared component.
+   ==================================================================
+   Every call-to-action on the site is now a single element carrying
+   `.am-btn` plus one variant and one size:
+
+       <a href="…" class="am-btn am-btn--primary am-btn--lg">Get Matched</a>
+
+   Variants: --primary | --secondary | --secondary-light | --dark
+   Sizes:    --sm | --md | --lg          Modifier: --block (full width)
+
+   Loaded from every page's <helmet>, immediately after site-mobile.css so
+   the responsive block at the bottom of this file is the last word on
+   button geometry. Nothing else in the codebase may set a CTA's height,
+   padding, font-size, radius or border — if a call site needs a different
+   size, add a size here rather than an inline style.
+
+   WHY THIS FILE EXISTS
+   --------------------
+   Buttons had drifted into nine primary treatments and three secondary
+   ones. Measured in Chrome at 1280px, before this file:
+
+     hero primary   58.5px   (design-system Button, size lg)
+     hero secondary 60.5px   (same Button, but +1px border on each edge)
+     hero secondary 52px     (hand-rolled <a> with a hard height:52px)
+     hero secondary 47px     (same anchor, index.html only)
+     mid-page       47px     (design-system Button, size md)
+     "Book a Time"  52px     (hand-rolled copper <a>)
+     "Work With X"  52px     (forest-900 <a>, radius 6px, weight 600)
+     Tutors card    46.8px   (same treatment, different padding)
+     founder card   38px     (same treatment, different font)
+
+   Three separate causes, all fixed below:
+
+   1. The design-system Button sets no `line-height`, so it inherited
+      `body { line-height: 1.6 }` and its height was font-size dependent
+      (18px x 1.6 + 32px padding = 60.8px). `.am-btn` sets `line-height:1`
+      and an explicit `height`, so a size is a size.
+   2. Secondary buttons carried a border that primary buttons did not, and
+      `box-sizing` was content-box, so the border added 2px of height. The
+      base rule below gives *every* button a 1px transparent border and
+      `box-sizing:border-box`, so bordered and unbordered match exactly.
+   3. Hand-rolled anchors hard-coded `height`, and the responsive layer
+      keyed off those literal pixel strings
+      (`a[style*="height: 52px"]` in site-mobile.css). Those selectors are
+      gone; the media block at the bottom of this file targets the classes.
+
+   Geometry is the design system's intent with the ambiguity removed —
+   `_ds/…/_ds_bundle.js` Button, sizes sm/md/lg, variants primary /
+   secondary / secondary-light. `--dark` is the forest-900 fill the advisor
+   cards and profile pages use; it has no design-system equivalent yet. */
+
+.am-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* No `gap`. The design-system Button sets `gap: 8px` for an icon + label,
+     but no CTA here has an icon and the gap is actively wrong for templated
+     labels: the DC runtime wraps every `{{ hole }}` in its own <span>, so
+     `Work With {{ t.firstName }}` is two flex items and the gap renders as
+     "Work With<8px>Arjun" on top of the space already in the text.
+
+     A label that mixes text and a hole must be wrapped in a single <span> so
+     it stays one flex item — flexbox strips the whitespace at an item
+     boundary, so without the wrapper the label reads "Work WithArjun" with
+     gap:0 and "Work With  Arjun" with gap:8px. Neither is right.
+     Tutors.dc.html is the only such call site today. */
+  font-family: var(--font-sans-body);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  /* transparent by default so a bordered variant is the same height as an
+     unbordered one — do not move this into the variants */
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* ---------- sizes ----------
+   Height is explicit rather than derived from padding + line-height, which
+   is what made the old buttons diverge whenever a font-size changed. */
+.am-btn--sm {
+  height: 40px;
+  padding: 0 16px;
+  font-size: var(--text-small); /* 14px */
+}
+.am-btn--md {
+  height: 48px;
+  padding: 0 24px;
+  font-size: var(--text-body); /* 16px */
+}
+.am-btn--lg {
+  height: 56px;
+  padding: 0 32px;
+  font-size: var(--text-body-lg); /* 18px */
+}
+
+/* ---------- variants ---------- */
+.am-btn--primary {
+  background: var(--accent-cta);
+  color: var(--ivory);
+}
+.am-btn--primary:hover {
+  background: var(--accent-cta-hover);
+  color: var(--ivory);
+}
+
+/* on dark grounds (forest hero bands, footers) */
+.am-btn--secondary {
+  background: transparent;
+  color: var(--ivory);
+  border-color: var(--ivory);
+}
+.am-btn--secondary:hover {
+  background: rgba(247, 243, 234, 0.1);
+  color: var(--ivory);
+}
+
+/* on light grounds (ivory sections) */
+.am-btn--secondary-light {
+  background: transparent;
+  color: var(--forest-900);
+  border-color: var(--forest-900);
+}
+.am-btn--secondary-light:hover {
+  background: var(--bg-muted);
+}
+
+/* solid forest fill — advisor cards, profile "Work With X", founder cards */
+.am-btn--dark {
+  background: var(--forest-900);
+  color: var(--ivory);
+}
+.am-btn--dark:hover {
+  background: var(--forest-800);
+}
+
+/* ---------- modifier ---------- */
+.am-btn--block {
+  width: 100%;
+}
+
+/* ---------- responsive ----------
+   Replaces the `a[style*="height: 47px"]` / `a[style*="height: 52px"]`
+   rules that used to live in site-mobile.css:143-152. Those matched the
+   literal inline pixel strings the hand-rolled anchors carried, so they
+   applied to the anchors and silently missed every design-system Button
+   next to them — which is why the two halves of a hero CTA pair ended up
+   different widths on a phone (FIXES.md A8).
+
+   Everything md and up goes full width and stacks. `flex-shrink:0` is what
+   forces the stack: the hero pairs sit in `display:flex;flex-wrap:wrap` rows
+   where `width:100%` alone still lets both buttons shrink back onto one
+   line. Small buttons keep their intrinsic width — they are the header CTA
+   and the in-card actions, neither of which should span the viewport.
+
+   Do NOT reach for `flex-basis:100%` here. It reads as a *height* inside a
+   column-direction flex parent, and the Institutions contact form is one:
+   the Send button collapsed to 44px (its min-height floor) instead of 52px,
+   because basis-100%-then-shrink resolved smaller than the fixed height. */
+@media (max-width: 900px) {
+  .am-btn--md,
+  .am-btn--lg {
+    height: 52px;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  /* 44px is the minimum comfortable tap target */
+  .am-btn--sm {
+    height: 44px;
+  }
+  /* the header CTA is a flex item in a row that must never wrap */
+  header .am-btn {
+    width: auto;
+  }
+}

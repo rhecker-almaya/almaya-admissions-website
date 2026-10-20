@@ -2,12 +2,11 @@
 //
 // This file is the single source for advisor data. It feeds:
 //   * Tutors.dc.html (the advisor grid: name, photo, tier, rate, school, specialty)
-//   * every "<Name> Profile.dc.html" page, which is now just SEO tags plus
-//       <x-import component-from-global-scope="TutorProfile" data-slug="neva-hidajat"></x-import>
+//   * Profile.dc.html?a=<slug> (one page for every advisor)
 //
 // To edit an advisor (price, bio, testimonial, school), change their entry below.
-// To add one: add an entry, copy any Profile page, change its <meta> tags and data-slug.
-// To remove one: delete the entry and the Profile page, add a redirect in _redirects.
+// To add one: add an entry. Link to it as Profile.dc.html?a=<slug>.
+// To remove one: delete the entry, add a redirect in _redirects.
 //
 // Fields: tier is t1 Advisor · t2 Senior Advisor · t3 Lead Advisor · t4 Principal Advisor.
 // Text fields may contain simple HTML (<em>, <a>) and entities (&amp;).
@@ -247,7 +246,6 @@
     rate: 100,
     school: "NYU",
     specialty: "Storytelling & Screenwriting Craft",
-    bookHref: "./Jon Booking.dc.html",
     heroSchool: "NYU Tisch School of the Arts",
     schools: [
       {
