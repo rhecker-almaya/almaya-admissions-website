@@ -115,17 +115,16 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <div style="max-width:1080px;margin:0 auto;padding:28px 32px 72px">
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
 <sc-for list="{{ tutorList }}" as="t" hint-placeholder-count="8">
-<div class="tcard">
-<span style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--copper-600)">{{ t.focusLabel }}</span>
+<div class="tcard" style="height:100%">
 <span style="font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:{{ t.badgeColor }};background:{{ t.badgeBg }};padding:4px 10px;border-radius:20px">{{ t.tierLabel }}</span>
 <sc-if value="{{ t.hasPhoto }}" hint-placeholder-val="{{ true }}">
 <img src="{{ t.photo }}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-top:6px">
 </sc-if>
 <div class="name">{{ t.name }}</div>
 <div style="font-size:12px;color:var(--text-muted);text-align:center">{{ t.school }}</div>
-<div style="font-size:12px;color:var(--forest-900);text-align:center;line-height:1.4">{{ t.specialty }}</div>
+<div style="min-height:34px;display:flex;align-items:flex-start;justify-content:center;font-size:12px;color:var(--forest-900);text-align:center;line-height:1.4">{{ t.specialty }}</div>
 <div class="row" style="justify-content:center"><span style="color:var(--copper-600);font-weight:500;font-size:13px">${{ t.rate }}/hr</span></div>
-<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;margin-top:10px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;margin-top:auto;padding-top:10px">
 <a href="{{ t.href }}" style="font-size:12.5px;font-weight:600;color:var(--copper)">View Profile</a>
 <a href="{{ t.bookHref }}" class="am-btn am-btn--dark am-btn--md am-btn--block"><span>Work With {{ t.firstName }}</span></a>
 </div>
@@ -217,13 +216,13 @@ class Component extends DCLogic {
     const { focusFilter, tierFilter, minPrice, maxPrice } = this.state;
     const lo = Math.min(minPrice, maxPrice), hi = Math.max(minPrice, maxPrice);
     const filtered = this.tutors.filter(t =>
-      (focusFilter === 'all' || [].concat(t.focus || 'College Guidance/Essays').includes(focusFilter)) &&
+      (focusFilter === 'all' || [].concat(t.focus || 'College Applications').includes(focusFilter)) &&
       (tierFilter === 'all' || t.tierKey === tierFilter) &&
       t.rate >= lo && t.rate <= hi
     );
     const tutorList = filtered.map(t => {
       const meta = this.tierMeta[t.tierKey];
-      return { ...t, rate: t.rate.toString(), hasPhoto: !!t.photo, firstName: t.name.split(' ')[0], bookHref: t.bookHref || t.href, focusLabel: [].concat(t.focus || 'College Guidance/Essays').join(' · '), tierLabel: meta.label, badgeColor: meta.color, badgeBg: meta.bg };
+      return { ...t, rate: t.rate.toString(), hasPhoto: !!t.photo, firstName: t.name.split(' ')[0], bookHref: t.bookHref || t.href, focusLabel: [].concat(t.focus || 'College Applications').join(' · '), specialty: (t.specialties && t.specialties[focusFilter]) || t.specialty, tierLabel: meta.label, badgeColor: meta.color, badgeBg: meta.bg };
     });
     const tiers = [
       { key: 'all', label: 'All' },
@@ -240,9 +239,10 @@ class Component extends DCLogic {
     }));
     const focusOptions = [
       { key: 'all', label: 'All Subjects' },
-      { key: 'College Guidance/Essays', label: 'College Guidance/Essays' },
+      { key: 'College Applications', label: 'College Applications' },
       { key: 'SAT', label: 'SAT' },
       { key: 'APs', label: 'APs' },
+      { key: 'Passion Projects', label: 'Passion Projects' },
     ].map(f => ({
       label: f.label,
       bg: focusFilter === f.key ? 'var(--forest-900)' : 'transparent',

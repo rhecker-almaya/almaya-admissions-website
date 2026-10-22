@@ -10,7 +10,8 @@
 //
 // Fields: tier is t1 Advisor · t2 Senior Advisor · t3 Lead Advisor · t4 Principal Advisor.
 // Text fields may contain simple HTML (<em>, <a>) and entities (&amp;).
-// focus: "College Guidance/Essays" (default), "SAT", "APs", or an array — shown at the top of the profile and used by the Tutors page filter.
+// focus: "College Applications" (default), "SAT", "APs", "Passion Projects", or an array — shown at the top of the profile and used by the Tutors page filter.
+// specialties: { "<focus>": "text" } — card specialty shown when that filter is selected (falls back to specialty).
 // Optional: bookHref (own booking page), mentor, testimonials, wins {label, schools:[{logo,name}]}, band {label,text}, marquee {label,text}. photo "" shows initials.
 (() => {
   if (window.AM_TUTORS) return;
@@ -22,7 +23,7 @@
     photo: "./assets/experts/josh-w.png",
     tier: "t3",
     rate: 350,
-    focus: "College Guidance/Essays",
+    focus: "College Applications",
     school: "Penn",
     specialty: "Ivy League Essays & Strategy",
     heroSchool: "University of Pennsylvania · Summa Cum Laude",
@@ -77,7 +78,7 @@
     photo: "./assets/experts/silvana.png",
     tier: "t3",
     rate: 300,
-    focus: "College Guidance/Essays",
+    focus: "College Applications",
     school: "Princeton",
     specialty: "Essays & Application Strategy",
     heroSchool: "Princeton University",
@@ -131,7 +132,7 @@
     photo: "./assets/experts/tess-g.png",
     tier: "t3",
     rate: 235,
-    focus: "College Guidance/Essays",
+    focus: "College Applications",
     school: "Brown",
     specialty: "College Essays & Positioning",
     heroSchool: "Brown University",
@@ -169,6 +170,8 @@
   },
   {
     slug: "arjun-jaswal",
+    focus: ["College Applications", "Passion Projects"],
+    specialties: {"Passion Projects": "Research & Pre-Med Research"},
     name: "Arjun Jaswal",
     photo: "./assets/experts/arjun-jaswal.jpeg",
     tier: "t1",
@@ -201,6 +204,8 @@
   },
   {
     slug: "neva-hidajat",
+    focus: ["College Applications", "Passion Projects"],
+    specialties: {"Passion Projects": "Environmental Sustainability"},
     name: "Neva Hidajat",
     photo: "./assets/experts/neva-hidajat.jpg",
     tier: "t1",
@@ -240,6 +245,8 @@
   },
   {
     slug: "jonathan-mizrahi",
+    focus: ["College Applications", "Passion Projects"],
+    specialties: {"Passion Projects": "Documentaries, Film & Theater"},
     name: "Jonathan Mizrahi",
     photo: "./assets/experts/jonathan-mizrahi.jpg",
     tier: "t1",
@@ -402,10 +409,11 @@
   },
   {
     slug: "gabriel-nagel",
+    focus: ["College Applications", "SAT", "Passion Projects"],
+    specialties: {"College Applications": "College Essays & Line Edits", "SAT": "SAT Prep", "Passion Projects": "Environmentalism & Sustainability"},
     name: "Gabriel Nagel",
     photo: "./assets/experts/gabriel.png",
     tier: "t2",
-    focus: ["College Guidance/Essays", "SAT"],
     rate: 175,
     school: "Stanford",
     specialty: "Essays & Passion Projects",
@@ -614,7 +622,7 @@
     photo: "./assets/experts/anna-nacasch.png",
     tier: "t3",
     rate: 225,
-    focus: "College Guidance/Essays",
+    focus: "College Applications",
     school: "Penn",
     specialty: "College Essays & Storytelling",
     heroSchool: "University of Pennsylvania",
@@ -695,7 +703,7 @@
     rate: 130,
     focus: "APs",
     school: "NYU",
-    specialty: "AP French &amp; AP Humanities",
+    specialty: "AP French & AP Humanities",
     heroSchool: "New York University · BA, Cum Laude",
     schools: [
       {
@@ -832,7 +840,7 @@ ${s.logo ? `<img src="${s.logo}" alt="" style="${st('height:' + s.h + 'px')}">` 
     const first = t.name.split(' ')[0];
     return `<div style="${st('position:relative;background:var(--forest-900);padding:40px 48px;display:flex;gap:28px;align-items:center;flex-wrap:wrap')}">
 ${t.photo ? `<img src="${t.photo}" alt="${t.name}" style="${st('width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--sand);flex-shrink:0')}">` : `<div aria-hidden="true" style="${st('width:140px;height:140px;border-radius:50%;border:3px solid var(--sand);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--forest-800);color:var(--ivory);font-family:var(--font-serif-display);font-size:48px')}">${t.name.split(' ').map(w => w[0]).join('')}</div>`}
-<div><div style="${st('font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);margin-bottom:8px')}">${[].concat(t.focus || 'College Guidance/Essays').join(' · ')}</div><h1 style="${st('font-family:var(--font-serif-display);font-size:clamp(2rem,3vw,3rem);color:var(--ivory);font-weight:500;margin:0')}">${t.name}</h1>
+<div><div style="${st('font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);margin-bottom:8px')}">${[].concat(t.focus || 'College Applications').join(' · ')}</div><h1 style="${st('font-family:var(--font-serif-display);font-size:clamp(2rem,3vw,3rem);color:var(--ivory);font-weight:500;margin:0')}">${t.name}</h1>
 <div style="${st('display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap')}"><span style="${st(tier.hero + ';color:var(--ivory);font-size:13px;font-weight:500;padding:6px 16px;border-radius:999px')}">${tier.label}</span><span style="${st('font-family:var(--font-serif-display);font-size:18px;color:var(--ivory)')}">$${t.rate}/hr</span></div>
 <div style="${st('color:var(--sand);font-size:14px;margin-top:10px')}">${t.heroSchool}</div></div></div>
 <div style="${st('max-width:1120px;margin:0 auto;padding:48px 40px 80px')}">${schoolsHtml(t.schools)}
