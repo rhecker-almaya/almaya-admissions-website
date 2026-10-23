@@ -279,6 +279,46 @@
     }
   },
   {
+    slug: "sruli-f",
+    name: "Sruli F.",
+    photo: "./assets/experts/sruli-f.png",
+    tier: "t2",
+    rate: 250,
+    focus: "College Applications",
+    school: "Yeshiva University",
+    specialty: "College & Grad School Essays",
+    heroSchool: "Yeshiva University · Revel Graduate School",
+    schools: [
+      {
+        name: "Yeshiva University",
+        sub: "MA, Jewish Philosophy, Revel Graduate School<br>Rabbinic Ordination, RIETS, in progress"
+      }
+    ],
+    about: {
+      title: "About Sruli",
+      subtitle: "Your editorial consultant for college &amp; grad school",
+      paras: [
+        "Sruli Fruchter is a writer, editor, and two-time finalist for the RNA's award for excellence. Sruli is a meticulous editor with an eye for framing, narrative development, and drawing out writers' greatest work. He has written and edited hundreds of articles, working with students and university deans, venture capital CEOs and professors, published authors and novice writers.",
+        "Editor in chief for The Commentator at YU, Cont. Columnist at The Forward, Editor at 18Forty, now working at Jewish Insider. Finalist for Religion News Association in reporting. President of College EDge for unrepresented high school students in NY."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Sruli's expertise really shows up",
+      paras: [
+        "I provide editorial consulting for students applying to college and grad school.",
+        "<strong>Law School applicants accepted to:</strong><br>NYU (Top choice, ranked #8)<br>UCLA (Ranked #16)<br>Fordham (High scholarship)<br>Cardozo (High scholarship)",
+        "<strong>Med School applicants accepted to:</strong><br>New York Med<br>Stony Brooke<br>Hackensack"
+      ]
+    },
+    testimonials: [
+      {
+        quote: "\"You did such a stellar job helping Eitan write his personal statement that I wanted to reach out and see if you could do some editing on the remainder of his application.\"",
+        by: "— A father"
+      }
+    ]
+  },
+  {
     slug: "arianna-zarka",
     name: "Arianna Zarka",
     photo: "./assets/experts/arianna-zarka.jpeg",
