@@ -91,16 +91,17 @@
       title: "About Lexi",
       subtitle: "Your college &amp; grad school essay coach",
       paras: [
-        "For 10 years, I have helped applicants earn admission to competitive universities and graduate schools, ranging from Cornell to Harvard Law School. I work closely with students in one-on-one coaching sessions, guiding them toward exceptional essays. With two years of experience teaching high school English, including Advanced Placement Literature, I am skilled at communicating expectations and helping students develop approaches to producing great work.",
-        "Additionally, I have been published in Forbes, TechCrunch, and Inc., as well as The Spectator, 18Forty, and more. I have served as an editor for Jew in the City and The Tab and grew one of the first newsletters, You Probably Need a Robot, focused on using AI to improve productivity to 65K subscribers in two months. I have had poems published in Florida Bards and TEA Literary Magazine. I write literary essays and cultural commentary frequently on Substack and plan to publish my completed manuscript of vignette essays."
+        "For 10 years, I have helped applicants earn admission to competitive universities and graduate schools, ranging from Cornell to Harvard Law School. In energizing one-on-one sessions, I guide students toward exceptional essays and help them find confidence in their own voices.",
+        "With two years of experience teaching high school English, including Advanced Placement Literature, I build strong rapport, set clear expectations, and tailor my approach to each student’s learning needs.",
+        "I provide the structure, writing guidance, and encouragement students need to produce excellent work. I also help families identify schools that align with each student’s personality, preferences, and future goals.",
+        "My writing has been published in Forbes, TechCrunch, Inc., The Spectator, 18Forty, TEA Literary Magazine, Florida Bards, and more. I write literary essays and cultural commentary on Substack."
       ]
     },
     mentor: {
       title: "Meet Your Mentor",
       subtitle: "Where Lexi's expertise really shows up",
       paras: [
-        "When I was in high school, I was asked to help upperclassmen write their college essays before I had written my own. Since then, I have helped applicants gain admission to schools such as Cornell, Yale, Harvard Law School, the University of Pennsylvania Carey Law School, Columbia Law School, NYU College of Dentistry, and Columbia School of Social Work.",
-        "I have worked independently through my business, Lexi’s Learning, as well as with other companies. I have also helped students and their families identify schools that align with the students’ personalities, priorities, and goals."
+        "When I was in high school, I was asked to help upperclassmen write their college essays before I had written my own. Since then, I have helped applicants gain admission to schools such as Cornell, Yale, Harvard Law School, the University of Pennsylvania Carey Law School, Columbia Law School, NYU College of Dentistry, and Columbia School of Social Work."
       ]
     },
     wins: {
