@@ -73,6 +73,55 @@
     ]
   },
   {
+    slug: "lexi-l",
+    name: "Lexi L.",
+    photo: "./assets/experts/lexi-l.png",
+    tier: "t3",
+    rate: 300,
+    focus: "College Applications",
+    school: "University of Florida",
+    specialty: "College & Grad School Essays",
+    heroSchool: "University of Florida",
+    schools: [
+      {
+        name: "University of Florida"
+      }
+    ],
+    about: {
+      title: "About Lexi",
+      subtitle: "Your college &amp; grad school essay coach",
+      paras: [
+        "For 10 years, I have helped applicants earn admission to competitive universities and graduate schools, ranging from Cornell to Harvard Law School. I work closely with students in one-on-one coaching sessions, guiding them toward exceptional essays. With two years of experience teaching high school English, including Advanced Placement Literature, I am skilled at communicating expectations and helping students develop approaches to producing great work.",
+        "Additionally, I have been published in Forbes, TechCrunch, and Inc., as well as The Spectator, 18Forty, and more. I have served as an editor for Jew in the City and The Tab and grew one of the first newsletters, You Probably Need a Robot, focused on using AI to improve productivity to 65K subscribers in two months. I have had poems published in Florida Bards and TEA Literary Magazine. I write literary essays and cultural commentary frequently on Substack and plan to publish my completed manuscript of vignette essays."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Lexi's expertise really shows up",
+      paras: [
+        "When I was in high school, I was asked to help upperclassmen write their college essays before I had written my own. Since then, I have helped applicants gain admission to schools such as Cornell, Yale, Harvard Law School, the University of Pennsylvania Carey Law School, Columbia Law School, NYU College of Dentistry, and Columbia School of Social Work.",
+        "I have worked independently through my business, Lexi’s Learning, as well as with other companies. I have also helped students and their families identify schools that align with the students’ personalities, priorities, and goals."
+      ]
+    },
+    wins: {
+      label: "Has helped students get into",
+      schools: [
+        { logo: "./assets/logos/cornell-3.png", name: "Cornell" },
+        { logo: "./assets/logos/yale-shield.png", name: "Yale" },
+        { logo: "./assets/logos/harvard-shield.png", name: "Harvard Law" },
+        { logo: "./assets/logos/penn-shield.png", name: "Penn Law" },
+        { logo: "./assets/logos/columbia-shield.png", name: "Columbia" },
+        { logo: "./assets/logos/nyu-shield.png", name: "NYU" }
+      ]
+    },
+    testimonials: [
+      { quote: "\"I just wanted to share some exciting news and say thank you. I heard back from Columbia today and I got in!! I’m still waiting to hear from NYU, but I really wanted to reach out and tell you how grateful I am for all the help and guidance you gave me through the application process. Lexi you are such an amazing tutor and your support made a huge difference for me. THANK YOU!!\"", by: "— Celia" },
+      { quote: "\"Lexi devoted time to helping me brainstorm ideas for my common app essay and worked with me until we found writing that matched my voice. With her help, I got accepted into Cornell University!\"", by: "— Shaina" },
+      { quote: "\"As a science person, language and writing are just not my forte. Lexi helped me to craft the perfect personal statement that allowed me to stand out and get into NYU college of dentistry! Forever grateful.\"", by: "— Taylor, Dental School" },
+      { quote: "\"Good morning! Thank you for being in this journey with my girls. I read her essay it was unbelievable! Both of their essays are strong and they both turned them in happy and confident!!!! I wish you luck and will happily recommend you to everyone I know . My girls really enjoyed meeting you and working with you . Lexi you are very talented and very patient . THANK YOU for everything .\"", by: "— Sally" }
+    ]
+  },
+  {
     slug: "silvana",
     name: "Silvana P.",
     photo: "./assets/experts/silvana.png",

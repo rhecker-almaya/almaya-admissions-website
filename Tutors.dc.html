@@ -76,6 +76,7 @@ div[style*="repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
 <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,57,47,0.86),rgba(23,57,47,0.9));z-index:1"></div>
 <div style="position:relative;z-index:2;max-width:720px;margin:0 auto">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--copper);margin-bottom:16px">Our Network</div>
+<sc-if value="{{ showCount }}" hint-placeholder-val="{{ true }}"><div style="display:flex;justify-content:center;margin:-4px 0 18px"><span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ivory);border:1px solid rgba(247,243,234,0.25);border-radius:999px;padding:6px 14px">Browse our <span style="font-family:var(--font-serif-display);font-size:18px;font-weight:600;color:var(--ivory);line-height:1;font-variant-numeric:lining-nums">{{ advisorCount }}</span> advisors</span></div></sc-if>
 <h1 style="font-family:var(--font-serif-display);font-weight:400;font-size:clamp(2.1rem,3.8vw,3.2rem);color:var(--ivory);line-height:1.22;margin:0">Browse Our Advisor Network</h1>
 <p style="color:var(--text-muted-inverse);font-size:16px;line-height:1.7;margin:18px auto 0;max-width:560px">Every Almaya advisor is personally vetted for coaching ability, communication, and student fit. Compare advisors by price, specialty, and experience — or get personally matched for free.</p>
 <div style="margin-top:28px"><a href="https://api.leadconnectorhq.com/widget/booking/waXfk5QQ8VhoYMOXXoRN" class="am-btn am-btn--primary am-btn--lg">Get Matched — It's Free</a></div>
@@ -251,6 +252,7 @@ class Component extends DCLogic {
     }));
     const priceRangeLabel = hi >= 540 ? `$${lo}–$540+/hr` : `$${lo}–$${hi}/hr`;
     return {
+      advisorCount: String(this.tutors.length), showCount: this.tutors.length >= 10,
       vetGridRef: this.vetGridRef,
       tutorList,
       tierOptions,
