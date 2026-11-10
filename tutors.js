@@ -369,6 +369,100 @@
     ]
   },
   {
+    slug: "ari-b",
+    name: "Ari B.",
+    photo: "./assets/experts/ari-b.png",
+    tier: "t2",
+    rate: 200,
+    focus: "College Applications",
+    school: "Yale",
+    specialty: "College Essays & Application Strategy",
+    heroSchool: "Yale · Yale Divinity School",
+    schools: [
+      {
+        name: "Yale",
+        sub: "Pursuing a Master's in Religion, Yale Divinity School<br>Concentration: Asian Religions"
+      }
+    ],
+    about: {
+      title: "About Ari",
+      subtitle: "Your storyteller for college essays",
+      paras: [
+        "Storytelling: I have done standup comedy nearly a dozen times and participated in comedy groups in college. The main thing you do when performing comedy is some form of storytelling.",
+        "Writing: as a humanities undergrad and graduate student, writing is my bread and butter. I am extremely experienced with formal academic writing, and I also took a number of creative writing courses in college.",
+        "Tutoring and education: I tutored Sanskrit and Hebrew Bible every week for all of last year."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Ari's expertise really shows up",
+      paras: [
+        "I helped a family member last year with her application strategy and essays. She was accepted to every school she applied to and will attend Columbia University. I have also been helping students this year applying to less selective universities."
+      ]
+    },
+    wins: {
+      label: "Has helped students get into",
+      schools: [
+        { logo: "./assets/logos/columbia-shield.png", name: "Columbia" }
+      ]
+    },
+    testimonials: [
+      {
+        quote: "\"Ari was so helpful at every step of my application, from brainstorming ideas to composing essays to polishing them with line-by-line edits. His warmth and passion for college guidance made me feel like I could come to him with any question or concern, no matter how big or small. He helped me express my true self through my essays while also making sure they sounded impressive and unique to an admissions officer.\"",
+        by: "— Mia B."
+      }
+    ]
+  },
+  {
+    slug: "josephine-k",
+    name: "Josephine K.",
+    photo: "./assets/experts/josephine-k.png",
+    tier: "t3",
+    rate: 225,
+    focus: ["College Applications", "SAT"],
+    specialties: {"SAT": "SAT Reading & Writing"},
+    school: "Harvard & Lafayette",
+    specialty: "College & Grad School Essays",
+    heroSchool: "Harvard University · Lafayette College",
+    schools: [
+      { name: "Harvard University", sub: "Master of Arts, Regional Studies – Middle East" },
+      { name: "Lafayette College", sub: "" }
+    ],
+    about: {
+      title: "About Josephine",
+      subtitle: "Harvard graduate, writer and editor",
+      paras: [
+        "Hi, I’m Josephine! I’m a graduate of Harvard University and Lafayette College, a former Editor-in-Chief a Harvard Kennedy School Journal, and a former research assistant at Harvard Divinity School and the Middle East Institute in Washington, D.C. I’ve also worked as a consultant, writing for government institutions, museums, and nonprofits.",
+        "Over the past several years, I’ve had the pleasure of working with high-achieving international high school students and students attending private schools in New York City. I’ve taught both one-on-one sessions and group classes in SAT Reading and Writing, English grammar, essay writing, and study skills. I’ve also helped students navigate the college admissions process, from exploring summer programs and research opportunities to crafting personal statements and supplemental essays. I’ve also worked with medical students applying to residency programs and applicants to other graduate programs, helping them tell their stories through their application materials.",
+        "During my master’s at Harvard, I took courses at the Harvard Graduate School of Education in mindfulness, leadership, and entrepreneurship. I’ve brought what I learned into my tutoring, particularly in helping students manage academic stress and build confidence. One of my favorite parts of this work is helping students recognize what makes them unique, find their voice, and feel confident sharing their stories."
+      ]
+    },
+    mentor: {
+      title: "Meet Your Mentor",
+      subtitle: "Where Josephine's expertise really shows up",
+      paras: [
+        "I've provided college guidance to international high school students and students attending private schools in New York City. My work has included advising students on which summer programs to pursue, what research opportunities to explore, and which experiences, achievements, and extracurricular activities to highlight in their applications. I've also helped students think through how best to present their backgrounds and interests, develop and refine their personal statements and supplemental essays, and prepare for standardized tests such as the SAT.",
+        "One of my students, who I supported with SAT Reading and Writing, study skills, and building pre-exam confidence, went on to earn a perfect score on the SAT Reading and Writing section and now attends Columbia University. Other clients have received offers of admission or invitations to interview at Harvard, Yale, U Penn, Cornell, and NYU programs."
+      ]
+    },
+    wins: {
+      label: "Has helped students get into",
+      schools: [
+        { logo: "./assets/logos/harvard-shield.png", name: "Harvard" },
+        { logo: "./assets/logos/columbia-shield.png", name: "Columbia" },
+        { logo: "./assets/logos/penn-shield.png", name: "Penn" },
+        { logo: "./assets/logos/cornell-3.png", name: "Cornell" },
+        { logo: "./assets/logos/nyu-shield.png", name: "NYU" }
+      ]
+    },
+    testimonials: [
+      {
+        quote: "“Working with Josephine was the most impactful part of my application process. From the very beginning, she went far beyond simple editing. Josephine took the time to truly understand my background, values, and motivations. She asked thoughtful, probing questions that pushed me to reflect more deeply on my experiences than I ever had before.”",
+        by: "— Former client, now a first-year resident physician, University of Pennsylvania"
+      }
+    ]
+  },
+  {
     slug: "arianna-zarka",
     name: "Arianna Zarka",
     photo: "./assets/experts/arianna-zarka.jpeg",
@@ -891,7 +985,7 @@ ${s.logo ? `<img src="${s.logo}" alt="" style="${st('height:' + s.h + 'px')}">` 
     }
     const three = list.length > 2;
     return `<div style="${st('display:grid;grid-template-columns:repeat(auto-fit,minmax(' + (three ? 160 : 180) + 'px,1fr));gap:18px;margin-bottom:40px;max-width:' + (three ? 640 : 460) + 'px;margin-left:auto;margin-right:auto')}">${list.map(s => `
-<div style="${st('background:var(--white);border:1px solid var(--border-subtle);border-radius:8px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;box-shadow:var(--shadow-card)')}"><img src="${s.logo}" alt="" style="${st('height:' + s.h + 'px')}"><div style="${st('font-size:16px;font-weight:500')}">${s.name}</div>${s.sub ? `<div style="${st('font-size:13px;color:var(--text-muted)')}">${s.sub}</div>` : ''}</div>`).join('')}</div>`;
+<div style="${st('background:var(--white);border:1px solid var(--border-subtle);border-radius:8px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;box-shadow:var(--shadow-card)')}">${s.logo ? `<img src="${s.logo}" alt="" style="${st('height:' + s.h + 'px')}">` : ''}<div style="${st('font-size:16px;font-weight:500')}">${s.name}</div>${s.sub ? `<div style="${st('font-size:13px;color:var(--text-muted)')}">${s.sub}</div>` : ''}</div>`).join('')}</div>`;
   };
 
   const colHtml = c => `<div><h2 style="${st(H2)}">${c.title}</h2><div style="${st('font-size:14px;color:var(--copper-600);font-weight:500;margin-bottom:14px')}">${c.subtitle}</div>${c.paras.map((p, i) => `<p style="${st(P + 'margin:' + (i < c.paras.length - 1 ? '0 0 12px' : '0'))}">${p}</p>`).join('')}</div>`;
