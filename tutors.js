@@ -371,7 +371,7 @@
   {
     slug: "ari-b",
     name: "Ari B.",
-    photo: "./assets/experts/ari-b.png",
+    photo: "./assets/experts/ari-b-2.png",
     tier: "t2",
     rate: 200,
     focus: "College Applications",
